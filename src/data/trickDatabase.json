@@ -1,0 +1,35 @@
+
+{
+    "trickInstance": [
+        {
+            "idTrickName": "",
+            "modifiers": [],
+            "thumbnail": "",
+            "tags": []
+        }
+    ],
+    "trickName": [
+        {
+            "id": "",
+            "name": "",
+            "families": []
+        }
+    ],
+    "trickFamily":[
+        {
+            "id": "",
+            "name": ""
+        }
+    ],
+    "modifiers":[
+        {
+            "id": "",
+            "name": ""
+        }
+    ],
+    "tags":[
+        {
+            "id": ""
+        }
+    ]
+}
