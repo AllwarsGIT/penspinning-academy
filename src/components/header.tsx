@@ -27,17 +27,17 @@ function Header () {
 
                 {/* Menu for mobile */}
                 <div 
-                    className=" w-12 h-12  flex justify-center items-center hover:scale-120 transition-all ease-in-out duration-350 cursor-pointer text-black dark:text-whitePrimary"
+                    className=" w-12 h-12  flex justify-center items-center hover:scale-120 transition-transform ease-in-out duration-500 cursor-pointer text-black dark:text-white "
                     onClick={() => {
                         setIsOpen(!isOpen);
                     }}>
                     {isOpen ? 
-                        <div className="transition-all ease-in-out duration-350 rotate-0">
-                            <RxCross1 className="text-[35px] font-bold transition-all ease-in-out duration-500"/>
+                        <div className="transition-transform ease-in-out duration-350 rotate-0">
+                            <RxCross1 className="text-[35px] font-bold "/>
                         </div>
                         :
-                        <div className="transition-all ease-in-out duration-350 rotate-180">
-                            <FiMenu className="text-[35px] font-bold transition-all ease-in-out duration-500"/>
+                        <div className="transition-transform ease-in-out duration-350 rotate-180">
+                            <FiMenu className="text-[35px] font-bold "/>
                         </div>
                     }
                 </div>
@@ -52,24 +52,26 @@ function Header () {
 
                 {/* Menu pannel for mobile */}
                 <div 
-                    className={`fixed top-0 mt-16 right-0 h-full w-full bg-whitePrimary dark:bg-blackPrimary text-pinkSecondary border-t border-gray-300 dark:border-gray-500 z-10 transform transition-all duration-500 ease-in-out ${
+                    className={`fixed top-0 mt-16 right-0 h-full w-full bg-whitePrimary dark:bg-blackPrimary border-t border-gray-300 dark:border-gray-500 z-10 transform transition-all duration-500 ease-in-out ${
                         isOpen ? 'translate-x-0' : 'translate-x-full'
                     } `}
                 >
                     <ul>
                         <li className="pt-4 pb-3 flex items-center justify-end mx-5">
-                            {/* <RxCross1 
-                                size={35} 
-                                onClick={() => setIsOpen(false)} 
-                                className="text-black cursor-pointer transition-all ease-in-out hover:text-pinkTertiary"/> */}
+                           
                         </li>
                     </ul>
                 </div>
 
                 {/* Blur effect for bg */}
-                {/* <div 
-                    className={`fixed top-0 right-0 h-full w-full  transition-[backdrop-filter] backdrop-blur-0  ${ isOpen ? 'backdrop-blur-sm block' : 'hidden'}`}>
-                </div> */}
+                <div
+                    className={`fixed top-16 right-0 h-full w-full block opacity-0`}
+                    style={{
+                        backdropFilter: isOpen ? "blur(4px)" : "blur(0px)",
+                        transition: "backdrop-filter 0.2s ease, opacity 0.2s ease",
+                        opacity: isOpen ? 1 : 0,
+                    }}
+                ></div>
 
             </nav>
         </header>

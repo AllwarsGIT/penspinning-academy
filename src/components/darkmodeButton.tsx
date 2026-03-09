@@ -1,49 +1,39 @@
 "use client"
 import { FaMoon } from "react-icons/fa";
 import { MdSunny } from "react-icons/md";
-import { useState , useEffect } from 'react';
+import { useState , useLayoutEffect } from 'react';
+import { useTheme } from "next-themes";
 
 function DarkmodeButton() {
 
-    const [dark, setDark] = useState(   () => {
-        const savedTheme = localStorage.getItem("theme");
-        return savedTheme === "dark";
-    });
+
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useLayoutEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true)
+    }, [])
+
+
+    const dark = theme === "dark"
 
     const toggleTheme = () => {
-        setDark(!dark);
+        setTheme(dark ? "light" : "dark")
     }
 
-    useEffect(() => {
-        const root = window.document.documentElement;
-        if (dark) {
-            root.classList.add("dark");
-            localStorage.setItem("theme", "dark");
-        } else {
-            root.classList.remove("dark");
-            localStorage.setItem("theme", "light");
-        }
-    }, [dark]);
+    if (!mounted) {
+        return (
+            <div className="w-18 h-10 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse"></div>
+        )
+    }
 
     return (
         <>
-            {/* <div 
-                className=" w-12 h-12  flex justify-center items-center"
-                onClick={() => {
-                    setIsOpen(!isOpen);
-                }}>
-                
-                {isOpen ? 
-                    <FaMoon className="text-[25px] text-black font-bold" />
-                    :
-                    <MdSunny className="text-[30px] text-black font-bold" />
-                }
-
-            </div> */}
-            
             <div 
                 className="bg-gray-400 w-18 h-10 rounded-full items-center flex justify-start cursor-pointer hover:scale-110 transition-all ease-in-out duration-350"
-                onClick={toggleTheme}>
+                onClick={toggleTheme}
+                >
 
                 {dark ? 
                     <div className="bg-black w-8 h-8 p-0 mx-1 rounded-full border-black flex justify-center items-center  transition-all ease-in-out duration-350 ">
