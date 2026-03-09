@@ -5,6 +5,10 @@
             "idTrickName": "",
             "modifiers": [],
             "thumbnail": "",
+            "videos": [
+                { "url": "", "type": "main" },
+                { "url": "", "type": "step" }
+            ],
             "tags": []
         }
     ],

@@ -11,7 +11,7 @@ function Header () {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="bg-white dark:bg-black fixed top-0 px-4 left-0 w-full flex z-10 transition-all ease-in-out duration-500 ">
+        <header className="bg-white dark:bg-black fixed top-0 px-4 left-0 w-full flex z-50 transition-all ease-in-out duration-500 ">
             <nav className="flex items-center justify-between w-full h-16 ">
 
                 {/* Header logo */}
@@ -52,7 +52,7 @@ function Header () {
 
                 {/* Menu pannel for mobile */}
                 <div 
-                    className={`fixed top-0 mt-16 right-0 h-full w-full bg-whitePrimary dark:bg-blackPrimary border-t border-gray-300 dark:border-gray-500 z-10 transform transition-all duration-500 ease-in-out ${
+                    className={`fixed top-0 mt-16 right-0 h-full w-full bg-whitePrimary dark:bg-blackPrimary border-t border-gray-300 dark:border-gray-500 z-50 transform transition-all duration-500 ease-in-out ${
                         isOpen ? 'translate-x-0' : 'translate-x-full'
                     } `}
                 >
@@ -64,13 +64,9 @@ function Header () {
                 </div>
 
                 {/* Blur effect for bg */}
+               
                 <div
-                    className={`fixed top-16 right-0 h-full w-full block opacity-0`}
-                    style={{
-                        backdropFilter: isOpen ? "blur(4px)" : "blur(0px)",
-                        transition: "backdrop-filter 0.2s ease, opacity 0.2s ease",
-                        opacity: isOpen ? 1 : 0,
-                    }}
+                    className={`fixed top-16 right-0 h-full w-full transition-[backdrop-filter,opacity] duration-300 ease-in-out pointer-events-none ${isOpen ? 'backdrop-blur-xs opacity-100' : 'backdrop-blur-0 opacity-0'}`} 
                 ></div>
 
             </nav>
