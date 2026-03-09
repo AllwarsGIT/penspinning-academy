@@ -9,7 +9,7 @@ function ScrollUpButton() {
 
     useEffect(() => {
         const handleScroll = () => {
-        if (window.scrollY > 1000) {
+        if (window.scrollY > 200) {
             setVisible(true)
         } else {
             setVisible(false)
