@@ -2,7 +2,7 @@ import React from 'react'
 
 function TemplateCard() {
     return (
-        <div className="w-full rounded-xl overflow-hidden animate-pulse">
+        <div className="w-full rounded-xl overflow-hidden animate-pulse ">
             {/* Thumbnail */}
             <div className="w-full aspect-video bg-gray-200 dark:bg-gray-800" />
             {/* Info */}

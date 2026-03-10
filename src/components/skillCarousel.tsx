@@ -38,7 +38,7 @@ function SkillCarousel() {
                 modules={[Navigation, Pagination, Autoplay]}
                 pagination={{ clickable: true }}
                 autoplay={{
-                    delay: 6500,
+                    delay: 8000,
                     disableOnInteraction: false,
                 }}
                 navigation={{

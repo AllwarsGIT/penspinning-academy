@@ -26,7 +26,7 @@ function ScrollUpButton() {
 
     return (
         <div 
-            className={`fixed z-20 bottom-5 right-5 w-12 h-12 rounded-full bg-blackPrimary dark:bg-whitePrimary text-white dark:text-black flex justify-center items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out
+            className={`fixed z-20 bottom-5 right-5 w-12 h-12 rounded-full bg-blackPrimary dark:bg-whitePrimary text-white dark:text-black flex justify-center items-center cursor-pointer hover:scale-110 transition-all duration-500 ease-in-out
             ${visible 
                 ? "opacity-100 translate-y-0" 
                 : "opacity-0 translate-y-5 pointer-events-none"

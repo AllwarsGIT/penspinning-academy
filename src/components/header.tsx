@@ -68,9 +68,9 @@ function Header () {
                         isOpen ? 'translate-x-0' : 'translate-x-full'
                     } `}
                 >
-                    <ul>
-                        <li className="pt-4 pb-3 flex items-center justify-center mx-5">
-                            <button onClick={() => handleNavClick("/learn")}>
+                    <ul className="p-0 m-0">
+                        <li className="w-full  flex items-center hover:bg-gray-400 animation-all ease-in-out duration-500 justify-center  ">
+                            <button className="w-full h-full cursor-pointer py-4" onClick={() => handleNavClick("/learn")}>
                                 <h1 className="text-xl font-bold">Learn Pen Spinning</h1>
                             </button>
                         </li>
