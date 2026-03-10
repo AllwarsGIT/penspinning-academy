@@ -10,7 +10,7 @@ function DominantHandButton() {
 
     useEffect(() => {
         if (showMessage) {
-            const timer = setTimeout(() => setShowMessage(false), 500)
+            const timer = setTimeout(() => setShowMessage(false), 700)
             return () => clearTimeout(timer)
         }
     }, [showMessage])
