@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import { ThemeProvider } from "./providers/themeProvider";
+import ScrollUpButton from "@/components/scrollUpButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,6 +43,8 @@ export default function RootLayout({
           >
             <Header />
             {children}
+            <ScrollUpButton />
+            <Footer />
           </ThemeProvider>
       </body>
     </html>

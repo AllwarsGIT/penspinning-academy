@@ -3,10 +3,19 @@ import React from 'react'
 import { FiMenu } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
 import { useState } from 'react';
+import { useRouter } from "next/navigation"
 import DarkmodeButton from './darkmodeButton';
 import DominantHandButton from './dominantHandButton';
+import Link from 'next/link';
+
 
 function Header () {
+    const router = useRouter()
+
+    const handleNavClick = (href: string) => {
+        router.push(href)
+        setTimeout(() => setIsOpen(false), 300)
+    }
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -16,6 +25,9 @@ function Header () {
 
                 {/* Header logo */}
                 <div className="bg-blue-300 w-12 h-12 rounded-full flex items-center justify-center">
+                    <Link href="/">
+                        <h1 className="text-xl font-bold text-white">PSA</h1>
+                    </Link>
                     
                 </div>
 
@@ -57,8 +69,10 @@ function Header () {
                     } `}
                 >
                     <ul>
-                        <li className="pt-4 pb-3 flex items-center justify-end mx-5">
-                           
+                        <li className="pt-4 pb-3 flex items-center justify-center mx-5">
+                            <button onClick={() => handleNavClick("/learn")}>
+                                <h1 className="text-xl font-bold">Learn Pen Spinning</h1>
+                            </button>
                         </li>
                     </ul>
                 </div>
