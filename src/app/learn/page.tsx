@@ -4,6 +4,7 @@ import data from "@/data/trickDatabase.json"
 import Link from "next/link"
 import TemplateCard from "@/components/templateCard"
 import SkillCarousel from "@/components/skillCarousel"
+import SkillList from "@/components/skillList"
 
 
 const sections = [
@@ -46,10 +47,12 @@ function TricksPage() {
             {/* Skill range block */}
             <div className=" bg-whitePrimary dark:bg-blackPrimary w-full min-h-1/6 p-5 py-10 flex flex-col justify-center items-center transition-colors ease-in-out duration-500 ">
                 <h2 className="text-3xl font-inter">Skill levels</h2>
-                <SkillCarousel />
+                {/* <SkillCarousel /> */}
+                <SkillList />
+
             </div>
 
-            
+
 
             <div className="px-8 py-12 flex flex-col gap-16 bg-white dark:bg-black transition-colors ease-in-out duration-500">
                 <section id="intro" className="flex flex-col gap-4  scroll-mt-32 ">

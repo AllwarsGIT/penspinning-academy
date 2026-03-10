@@ -65,7 +65,7 @@ function SkillCarousel() {
                         />
                     </div>
                 </SwiperSlide>
-))}
+                ))}
                 <button className="hidden prev-btn absolute left-0 top-0 h-full w-12  items-center justify-center
                     bg-transparent dark:hover:bg-white/10 hover:bg-black/10 transition-colors duration-300 z-10">
                     <MdArrowBackIosNew size={30} className="font-bold"/>
