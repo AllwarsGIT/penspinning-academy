@@ -1,0 +1,41 @@
+{
+    "trickInstance": [
+        {
+            "idTrickName": "",
+            "modifiers": [],
+            "thumbnail": "",
+            "videos": [
+                { "url": "", "type": "main" },
+                { "url": "", "type": "step" }
+            ],
+            "tags": []
+        }
+    ],
+    "trickName": [
+        {
+            "id": "",
+            "slug": "",
+            "name": "",
+            "families": []
+        }
+    ],
+    "trickFamily":[
+        {
+            "id": "",
+            "name": ""
+        }
+    ],
+    "modifiers":[
+        {
+            "id": "",
+            "name": "",
+            "position": "null"
+        }
+    ],
+    "tags":[
+        {
+            "id": "",
+            "name": ""
+        }
+    ]
+} 

@@ -2,6 +2,26 @@
 {
     "trickInstance": [
         {
+            "idTrickName": "thumb-around",
+            "modifiers": ["regular"],
+            "thumbnail": "",
+            "videos": [
+                { "url": "", "type": "main" },
+                { "url": "", "type": "step" }
+            ],
+            "tags": ["beginner"]
+        },
+        {
+            "idTrickName": "sonic",
+            "modifiers": ["regular"],
+            "thumbnail": "",
+            "videos": [
+                { "url": "", "type": "main" },
+                { "url": "", "type": "step" }
+            ],
+            "tags": ["beginner"]
+        },
+        {
             "idTrickName": "",
             "modifiers": [],
             "thumbnail": "",
@@ -14,12 +34,33 @@
     ],
     "trickName": [
         {
+            "id": "thumb-around",
+            "slug": "thumb-around",
+            "name": "Thumb Around",
+            "families": ["around"]
+        },
+        {
+            "id": "sonic",
+            "slug": "sonic",
+            "name": "Sonic",
+            "families": ["sonic"]
+        },
+        {
             "id": "",
+            "slug": "",
             "name": "",
             "families": []
         }
     ],
     "trickFamily":[
+        {
+            "id": "around",
+            "name": "Around"
+        },
+        {
+            "id": "sonic",
+            "name": "Sonic"
+        },
         {
             "id": "",
             "name": ""
@@ -27,13 +68,25 @@
     ],
     "modifiers":[
         {
+            "id": "regular",
+            "name": "Regular",
+            "position": "null"
+        },
+        {
+            "id": "reverse",
+            "name": "Reverse",
+            "position": "sufix"
+        },
+        {
             "id": "",
-            "name": ""
+            "name": "",
+            "position": ""
         }
     ],
     "tags":[
         {
-            "id": ""
+            "id": "beginner",
+            "name": "Beginner"
         }
     ]
 }
