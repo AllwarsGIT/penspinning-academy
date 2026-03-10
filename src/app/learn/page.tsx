@@ -66,7 +66,9 @@ function TricksPage() {
 
                 <section id="fundamentals" className="flex flex-col gap-4 scroll-mt-32">
                     <h1 className="text-2xl font-bold">Fundamentals</h1>
-                    <div className="flex flex-row flex-wrap gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                        <TemplateCard />
+                        <TemplateCard />
                         <TemplateCard />
                         <TemplateCard />
                     </div>
@@ -75,7 +77,9 @@ function TricksPage() {
 
                 <section id="beginner" className="flex flex-col gap-4 scroll-mt-32">
                     <h1 className="text-2xl font-bold">Beginner</h1>
-                    <div className="flex flex-row flex-wrap gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                        <TemplateCard />
+                        <TemplateCard />
                         <TemplateCard />
                         <TemplateCard />
                     </div>
