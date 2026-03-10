@@ -14,7 +14,7 @@ function Header () {
 
     const handleNavClick = (href: string) => {
         router.push(href)
-        setTimeout(() => setIsOpen(false), 300)
+        setTimeout(() => setIsOpen(false), 400)
     }
 
     const [isOpen, setIsOpen] = useState(false);
