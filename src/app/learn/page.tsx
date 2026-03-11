@@ -47,8 +47,10 @@ function TricksPage() {
             {/* Skill range block */}
             <div className=" bg-whitePrimary dark:bg-blackPrimary w-full min-h-1/6 p-5 py-10 flex flex-col justify-center items-center transition-colors ease-in-out duration-500 ">
                 <h2 className="text-3xl font-inter">Skill levels</h2>
-                {/* <SkillCarousel /> */}
-                <SkillList />
+
+                <div className="flex flex-col items-start lg:grid lg:grid-cols-2 items-stretch">
+                    <SkillList />
+                </div>                
 
             </div>
 

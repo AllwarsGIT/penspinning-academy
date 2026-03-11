@@ -10,7 +10,7 @@ type InfoCardProps = {
 function InfoCard({ number=0 ,name="", description="", color="" }: InfoCardProps) {
     return (
         <div 
-            className="group relative rounded-xl p-6 transition-all duration-500"
+            className="group relative rounded-xl p-6 transition-all duration-500 h-full"
             style={{ 
                 border: `1px solid ${color}40`,
                 backgroundColor: `${color}15`,
@@ -29,7 +29,7 @@ function InfoCard({ number=0 ,name="", description="", color="" }: InfoCardProps
                     {name}
                 </h4>
             </div>
-            <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors">
+            <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors duration-300">
                 {description}
             </p>
         </div>
