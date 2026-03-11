@@ -3,9 +3,8 @@ import React from "react"
 import data from "@/data/trickDatabase.json"
 import Link from "next/link"
 import TemplateCard from "@/components/templateCard"
-import SkillCarousel from "@/components/skillCarousel"
 import SkillList from "@/components/skillList"
-
+import TrickNameList from "@/components/trickNameList"
 
 const sections = [
   { 
@@ -46,37 +45,23 @@ function TricksPage() {
 
             {/* Skill range block */}
             <div className=" bg-whitePrimary dark:bg-blackPrimary w-full min-h-1/6 p-5 py-10 flex flex-col justify-center items-center transition-colors ease-in-out duration-500 ">
-                <h2 className="text-3xl font-inter">Skill levels</h2>
-
-                <div className="flex flex-col items-start lg:grid lg:grid-cols-2 items-stretch">
-                    <SkillList />
-                </div>                
-
+                <h2 className="text-3xl p-5 font-inter">Skill levels</h2>
+                <SkillList />
             </div>
 
 
 
-            <div className="px-8 py-12 flex flex-col gap-16 bg-white dark:bg-black transition-colors ease-in-out duration-500">
-                <section id="intro" className="flex flex-col gap-4  scroll-mt-32 ">
-                    <h1 className="text-2xl font-bold">Intro</h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <TemplateCard />
-                        <TemplateCard />
-                        <TemplateCard />
-                        <TemplateCard />
-                    </div>
-
+            <div className=" p-5 flex flex-col gap-16 bg-white dark:bg-black transition-colors ease-in-out duration-500">
+                <section id="intro" className="flex flex-col  scroll-mt-32 ">
+                    <h1 className="py-5 text-2xl font-bold">Intro</h1>
+                        
                     
                 </section>
 
                 <section id="fundamentals" className="flex flex-col gap-4 scroll-mt-32">
-                    <h1 className="text-2xl font-bold">Fundamentals</h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <TemplateCard />
-                        <TemplateCard />
-                        <TemplateCard />
-                        <TemplateCard />
-                    </div>
+                    <h1 className="py-5 text-2xl font-bold">Fundamentals</h1>
+                    <TrickNameList difficulty="fundamental"/>
+
 
                 </section>
 
