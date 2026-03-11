@@ -21,7 +21,7 @@ function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameC
     const color = badge ? difficultyColor[badge] : undefined;
 
     return (
-        <Link href={href} className="w-full rounded-xl overflow-hidden cursor-pointer group hover:scale-105 transition-all duration-300 ease-in-out">
+        <Link href={href} className="w-full rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-3 transition-all duration-300 ease-in-out">
             <div className="w-full aspect-video">
                 {thumbnail ? (
                     <Image 
