@@ -3,12 +3,20 @@
     "trickInstance": [
         {
             "idTrickName": "thumb-around",
-            "modifiers": ["regular"],
+            "modifiers": ["normal"],
             "difficulty":"fundamental",
             "thumbnail": "",
             "videos": [
-                { "url": "", "type": "main" },
-                { "url": "", "type": "step" }
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": ""
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": ""
+                }
             ],
             "tags": [""]
         },
@@ -18,19 +26,73 @@
             "difficulty":"fundamental",
             "thumbnail": "",
             "videos": [
-                { "url": "", "type": "main" },
-                { "url": "", "type": "step" }
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": ""
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": ""
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["normal", "fingerless"],
+            "difficulty":"beginner",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": ""
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": ""
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["reverse", "fingerless"],
+            "difficulty":"beginner",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": ""
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": ""
+                }
             ],
             "tags": [""]
         },
         {
             "idTrickName": "sonic",
-            "modifiers": ["regular"],
+            "modifiers": ["normal"],
             "difficulty":"fundamental",
             "thumbnail": "",
             "videos": [
-                { "url": "", "type": "main" },
-                { "url": "", "type": "step" }
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": ""
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": ""
+                }
             ],
             "tags": [""]
         },
@@ -40,8 +102,16 @@
             "difficulty":"fundamental",
             "thumbnail": "",
             "videos": [
-                { "url": "", "type": "main" },
-                { "url": "", "type": "step" }
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": ""
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": ""
+                }
             ],
             "tags": [""]
         }
@@ -51,12 +121,14 @@
             "id": "thumb-around",
             "slug": "thumb-around",
             "name": "Thumb Around",
+            "notation":"TA",
             "families": ["around"]
         },
         {
             "id": "sonic",
             "slug": "sonic",
             "name": "Sonic",
+            "notation":"Sonic",
             "families": ["sonic"]
         }
     ],
@@ -72,16 +144,16 @@
     ],
     "modifiers":[
         {
-            "id": "regular",
-            "name": "Regular",
-            "abbr": null,
+            "id": "normal",
+            "name": "Normal",
+            "notation": null,
             "position": null,
             "category": "direction"
         },
         {
             "id": "reverse",
             "name": "Reverse",
-            "abbr": "Rev",
+            "notation": "Rev",
             "position": "suffix",
             "category": "direction"
 
@@ -89,9 +161,17 @@
         {
             "id": "inverse",
             "name": "Inverse",
-            "abbr": "Inv",
+            "notation": "Inv",
             "position": "prefix",
             "category": "trick-orientation"
+
+        },
+        {
+            "id": "fingerless",
+            "name": "Fingerless",
+            "notation": "Fl",
+            "position": "prefix",
+            "category": "impulse"
 
         }
     ],
@@ -111,8 +191,8 @@
             "name": "Fundamental"
         },
         {
-            "id": "basic",
-            "name": "Basic"
+            "id": "beginner",
+            "name": "Beginner"
         },
         {
             "id": "intermediate",

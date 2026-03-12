@@ -12,7 +12,7 @@ function TrickNameList({ difficulty }: TrickNameListProps) {
             {data.trickName.map((trick: typeof data.trickName[number]) => {
                 const baseInstance = data.trickInstance.find(i =>
                     i.idTrickName === trick.id &&
-                    i.modifiers.includes("regular") &&
+                    i.modifiers.includes("normal") &&
                     i.difficulty === difficulty
                 )
                 if (!baseInstance) return null

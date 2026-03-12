@@ -1,19 +1,27 @@
+
 import data from "@/data/trickDatabase.json"
+import DifficultyBadge from "@/components/difficultyBadge"
+import ModifierToggle from "./components/modifierToggle"
+import TrickViewer from "./components/trickViewer"
+
+
+
 
 export default async function TrickPage({ params }: { params: { slug: string } }) {
     const { slug } = await params
     
     const trick = data.trickName.find(t => t.slug === slug)
-    const instances = data.trickInstance.filter(i => i.idTrickName === slug)
+    const instance = data.trickInstance.filter(i => i.idTrickName === slug)
+    const modifiers = data.modifiers
+
 
     return (
-        <div className="pt-16 px-8 w-full min-h-[calc(100vh-64px)]">
-            <h1>{trick?.name}</h1>
-            {instances.map((instance, i) => (
-                <div key={i}>
-                    <p>{instance.modifiers.join(", ")}</p>
-                </div>
-            ))}
-        </div>
+        <>
+            <TrickViewer
+                trick={trick!}
+                instance={instance}
+                modifiers={modifiers}
+            />
+        </>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from "next/link"
 import Image from "next/image"
+import DifficultyBadge from "@/components/difficultyBadge"
 
 type TrickNameCardProps = {
     title: string,
@@ -9,16 +10,8 @@ type TrickNameCardProps = {
     badge?: string
 }
 
-const difficultyColor: Record<string, string> = {
-    fundamental: "#3b82f6",
-    basic: "#22c55e",
-    intermediate: "#eab308",
-    advanced: "#f97316",
-    expert: "#ef4444"
-}
 
 function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameCardProps) {
-    const color = badge ? difficultyColor[badge] : undefined;
 
     return (
         <Link href={href} className="w-full rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-3 transition-all duration-300 ease-in-out">
@@ -36,18 +29,8 @@ function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameC
                     <h2 className="font-semibold ">
                         {title}
                     </h2>
-                    {badge && (
-                        <span 
-                            className="text-xs uppercase tracking-widest font-mono w-fit px-2 py-0.5 rounded-full"
-                            style={{ 
-                                color: color,
-                                backgroundColor: `${color}20`,
-                                border: `1px solid ${color}40`
-                            }}
-                        >
-                            {badge}
-                        </span>
-                    )}
+                    <DifficultyBadge badge={badge}/>
+                    
                 </div>
             </div>
             

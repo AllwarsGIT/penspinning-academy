@@ -1,8 +1,5 @@
 "use client"
 import React from "react"
-import data from "@/data/trickDatabase.json"
-import Link from "next/link"
-import TemplateCard from "@/components/templateCard"
 import SkillList from "@/components/skillList"
 import TrickNameList from "@/components/trickNameList"
 
@@ -67,12 +64,8 @@ function TricksPage() {
 
                 <section id="beginner" className="flex flex-col gap-4 scroll-mt-32">
                     <h1 className="text-2xl font-bold">Beginner</h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <TemplateCard />
-                        <TemplateCard />
-                        <TemplateCard />
-                        <TemplateCard />
-                    </div>
+                    <TrickNameList difficulty="beginner"/>
+
 
                 </section>
 

@@ -5,8 +5,16 @@
             "modifiers": [],
             "thumbnail": "",
             "videos": [
-                { "url": "", "type": "main" },
-                { "url": "", "type": "step" }
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": ""
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": ""
+                }
             ],
             "tags": []
         }
@@ -29,10 +37,20 @@
         {
             "id": "",
             "name": "",
-            "position": "null"
+            "notation":"",
+            "position": "",
+            "category": ""
+
         }
     ],
-    "tags":[
+    "modifierCategory": [
+        { 
+            "id": "", 
+            "name": "" 
+        }
+        
+    ],
+    "difficulty":[
         {
             "id": "",
             "name": ""
