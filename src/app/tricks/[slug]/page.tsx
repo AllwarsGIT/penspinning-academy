@@ -1,7 +1,5 @@
 
 import data from "@/data/trickDatabase.json"
-import DifficultyBadge from "@/components/difficultyBadge"
-import ModifierToggle from "./components/modifierToggle"
 import TrickViewer from "./components/trickViewer"
 
 

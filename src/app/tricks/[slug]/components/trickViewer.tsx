@@ -28,6 +28,7 @@ const modifierColor: Record<string, string> = {
 }
 
 function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
+    // State management for the modifier toggles, this has to be refactorized for it to be a scalable system
     const [isReverse, setIsReverse] = useState(false)
     const [isFingerless, setIsFingerless] = useState(false)
 
@@ -40,13 +41,13 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     const hasFingerless = instance.some(i => i.modifiers.includes("fingerless"))
 
     
-    const 
-    activeModifiers = activeInstance?.modifiers ?? []
+    // Suffix prefix management for name composition
+    const activeModifiers = activeInstance?.modifiers ?? []
 
     const prefixMods = activeModifiers
         .map(id => modifiers.find(m => m.id === id))
         .filter(m => m?.position === "prefix")
-        .map(m => ({ name: m!.name, id: m!.id }))
+        .map(m => ({ name: m?.name, id: m!.id }))
 
     const suffixMods = activeModifiers
         .map(id => modifiers.find(m => m.id === id))
