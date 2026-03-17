@@ -10,12 +10,17 @@
                 { 
                     "url": "", 
                     "type": "main" ,
-                    "order": ""
+                    "order": 0
                 },
                 { 
                     "url": "", 
                     "type": "step",
-                    "order": ""
+                    "order": 1
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 2
                 }
             ],
             "tags": [""]
@@ -29,12 +34,12 @@
                 { 
                     "url": "", 
                     "type": "main" ,
-                    "order": ""
+                    "order": 0
                 },
                 { 
                     "url": "", 
                     "type": "step",
-                    "order": ""
+                    "order": 1
                 }
             ],
             "tags": [""]
@@ -48,12 +53,12 @@
                 { 
                     "url": "", 
                     "type": "main" ,
-                    "order": ""
+                    "order": 0
                 },
                 { 
                     "url": "", 
                     "type": "step",
-                    "order": ""
+                    "order": 1
                 }
             ],
             "tags": [""]
@@ -67,12 +72,12 @@
                 { 
                     "url": "", 
                     "type": "main" ,
-                    "order": ""
+                    "order": 0
                 },
                 { 
                     "url": "", 
                     "type": "step",
-                    "order": ""
+                    "order": 1
                 }
             ],
             "tags": [""]
@@ -86,12 +91,12 @@
                 { 
                     "url": "", 
                     "type": "main" ,
-                    "order": ""
+                    "order": 0
                 },
                 { 
                     "url": "", 
                     "type": "step",
-                    "order": ""
+                    "order": 1
                 }
             ],
             "tags": [""]
@@ -105,12 +110,12 @@
                 { 
                     "url": "", 
                     "type": "main" ,
-                    "order": ""
+                    "order": 0
                 },
                 { 
                     "url": "", 
                     "type": "step",
-                    "order": ""
+                    "order": 1
                 }
             ],
             "tags": [""]

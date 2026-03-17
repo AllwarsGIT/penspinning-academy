@@ -6,7 +6,12 @@ import { useState } from "react"
 
 type Instance = {
     modifiers:string[],
-    difficulty: string
+    difficulty: string,
+    videos: {
+        url: string,
+        type: string,
+        order: number
+    }[]
 
 }
 
@@ -18,7 +23,11 @@ type Trick = {
 type TrickViewerProps = {
     instance: Instance[]
     trick: Trick
-    modifiers: { id: string, name: string, position: string | null }[]
+    modifiers: { 
+        id: string, 
+        name: string, 
+        notation: string,
+        position: string | null }[]
 }
 
 const modifierColor: Record<string, string> = {
@@ -28,14 +37,21 @@ const modifierColor: Record<string, string> = {
 }
 
 function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
-    // State management for the modifier toggles, this has to be refactorized for it to be a scalable system
+    //TODO: State management for the modifier toggles, this has to be refactorized for it to be a scalable system
     const [isReverse, setIsReverse] = useState(false)
     const [isFingerless, setIsFingerless] = useState(false)
+
+    // Video state for pagination
+    const [activeVideo, setActiveVideo] = useState("main")
 
     const activeInstance = instance.find(i =>
         i.modifiers.includes("reverse") === isReverse &&
         i.modifiers.includes("fingerless") === isFingerless
     )
+
+
+    // const mainVideo = activeInstance?.videos.find(v => v.type === "main")
+    const stepVideos = activeInstance?.videos.filter(v => v.type === "step") ?? []
 
     const hasReverse = instance.some(i => i.modifiers.includes("reverse"))
     const hasFingerless = instance.some(i => i.modifiers.includes("fingerless"))
@@ -47,16 +63,18 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     const prefixMods = activeModifiers
         .map(id => modifiers.find(m => m.id === id))
         .filter(m => m?.position === "prefix")
-        .map(m => ({ name: m?.name, id: m!.id }))
+        .map(m => ({ name: m?.name, id: m!.id, notation:m?.notation }))
 
     const suffixMods = activeModifiers
         .map(id => modifiers.find(m => m.id === id))
         .filter(m => m?.position === "suffix")
-        .map(m => ({ name: m?.name, id: m!.id }))
+        .map(m => ({ name: m?.name, id: m!.id, notation:m?.notation }))
+
+    
 
 
     return (
-        <div>
+        <div className="flex flex-col ">
             {/* Video */}
             <div className="mt-16 bg-black">
                 <div className="w-full max-w-4xl mx-auto aspect-video bg-black">
@@ -67,8 +85,8 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 </div>
             </div>
 
-            {/* Nombre y notación */}
-            <div className="w-full p-5 bg-white text-black flex flex-row justify-between items-center">
+            {/* Name */}
+            <div className="w-full p-5 bg-white text-black flex flex-col md:flex-row justify-between items-start md:items-center">
                 <h1 className="font-inter text-2xl flex flex-row gap-1">
                     {prefixMods.map((mod, i) => (
                         <span key={i} style={{ color: modifierColor[mod.id] }}>
@@ -82,17 +100,31 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                         </span>
                     ))}
                 </h1>
-                <div>
+                <div className="pt-3 md:pt-0">
                         <DifficultyBadge badge={activeInstance?.difficulty}/>
                 </div>
             </div>
 
-            {/* Paginación de pasos */}
-            <div className="p-5 bg-gray-400">
-                <h1>Steps</h1>
-                <button>Main</button>
-                <button>Step 1</button>
-                <button>Step 2</button>
+            {/* Step pagination */}
+            <div className="p-5 bg-blue-200">
+                    <h1>Steps</h1>
+                <div className="flex flex-row gap-2">
+                    <button 
+                        onClick={() => setActiveVideo("main")}
+                        className={activeVideo === "main" ? "bg-white text-black" : "text-gray-400"}
+                    >
+                        Main
+                    </button>
+                    {stepVideos.map((step, i) => (
+                        <button 
+                            key={i}
+                            onClick={() => setActiveVideo(step.order.toString())}
+                            className={activeVideo === step.order.toString() ? "bg-white text-black" : "text-gray-400"}
+                        >
+                            Step {i + 1}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Toggles */}
@@ -112,8 +144,25 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                         options={["Normal", "Fingerless"]}
                     />
                 )}
-                <h2>Notation</h2>
-                <span>Inv Sonic Rev</span>
+
+                <div className="bg-amber-200"> 
+                    <h2 className="font-inter text-2xl">Notation</h2>
+                    <div className="flex flex-row gap-1">
+                        {prefixMods.map((mod, i) => (
+                            <span key={i} style={{ color: modifierColor[mod.id] }}>
+                                [{mod.notation}]
+                            </span>
+                        ))}
+                        <span className="">{trick.notation}</span>
+                        {suffixMods.map((mod, i) => (
+                            <span key={i} style={{ color: modifierColor[mod.id] }}>
+                                [{mod.notation}]
+                            </span>
+                        ))}
+                    </div>
+                    
+                </div>
+               
 
             </div>
 
