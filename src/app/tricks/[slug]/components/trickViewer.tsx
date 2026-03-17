@@ -26,7 +26,7 @@ type TrickViewerProps = {
     modifiers: { 
         id: string, 
         name: string, 
-        notation: string,
+        notation: string | null,
         position: string | null }[]
 }
 
