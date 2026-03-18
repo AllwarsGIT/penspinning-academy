@@ -90,19 +90,26 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Name */}
-            <div className="w-full p-5 flex flex-col md:flex-row justify-between items-start md:items-center">
-                <h1 className="font-inter text-xl sm:text-2xl flex flex-row gap-1 ">
-                    {prefixMods.map((mod, i) => (
-                        <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
+            <div className="w-full p-5 flex flex-col md:flex-row justify-between items-center md:items-center ">
+                <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1 ">
+                    <div className="justify-center items-center flex flex-row flex-wrap">
+                        {prefixMods.map((mod, i) => (
+                        <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}> 
                             [{mod.name}]
                         </span>
                     ))}
+                    </div>
+                    
                     <span className="">{trick.name}</span>
+                    <div className="flex flex-row">
+
                     {suffixMods.map((mod, i) => (
                         <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
                             [{mod.name}]
                         </span>
                     ))}
+                    </div>
+
                 </h1>
                 <div className="pt-3 md:pt-0">
                         <DifficultyBadge badge={activeInstance?.difficulty}/>
