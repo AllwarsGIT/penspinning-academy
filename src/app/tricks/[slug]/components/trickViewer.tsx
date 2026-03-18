@@ -90,7 +90,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Name */}
-            <div className="w-full p-5 flex flex-col md:flex-row justify-between items-center md:items-center ">
+            <div className="w-full px-5 py-7 flex flex-col md:flex-row justify-between items-center md:items-center ">
                 <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1 ">
                     <div className="justify-center items-center flex flex-row flex-wrap">
                         {prefixMods.map((mod, i) => (
@@ -117,12 +117,13 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Step pagination */}
-            <div className="p-5 bg-blue-200">
-                    <h1>Steps</h1>
-                <div className="flex flex-row gap-2">
+            <div className="px-5 py-7 bg-whitePrimary dark:bg-blackPrimary">
+                <h1 className="font-inter text-2xl pb-3">Steps</h1>
+
+                <div className="flex flex-row gap-2 font-bold">
                     <button 
                         onClick={() => setActiveVideo("main")}
-                        className={activeVideo === "main" ? "bg-white text-black" : "text-gray-400"}
+                        className={`py-1 px-2 rounded-lg ${activeVideo === "main" ? "bg-blackPrimary text-white dark:bg-whitePrimary dark:text-black" : "text-gray-400"}`}
                     >
                         Main
                     </button>
@@ -130,7 +131,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                         <button 
                             key={i}
                             onClick={() => setActiveVideo(step.order.toString())}
-                            className={activeVideo === step.order.toString() ? "bg-white text-black" : "text-gray-400"}
+                            className={`py-1 px-2 rounded-lg ${activeVideo === step.order.toString() ? "bg-black text-white dark:bg-white dark:text-black" : "text-gray-400"}`}
                         >
                             Step {i + 1}
                         </button>
@@ -140,28 +141,32 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
             {/* Toggles */}
             {/* TODO: Refactor to modular design */}
-            <div className="p-5">
-                <h2 className="font-inter text-2xl pb-3">Modifiers</h2>
+            <div className="px-5 py-7 flex flex-col gap-5">
 
-                {hasReverse && (
-                    <ModifierToggle 
-                        value={isReverse}
-                        onChange={setIsReverse}
-                        options={["Normal", "Reverse"]}
-                    />
-                )}
+                <div className="">
+                    <h2 className="font-inter text-2xl pb-3">Modifiers</h2>
 
-                {hasFingerless && (
-                    <ModifierToggle 
-                        value={isFingerless}
-                        onChange={setIsFingerless}
-                        options={["Normal", "Fingerless"]}
-                    />
-                )}
+                    {hasReverse && (
+                        <ModifierToggle 
+                            value={isReverse}
+                            onChange={setIsReverse}
+                            options={["Normal", "Reverse"]}
+                        />
+                    )}
 
-                <div className="pt-3"> 
+                    {hasFingerless && (
+                        <ModifierToggle 
+                            value={isFingerless}
+                            onChange={setIsFingerless}
+                            options={["Normal", "Fingerless"]}
+                        />
+                    )}
+                </div>
+                
+
+                <div className="pt-5 "> 
                     <h2 className="font-inter text-2xl pb-3">Notation</h2>
-                    <div className="flex flex-row gap-1 text-xl">
+                    <div className="flex flex-row gap-1 text-xl justify-center">
                         {prefixMods.map((mod, i) => (
                             <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
                                 [{mod.notation}]
@@ -181,8 +186,9 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Explicación */}
-            <div className="p-5 bg-cyan-400">
-                <h1>Trick details</h1>
+            <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3">
+                <h2 className="font-inter text-2xl pb-3">Trick details</h2>
+
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisl vehicula, tincidunt felis vitae, pulvinar diam. Etiam mattis est mi. Mauris convallis tortor nisl, ut pulvinar magna porta vitae. Curabitur auctor rhoncus erat sed vehicula. In at elit dui. Quisque porta erat iaculis, interdum tellus quis, laoreet turpis. Sed hendrerit lectus lorem, placerat efficitur libero accumsan at. Pellentesque porta nulla arcu, et tempor magna accumsan ut. Ut tincidunt felis nunc, vitae suscipit elit venenatis eu. Ut auctor tristique tempor. Morbi imperdiet turpis eu libero fermentum, in luctus odio facilisis. In imperdiet eu sem eget iaculis. Vestibulum ornare varius magna, eget luctus mauris rutrum sit amet. Proin maximus nulla felis, sed pellentesque purus pretium ut. Proin elementum dui enim, blandit auctor nisl suscipit et. Vestibulum pharetra tempus dolor ac viverra. </p>
             </div>
         </div>

@@ -25,7 +25,7 @@ function DifficultyBadge({ badge="" }:DifficultyBadgeProps) {
                     style={{ 
                         color: color,
                         backgroundColor: `${color}20`,
-                        border: `1px solid ${color}40`
+                        border: `1px solid ${color}90`
                     }}
                 >
                     {badge}
