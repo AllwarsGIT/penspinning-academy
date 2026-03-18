@@ -90,7 +90,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Name */}
-            <div className="w-full px-5 py-7 flex flex-col md:flex-row justify-between items-center md:items-center ">
+            <div className="w-full px-5 py-7 flex flex-col md:flex-row justify-between items-center md:items-center bg-white dark:bg-black">
                 <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1 ">
                     <div className="justify-center items-center flex flex-row flex-wrap">
                         {prefixMods.map((mod, i) => (
@@ -141,7 +141,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
             {/* Toggles */}
             {/* TODO: Refactor to modular design */}
-            <div className="px-5 py-7 flex flex-col gap-5">
+            <div className="px-5 py-7 flex flex-col gap-5 bg-white dark:bg-black">
 
                 <div className="">
                     <h2 className="font-inter text-2xl pb-3">Modifiers</h2>
