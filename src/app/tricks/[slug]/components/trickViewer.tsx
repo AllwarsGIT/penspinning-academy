@@ -172,7 +172,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                                 [{mod.notation}]
                             </span>
                         ))}
-                        <span className="">{trick.notation}</span>
+                        <span className="text-gray-400">{trick.notation}</span>
                         {suffixMods.map((mod, i) => (
                             <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
                                 [{mod.notation}]
