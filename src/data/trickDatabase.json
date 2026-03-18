@@ -46,7 +46,7 @@
         },
         {
             "idTrickName": "thumb-around",
-            "modifiers": ["normal", "fingerless"],
+            "modifiers": ["normal", "fingerless", "mirrored"],
             "difficulty":"beginner",
             "thumbnail": "",
             "videos": [

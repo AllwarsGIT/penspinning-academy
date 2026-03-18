@@ -44,6 +44,8 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     // Video state for pagination
     const [activeVideo, setActiveVideo] = useState("main")
 
+
+    // TODO: Refactor to modular design
     const activeInstance = instance.find(i =>
         i.modifiers.includes("reverse") === isReverse &&
         i.modifiers.includes("fingerless") === isFingerless
@@ -53,6 +55,8 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     // const mainVideo = activeInstance?.videos.find(v => v.type === "main")
     const stepVideos = activeInstance?.videos.filter(v => v.type === "step") ?? []
 
+
+    // TODO: Refactor to modular design
     const hasReverse = instance.some(i => i.modifiers.includes("reverse"))
     const hasFingerless = instance.some(i => i.modifiers.includes("fingerless"))
 
@@ -86,16 +90,16 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Name */}
-            <div className="w-full p-5 bg-white text-black flex flex-col md:flex-row justify-between items-start md:items-center">
-                <h1 className="font-inter text-2xl flex flex-row gap-1">
+            <div className="w-full p-5 flex flex-col md:flex-row justify-between items-start md:items-center">
+                <h1 className="font-inter text-xl sm:text-2xl flex flex-row gap-1 ">
                     {prefixMods.map((mod, i) => (
-                        <span key={i} style={{ color: modifierColor[mod.id] }}>
+                        <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
                             [{mod.name}]
                         </span>
                     ))}
                     <span className="">{trick.name}</span>
                     {suffixMods.map((mod, i) => (
-                        <span key={i} style={{ color: modifierColor[mod.id] }}>
+                        <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
                             [{mod.name}]
                         </span>
                     ))}
@@ -128,7 +132,10 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Toggles */}
-            <div className="p-5 bg-amber-400">
+            {/* TODO: Refactor to modular design */}
+            <div className="p-5">
+                <h2 className="font-inter text-2xl pb-3">Modifiers</h2>
+
                 {hasReverse && (
                     <ModifierToggle 
                         value={isReverse}
@@ -145,17 +152,17 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                     />
                 )}
 
-                <div className="bg-amber-200"> 
-                    <h2 className="font-inter text-2xl">Notation</h2>
-                    <div className="flex flex-row gap-1">
+                <div className="pt-3"> 
+                    <h2 className="font-inter text-2xl pb-3">Notation</h2>
+                    <div className="flex flex-row gap-1 text-xl">
                         {prefixMods.map((mod, i) => (
-                            <span key={i} style={{ color: modifierColor[mod.id] }}>
+                            <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
                                 [{mod.notation}]
                             </span>
                         ))}
                         <span className="">{trick.notation}</span>
                         {suffixMods.map((mod, i) => (
-                            <span key={i} style={{ color: modifierColor[mod.id] }}>
+                            <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
                                 [{mod.notation}]
                             </span>
                         ))}
