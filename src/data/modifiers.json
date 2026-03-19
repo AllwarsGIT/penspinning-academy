@@ -1,0 +1,33 @@
+[
+        {
+            "id": "normal",
+            "name": "Normal",
+            "notation": null,
+            "position": null,
+            "category": "direction"
+        },
+        {
+            "id": "reverse",
+            "name": "Reverse",
+            "notation": "Rev",
+            "position": "suffix",
+            "category": "direction"
+
+        },
+        {
+            "id": "inverse",
+            "name": "Inverse",
+            "notation": "Inv",
+            "position": "prefix",
+            "category": "trick-orientation"
+
+        },
+        {
+            "id": "fingerless",
+            "name": "Fingerless",
+            "notation": "Fl",
+            "position": "prefix",
+            "category": "impulse"
+
+        }
+    ]

@@ -1,5 +1,7 @@
 
-import data from "@/data/trickDatabase.json"
+import trickNames from "@/data/trickNames.json"
+import instances from "@/data/trickInstances.json"
+import modifiers from "@/data/modifiers.json"
 import TrickViewer from "./components/trickViewer"
 
 
@@ -8,9 +10,8 @@ import TrickViewer from "./components/trickViewer"
 export default async function TrickPage({ params }: { params: { slug: string } }) {
     const { slug } = await params
     
-    const trick = data.trickName.find(t => t.slug === slug)
-    const instance = data.trickInstance.filter(i => i.idTrickName === slug)
-    const modifiers = data.modifiers
+    const trick = trickNames.find(t => t.slug === slug)
+    const instance = instances.filter(i => i.idTrickName === slug)
 
 
     return (

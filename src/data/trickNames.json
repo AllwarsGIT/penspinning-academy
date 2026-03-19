@@ -1,0 +1,16 @@
+[
+    {
+        "id": "thumb-around",
+        "slug": "thumb-around",
+        "name": "Thumb Around",
+        "notation":"TA",
+        "families": ["around"]
+    },
+    {
+        "id": "sonic",
+        "slug": "sonic",
+        "name": "Sonic",
+        "notation":"Sonic",
+        "families": ["sonic"]
+    }
+]

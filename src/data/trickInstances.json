@@ -1,0 +1,121 @@
+[
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["normal"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 1
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 2
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["reverse"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 1
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["normal", "fingerless"],
+            "difficulty":"beginner",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 1
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["reverse", "fingerless"],
+            "difficulty":"beginner",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 1
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "sonic",
+            "modifiers": ["normal"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 1
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "sonic",
+            "modifiers": ["reverse"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "videos": [
+                { 
+                    "url": "", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "", 
+                    "type": "step",
+                    "order": 1
+                }
+            ],
+            "tags": [""]
+        }
+    ]

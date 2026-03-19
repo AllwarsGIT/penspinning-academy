@@ -1,8 +1,12 @@
 "use client"
 import React from 'react'
+import { useState } from "react"
+import { useSearchParams, useRouter } from "next/navigation"
+
 import ModifierToggle from "./modifierToggle"
 import DifficultyBadge from "@/components/difficultyBadge"
-import { useState } from "react"
+
+
 
 type Instance = {
     modifiers:string[],
@@ -18,6 +22,7 @@ type Instance = {
 type Trick = {
     name: string,
     notation: string
+    slug: string
 }
 
 type TrickViewerProps = {
@@ -37,28 +42,47 @@ const modifierColor: Record<string, string> = {
 }
 
 function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
-    //TODO: State management for the modifier toggles, this has to be refactorized for it to be a scalable system
-    const [isReverse, setIsReverse] = useState(false)
-    const [isFingerless, setIsFingerless] = useState(false)
+    
+    const searchParams = useSearchParams()
+    const modifiersParam = searchParams.get("modifiers")
+    const initialModifiers = modifiersParam ? modifiersParam.split(",") : []
+
+    const router = useRouter()
+
+    // Modular state generator
+    const [activeModifierIds, setActiveModifierIds] = useState<string[]>(initialModifiers)
 
     // Video state for pagination
     const [activeVideo, setActiveVideo] = useState("main")
 
-
-    // TODO: Refactor to modular design
+    // activeInstance 
     const activeInstance = instance.find(i =>
-        i.modifiers.includes("reverse") === isReverse &&
-        i.modifiers.includes("fingerless") === isFingerless
+        i.modifiers.every(m => 
+            m === "normal" || activeModifierIds.includes(m)
+        ) &&
+        activeModifierIds.every(id => i.modifiers.includes(id))
     )
 
+    const availableModifiers = modifiers.filter(m => 
+        m.id !== "normal" && 
+        instance.some(i => i.modifiers.includes(m.id))
+    )
 
+    const toggleModifier = (id: string) => {
+        const newIds = activeModifierIds.includes(id) 
+        ? activeModifierIds.filter(m => m !== id) 
+        : [...activeModifierIds, id]
+        
+        setActiveModifierIds(newIds)
+        setActiveVideo("main")
+
+        const params = newIds.length > 0 ? `?modifiers=${newIds.join(",")}` : ""
+        router.replace(`/tricks/${trick.slug}${params}`, { scroll: false })
+    }
+
+    // Pagination states for video display
     // const mainVideo = activeInstance?.videos.find(v => v.type === "main")
     const stepVideos = activeInstance?.videos.filter(v => v.type === "step") ?? []
-
-
-    // TODO: Refactor to modular design
-    const hasReverse = instance.some(i => i.modifiers.includes("reverse"))
-    const hasFingerless = instance.some(i => i.modifiers.includes("fingerless"))
 
     
     // Suffix prefix management for name composition
@@ -79,6 +103,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
     return (
         <div className="flex flex-col ">
+            {/* TODO video reacting to state */}
             {/* Video */}
             <div className="mt-16 bg-black">
                 <div className="w-full max-w-4xl mx-auto aspect-video bg-black">
@@ -140,27 +165,18 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Toggles */}
-            {/* TODO: Refactor to modular design */}
             <div className="px-5 py-7 flex flex-col gap-5 bg-white dark:bg-black">
-
                 <div className="">
                     <h2 className="font-inter text-2xl pb-3">Modifiers</h2>
-
-                    {hasReverse && (
-                        <ModifierToggle 
-                            value={isReverse}
-                            onChange={setIsReverse}
-                            options={["Normal", "Reverse"]}
+                    {availableModifiers.map(mod => (
+                        <ModifierToggle
+                            key={mod.id}
+                            modifierId={mod.id}
+                            isActive={activeModifierIds.includes(mod.id)}
+                            onToggle={toggleModifier}
+                            options={["Normal", mod.name]}
                         />
-                    )}
-
-                    {hasFingerless && (
-                        <ModifierToggle 
-                            value={isFingerless}
-                            onChange={setIsFingerless}
-                            options={["Normal", "Fingerless"]}
-                        />
-                    )}
+                    ))}
                 </div>
                 
 
