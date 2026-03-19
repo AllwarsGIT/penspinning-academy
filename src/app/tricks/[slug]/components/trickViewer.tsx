@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation"
 
 import ModifierToggle from "./modifierToggle"
 import DifficultyBadge from "@/components/difficultyBadge"
+import InfoToolTip from "@/components/InfoToolTip"
 
 
 
@@ -102,10 +103,10 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
 
     return (
-        <div className="flex flex-col ">
+        <div className="flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
             {/* TODO video reacting to state */}
             {/* Video */}
-            <div className="mt-16 bg-black">
+            <div className="mt-16 bg-black w-full">
                 <div className="w-full max-w-4xl mx-auto aspect-video bg-black">
                     <video 
                         className="w-full  h-full object-contain"
@@ -115,7 +116,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Name */}
-            <div className="w-full px-5 py-7 flex flex-col md:flex-row justify-between items-center md:items-center bg-white dark:bg-black">
+            <div className="w-full px-5 py-7 flex flex-col  justify-center items-center  bg-white dark:bg-black transition-colors duration-500 ease-in-out">
                 <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1 ">
                     <div className="justify-center items-center flex flex-row flex-wrap">
                         {prefixMods.map((mod, i) => (
@@ -136,38 +137,51 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                     </div>
 
                 </h1>
-                <div className="pt-3 md:pt-0">
+                <div className="pt-3 ">
                         <DifficultyBadge badge={activeInstance?.difficulty}/>
                 </div>
             </div>
 
             {/* Step pagination */}
-            <div className="px-5 py-7 bg-whitePrimary dark:bg-blackPrimary">
-                <h1 className="font-inter text-2xl pb-3">Steps</h1>
+            <div className="px-5 py-7 w-full bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out  ">
+                <div className="max-w-6xl mx-auto ">
+                    <div className="flex items-center mb-5">
+                        <h1 className="font-inter text-2xl ">Steps</h1>
+                        <InfoToolTip text={"Main: Showcases the trick\nStep(x):Indicates the progression you must follow to learn the trick"} />
+                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
+                    </div>
+                    
 
-                <div className="flex flex-row gap-2 font-bold">
-                    <button 
-                        onClick={() => setActiveVideo("main")}
-                        className={`py-1 px-2 rounded-lg ${activeVideo === "main" ? "bg-blackPrimary text-white dark:bg-whitePrimary dark:text-black" : "text-gray-400"}`}
-                    >
-                        Main
-                    </button>
-                    {stepVideos.map((step, i) => (
+
+                    <div className="flex flex-row gap-2 font-bold">
                         <button 
-                            key={i}
-                            onClick={() => setActiveVideo(step.order.toString())}
-                            className={`py-1 px-2 rounded-lg ${activeVideo === step.order.toString() ? "bg-black text-white dark:bg-white dark:text-black" : "text-gray-400"}`}
+                            onClick={() => setActiveVideo("main")}
+                            className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out ${activeVideo === "main" ? "bg-blackPrimary text-white dark:bg-whitePrimary dark:text-black" : "text-gray-400"}`}
                         >
-                            Step {i + 1}
+                            Main
                         </button>
-                    ))}
+                        {stepVideos.map((step, i) => (
+                            <button 
+                                key={i}
+                                onClick={() => setActiveVideo(step.order.toString())}
+                                className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out ${activeVideo === step.order.toString() ? "bg-black text-white dark:bg-white dark:text-black" : "text-gray-400"}`}
+                            >
+                                Step {i + 1}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Toggles */}
-            <div className="px-5 py-7 flex flex-col gap-5 bg-white dark:bg-black">
-                <div className="">
-                    <h2 className="font-inter text-2xl pb-3">Modifiers</h2>
+            {/* Toggles section */}
+            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out">
+                <div className="max-w-6xl mx-auto w-full">
+                    <div className="flex items-center mb-5">
+                        <h1 className="font-inter text-2xl ">Modifiers</h1>
+                        <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
+                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
+                    </div>
+
                     {availableModifiers.map(mod => (
                         <ModifierToggle
                             key={mod.id}
@@ -178,10 +192,17 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                         />
                     ))}
                 </div>
-                
 
-                <div className="pt-5 "> 
-                    <h2 className="font-inter text-2xl pb-3">Notation</h2>
+            </div>
+
+            {/* Notation section */}
+            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out "> 
+                <div className="max-w-6xl mx-auto w-full">
+                    <div className="flex items-center mb-5">
+                        <h1 className="font-inter text-2xl ">Notation</h1>
+                        <InfoToolTip text={"Notation is the compact way to write trick names and modifiers using abbreviations.\nIt's written following a prefix/suffix structure, which is defined in each individual modifier"}/>
+                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
+                    </div>
                     <div className="flex flex-row gap-1 text-xl justify-center">
                         {prefixMods.map((mod, i) => (
                             <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
@@ -195,17 +216,21 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                             </span>
                         ))}
                     </div>
-                    
                 </div>
-               
-
             </div>
 
             {/* Explicación */}
-            <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3">
-                <h2 className="font-inter text-2xl pb-3">Trick details</h2>
+            <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3 transition-colors duration-500 ease-in-out w-full">
+                <div className="max-w-6xl mx-auto w-full">
+                    <div className="flex items-center mb-5">
+                        <h1 className="font-inter text-2xl ">Trick details</h1>
+                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
+                    </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisl vehicula, tincidunt felis vitae, pulvinar diam. Etiam mattis est mi. Mauris convallis tortor nisl, ut pulvinar magna porta vitae. Curabitur auctor rhoncus erat sed vehicula. In at elit dui. Quisque porta erat iaculis, interdum tellus quis, laoreet turpis. Sed hendrerit lectus lorem, placerat efficitur libero accumsan at. Pellentesque porta nulla arcu, et tempor magna accumsan ut. Ut tincidunt felis nunc, vitae suscipit elit venenatis eu. Ut auctor tristique tempor. Morbi imperdiet turpis eu libero fermentum, in luctus odio facilisis. In imperdiet eu sem eget iaculis. Vestibulum ornare varius magna, eget luctus mauris rutrum sit amet. Proin maximus nulla felis, sed pellentesque purus pretium ut. Proin elementum dui enim, blandit auctor nisl suscipit et. Vestibulum pharetra tempus dolor ac viverra. </p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisl vehicula, tincidunt felis vitae, pulvinar diam. Etiam mattis est mi. Mauris convallis tortor nisl, ut pulvinar magna porta vitae. Curabitur auctor rhoncus erat sed vehicula. In at elit dui. Quisque porta erat iaculis, interdum tellus quis, laoreet turpis. Sed hendrerit lectus lorem, placerat efficitur libero accumsan at. Pellentesque porta nulla arcu, et tempor magna accumsan ut. Ut tincidunt felis nunc, vitae suscipit elit venenatis eu. Ut auctor tristique tempor. Morbi imperdiet turpis eu libero fermentum, in luctus odio facilisis. In imperdiet eu sem eget iaculis. Vestibulum ornare varius magna, eget luctus mauris rutrum sit amet. Proin maximus nulla felis, sed pellentesque purus pretium ut. Proin elementum dui enim, blandit auctor nisl suscipit et. Vestibulum pharetra tempus dolor ac viverra. </p>
+                </div>
+
+                
             </div>
         </div>
     )
