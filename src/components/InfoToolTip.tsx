@@ -14,7 +14,7 @@ function InfoTooltip({ text }: InfoTooltipProps) {
                 onMouseEnter={() => setIsVisible(true)}
                 onMouseLeave={() => setIsVisible(false)}
                 onClick={() => setIsVisible(!isVisible)}
-                className="w-5 h-5 rounded-full flex items-center justify-center text-sm font-mono  font-bold leading-none transition-colors"
+                className="w-5 h-5 rounded-full cursor-pointer flex items-center justify-center text-sm font-mono  font-bold leading-none transition-colors"
                 style={{ 
                     border: `1px solid #6b728090`,
                     color: "#6b7280"

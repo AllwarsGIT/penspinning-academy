@@ -153,10 +153,10 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                     
 
 
-                    <div className="flex flex-row gap-2 font-bold">
+                    <div className="flex flex-row gap-2 font-bold bg-white dark:bg-black p-2 rounded-lg">
                         <button 
                             onClick={() => setActiveVideo("main")}
-                            className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out ${activeVideo === "main" ? "bg-blackPrimary text-white dark:bg-whitePrimary dark:text-black" : "text-gray-400"}`}
+                            className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "main" ? "bg-gray-200 " : "text-gray-400"}`}
                         >
                             Main
                         </button>
@@ -164,7 +164,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                             <button 
                                 key={i}
                                 onClick={() => setActiveVideo(step.order.toString())}
-                                className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out ${activeVideo === step.order.toString() ? "bg-black text-white dark:bg-white dark:text-black" : "text-gray-400"}`}
+                                className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === step.order.toString() ? "bg-gray-300  dark:bg-gray-200 " : "text-gray-400"}`}
                             >
                                 Step {i + 1}
                             </button>
@@ -174,23 +174,24 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Toggles section */}
-            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out">
+            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
                 <div className="max-w-6xl mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Modifiers</h1>
                         <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
                         {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
                     </div>
-
-                    {availableModifiers.map(mod => (
-                        <ModifierToggle
-                            key={mod.id}
-                            modifierId={mod.id}
-                            isActive={activeModifierIds.includes(mod.id)}
-                            onToggle={toggleModifier}
-                            options={["Normal", mod.name]}
-                        />
-                    ))}
+                        <div className="py-2">
+                            {availableModifiers.map(mod => (
+                                <ModifierToggle
+                                    key={mod.id}
+                                    modifierId={mod.id}
+                                    isActive={activeModifierIds.includes(mod.id)}
+                                    onToggle={toggleModifier}
+                                    options={["Normal", mod.name]}
+                                />
+                            ))}
+                        </div>
                 </div>
 
             </div>
@@ -200,7 +201,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 <div className="max-w-6xl mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Notation</h1>
-                        <InfoToolTip text={"Notation is the compact way to write trick names and modifiers using abbreviations.\nIt's written following a prefix/suffix structure, which is defined in each individual modifier"}/>
+                        <InfoToolTip text={"Notation is the compact way to write trick names and modifiers using abbreviations.\nIt's written following a prefix/suffix structure, which is defined in each individual modifier."}/>
                         {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
                     </div>
                     <div className="flex flex-row gap-1 text-xl justify-center">
@@ -219,19 +220,17 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 </div>
             </div>
 
-            {/* Explicación */}
+            {/* explanation details */}
             <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3 transition-colors duration-500 ease-in-out w-full">
                 <div className="max-w-6xl mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Trick details</h1>
-                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
                     </div>
 
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisl vehicula, tincidunt felis vitae, pulvinar diam. Etiam mattis est mi. Mauris convallis tortor nisl, ut pulvinar magna porta vitae. Curabitur auctor rhoncus erat sed vehicula. In at elit dui. Quisque porta erat iaculis, interdum tellus quis, laoreet turpis. Sed hendrerit lectus lorem, placerat efficitur libero accumsan at. Pellentesque porta nulla arcu, et tempor magna accumsan ut. Ut tincidunt felis nunc, vitae suscipit elit venenatis eu. Ut auctor tristique tempor. Morbi imperdiet turpis eu libero fermentum, in luctus odio facilisis. In imperdiet eu sem eget iaculis. Vestibulum ornare varius magna, eget luctus mauris rutrum sit amet. Proin maximus nulla felis, sed pellentesque purus pretium ut. Proin elementum dui enim, blandit auctor nisl suscipit et. Vestibulum pharetra tempus dolor ac viverra. </p>
                 </div>
-
-                
             </div>
+            
         </div>
     )
 }
