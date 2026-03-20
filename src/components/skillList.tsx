@@ -37,7 +37,7 @@ const skillRanges = [
 function skillList() {
     return (
         <>
-            <div className="flex flex-col items-center justify-center lg:grid lg:grid-cols-2  gap-4 max-w-7xl">
+            <div className="flex flex-col items-center justify-center  gap-4 max-w-7xl">
                 {skillRanges.map((range: typeof skillRanges[0]) => (
                     <InfoCard 
                         key={range.number}
