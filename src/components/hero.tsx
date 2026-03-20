@@ -14,11 +14,11 @@ function Hero() {
             />
             <div className="absolute inset-0 bg-black/50" />
             
-            <div className="relative z-10 flex flex-col items-center gap-4 px-8 text-center">
+            <div className="relative z-10 flex flex-col items-center gap-4 text-center">
                 <h1 className="hero-responsive font-bold text-white font-inter">
                     Pen Spinning Academy
                 </h1>
-                <p className="subtitle-responsive text-gray-300   ">
+                <p className="subtitle-responsive text-gray-300 ">
                     The most powerful resource to learn penspinning
                 </p>
                 <div className="flex flex-row gap-3 mt-2">

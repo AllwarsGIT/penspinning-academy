@@ -36,7 +36,7 @@ function TricksPage() {
                 </div>
             </nav>
 
-            <div className="relative  mt-16 px-8 min-h-150 py-12 w-full flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black transition-all duration-500 ease-in-out">
+            <div className="relative  mt-16  min-h-150 py-12 w-full flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black transition-all duration-500 ease-in-out">
                 <Image 
                     src="/learnPortraitUpscaled.jpeg"
                     alt="Learn Pen Spinning"
