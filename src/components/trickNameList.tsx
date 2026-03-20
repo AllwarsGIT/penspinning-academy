@@ -21,7 +21,7 @@ function TrickNameList({ difficulty }: TrickNameListProps) {
                         key={trick.id}
                         href={`/tricks/${trick.slug}`}
                         title={trick.name}
-                        thumbnail=""
+                        thumbnail="/learnPortraitUpscaled.jpeg"
                         badge={difficulty}
                     />
                 )

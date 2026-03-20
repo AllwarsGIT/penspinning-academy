@@ -153,22 +153,24 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                     
 
 
-                    <div className="flex flex-row gap-2 font-bold bg-white dark:bg-black p-2 rounded-lg transition-colors duration-500 ease-in-out">
-                        <button 
+                    <div className="flex flex-row font-bold rounded-lg transition-colors duration-500 ease-in-out">
+                        <div className="flex flex-row flex-wrap bg-white dark:bg-black p-2 gap-2 rounded-lg transition-colors duration-500 ease-in-out">
+                            <button 
                             onClick={() => setActiveVideo("main")}
                             className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "main" ? "bg-gray-200 " : "text-gray-400"}`}
                         >
                             Main
-                        </button>
-                        {stepVideos.map((step, i) => (
-                            <button 
-                                key={i}
-                                onClick={() => setActiveVideo(step.order.toString())}
-                                className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === step.order.toString() ? "bg-gray-300  dark:bg-gray-200 " : "text-gray-400"}`}
-                            >
-                                Step {i + 1}
+                            </button>
+                            {stepVideos.map((step, i) => (
+                                <button 
+                                    key={i}
+                                    onClick={() => setActiveVideo(step.order.toString())}
+                                    className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === step.order.toString() ? "bg-gray-300  dark:bg-gray-200 " : "text-gray-400"}`}
+                                >
+                                    Step {i + 1}
                             </button>
                         ))}
+                        </div>
                     </div>
                 </div>
             </div>

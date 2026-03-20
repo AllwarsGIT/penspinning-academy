@@ -1,5 +1,6 @@
 "use client"
 import React from "react"
+import Image from "next/image"
 import SkillList from "@/components/skillList"
 import TrickNameList from "@/components/trickNameList"
 
@@ -35,9 +36,18 @@ function TricksPage() {
                 </div>
             </nav>
 
-            <div className=" bg-gray-500 mt-16 px-8 min-h-150 py-12 w-full flex flex-col items-center justify-center">
-                <h1 className="text-4xl font-bold">Learn Pen Spinning</h1>
-                <p className="text-gray-700 mt-2">From fundamentals to expert tricks</p>
+            <div className="relative  mt-16 px-8 min-h-150 py-12 w-full flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black transition-all duration-500 ease-in-out">
+                <Image 
+                    src="/learnPortraitUpscaled.jpeg"
+                    alt="Learn Pen Spinning"
+                    fill
+                    sizes="100vw"
+                    className="object-cover opacity-60 "
+                />
+                <div className="relative z-10 flex flex-col items-center">
+                    <h1 className="text-4xl font-bold">Learn Pen Spinning</h1>
+                    <p className="text-gray-800 dark:text-gray-200 mt-2">From fundamentals to expert tricks</p>
+                </div>
             </div>
 
             {/* Skill range block */}
