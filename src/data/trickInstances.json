@@ -6,7 +6,7 @@
             "thumbnail": "",
             "videos": [
                 { 
-                    "url": "", 
+                    "url": "/psaIntro.mp4", 
                     "type": "main" ,
                     "order": 0
                 },
@@ -19,27 +19,33 @@
                     "url": "", 
                     "type": "step",
                     "order": 2
-                },{ 
+                },
+                { 
                     "url": "", 
                     "type": "step",
                     "order": 3
-                },{ 
+                },
+                { 
                     "url": "", 
                     "type": "step",
                     "order": 4
-                },{ 
+                },
+                { 
                     "url": "", 
                     "type": "step",
                     "order": 5
-                },{ 
+                },
+                { 
                     "url": "", 
                     "type": "step",
                     "order": 6
-                },{ 
+                },
+                { 
                     "url": "", 
                     "type": "step",
                     "order": 7
-                },{ 
+                },
+                { 
                     "url": "", 
                     "type": "step",
                     "order": 8

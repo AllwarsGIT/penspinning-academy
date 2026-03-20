@@ -26,12 +26,12 @@ const skillRanges = [
         description:"You have mastered the intermediate tricks and are ready to tackle more challenging maneuvers in Pen Spinning. This level requires good understanding of the previous mechanics and specially a solid understanding of the fundamentals. Get ready to push your skills to the limit.",
         color: "#ef4444"
     },
-    // {
-    //     number: 5,
-    //     name: "Expert",
-    //     description:"You are a true master of Pen Spinning, capable of performing complex tricks and hybrids. This level demands exceptional understanding of all the previous mechanics and the ability to think outside of the box. The tricks on this category have the highest difficulty and complexity of all the ranks. ",
-    //     color: "#8b5cf6"
-    // }
+    {
+        number: 5,
+        name: "Expert",
+        description:"You are at the pinnacle Pen Spinning, capable of performing complex tricks and hybrids. This level demands exceptional understanding of all the previous mechanics and the ability to think outside of the box. The tricks on this category have the highest difficulty and complexity of all the ranks.",
+        color: "#8b5cf6"
+    }
 ]
 
 function skillList() {

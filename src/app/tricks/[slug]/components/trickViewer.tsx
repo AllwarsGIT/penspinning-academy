@@ -82,8 +82,11 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     }
 
     // Pagination states for video display
-    // const mainVideo = activeInstance?.videos.find(v => v.type === "main")
+    const mainVideo = activeInstance?.videos.find(v => v.type === "main")
     const stepVideos = activeInstance?.videos.filter(v => v.type === "step") ?? []
+    const activeVideoUrl = activeVideo === "main" 
+    ? mainVideo?.url ?? "" 
+    : stepVideos.find(v => v.order.toString() === activeVideo)?.url ?? ""
 
     
     // Suffix prefix management for name composition
@@ -107,11 +110,19 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             {/* TODO video reacting to state */}
             {/* Video */}
             <div className="mt-16 bg-black w-full">
-                <div className="w-full max-w-4xl mx-auto aspect-video bg-black">
-                    <video 
-                        className="w-full  h-full object-contain"
-                        controls
-                    />
+                <div className="w-full max-w-4xl mx-auto aspect-video">
+                    {activeVideoUrl ? (
+                        <video 
+                            src={activeVideoUrl}
+                            className="w-full h-full object-contain"
+                            controls
+                            playsInline
+                        />
+                    ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                            <p className="text-gray-500 text-sm font-mono tracking-widest uppercase">Video not available</p>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -144,7 +155,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
             {/* Step pagination */}
             <div className="px-5 py-7 w-full bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out  ">
-                <div className="max-w-6xl mx-auto ">
+                <div className="max-w-400 mx-auto ">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Steps</h1>
                         <InfoToolTip text={"Main: Showcases the trick\nStep(x):Indicates the progression you must follow to learn the trick"} />
@@ -177,7 +188,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
             {/* Toggles section */}
             <div className="px-5 py-7 w-full flex flex-col gap-5 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
-                <div className="max-w-6xl mx-auto w-full">
+                <div className="max-w-400 mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Modifiers</h1>
                         <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
@@ -200,7 +211,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
             {/* Notation section */}
             <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out "> 
-                <div className="max-w-6xl mx-auto w-full">
+                <div className="max-w-400 mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Notation</h1>
                         <InfoToolTip text={"Notation is the compact way to write trick names and modifiers using abbreviations.\nIt's written following a prefix/suffix structure, which is defined in each individual modifier."}/>
@@ -224,7 +235,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
             {/* explanation details */}
             <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3 transition-colors duration-500 ease-in-out w-full">
-                <div className="max-w-6xl mx-auto w-full">
+                <div className="max-w-400 mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Trick details</h1>
                     </div>

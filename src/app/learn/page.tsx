@@ -44,9 +44,9 @@ function TricksPage() {
                     sizes="100vw"
                     className="object-cover opacity-60 "
                 />
-                <div className="relative z-10 flex flex-col items-center">
-                    <h1 className="text-4xl font-bold">Learn Pen Spinning</h1>
-                    <p className="text-gray-800 dark:text-gray-200 mt-2">From fundamentals to expert tricks</p>
+                <div className="relative z-10 flex flex-col justify-center items-center">
+                    <h1 className="hero-responsive font-bold">Learn Pen Spinning</h1>
+                    <p className=" text-sm md:text-lg text-gray-800 dark:text-gray-200 mt-2">From fundamentals to expert tricks</p>
                 </div>
             </div>
 
@@ -58,21 +58,21 @@ function TricksPage() {
 
 
 
-            <div className=" p-5 flex flex-col gap-16 bg-white dark:bg-black transition-colors ease-in-out duration-500">
-                <section id="intro" className="flex flex-col  scroll-mt-32 ">
+            <div className=" p-5 flex flex-col justify-center items-center gap-16 bg-white dark:bg-black transition-colors ease-in-out duration-500">
+                <section id="intro" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
                     <h1 className="py-5 text-2xl font-bold">Intro</h1>
                         
                     
                 </section>
 
-                <section id="fundamentals" className="flex flex-col gap-4 scroll-mt-32">
+                <section id="fundamentals" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
                     <h1 className="py-5 text-2xl font-bold">Fundamentals</h1>
                     <TrickNameList difficulty="fundamental"/>
 
 
                 </section>
 
-                <section id="beginner" className="flex flex-col gap-4 scroll-mt-32">
+                <section id="beginner" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
                     <h1 className="text-2xl font-bold">Beginner</h1>
                     <TrickNameList difficulty="beginner"/>
 
