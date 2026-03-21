@@ -102,6 +102,11 @@ function Header () {
                                 <h1 className="text-xl font-bold">Learn Pen Spinning</h1>
                             </button>
                         </li>
+                        <li className="w-full  flex items-center hover:bg-gray-400 animation-all ease-in-out duration-500 justify-center  ">
+                            <button className="w-full h-full cursor-pointer py-4" onClick={() => handleNavClick("/tricks")}>
+                                <h1 className="text-xl font-bold">Tricks</h1>
+                            </button>
+                        </li>
                     </ul>
                 </div>
 
