@@ -64,7 +64,7 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
             <video
                 ref={videoRef}
                 src={url}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain cursor-pointer"
                 style={{ transform: isFlipped ? "scaleX(-1)" : "none" }}
                 onTimeUpdate={handleTimeUpdate}
                 onClick={togglePlay}
@@ -89,31 +89,31 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
 
                 {/* Buttons */}
                 <div className="flex items-center justify-between">
-                    <button onClick={togglePlay} className="text-white">
+                    <button onClick={togglePlay} className="cursor-pointer text-white">
                         {isPlaying ? <IoIosPause size={25} /> : <IoIosPlay size={25} />}
                     </button>
                     <div className="flex gap-2">
                         <button 
                             onClick={() => setPlaybackSpeed(1)} 
-                            className={`text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 1 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
+                            className={`cursor-pointer text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 1 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
                         >
                            1.0x
                         </button>
                         <button 
                             onClick={() => setPlaybackSpeed(0.5)} 
-                            className={`text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 0.5 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
+                            className={`cursor-pointer text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 0.5 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
                         >
                             0.5x
                         </button>
                         <button 
                             onClick={() => setPlaybackSpeed(0.25)} 
-                            className={`text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 0.25 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
+                            className={`cursor-pointer text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 0.25 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
                         >
                             0.25x
                         </button>
                     </div>
                     
-                    <button onClick={handleFullscreen} className="text-white">
+                    <button onClick={handleFullscreen} className="cursor-pointer text-white">
                         {isFullscreen ? <MdFullscreenExit size={20} /> : <MdFullscreen size={20} />}
                     </button>
                 </div>
