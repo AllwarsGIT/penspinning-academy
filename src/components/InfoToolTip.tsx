@@ -20,7 +20,7 @@ function InfoTooltip({ text }: InfoTooltipProps) {
                     color: "#6b7280"
                 }}
             >
-                i
+                ?
             </button>
             <div 
                 className={`absolute bg-white dark:bg-black backdrop-blur-sm whitespace-pre-line -left-10 sm:left-6 top-6 md:top-auto md:-translate-y-1/2 z-50 w-50 sm:w-90 px-3 py-2 rounded-xl text-m text-gray-800 dark:text-gray-300 transition-all duration-400 ${

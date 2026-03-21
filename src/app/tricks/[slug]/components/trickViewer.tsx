@@ -1,11 +1,14 @@
 "use client"
 import React from 'react'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
+import { AnimatePresence, motion } from "framer-motion"
+import { useDominantHand } from "@/app/providers/dominantHandProvider"
 
 import ModifierToggle from "./modifierToggle"
 import DifficultyBadge from "@/components/difficultyBadge"
 import InfoToolTip from "@/components/InfoToolTip"
+import VideoPlayer from "@/components/VideoPlayer"
 
 
 
@@ -43,13 +46,13 @@ const modifierColor: Record<string, string> = {
 }
 
 function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
+
+    
     
     const searchParams = useSearchParams()
     const modifiersParam = searchParams.get("modifiers")
     const initialModifiers = modifiersParam ? modifiersParam.split(",") : []
-
     const router = useRouter()
-
     // Modular state generator
     const [activeModifierIds, setActiveModifierIds] = useState<string[]>(initialModifiers)
 
@@ -63,6 +66,15 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
         ) &&
         activeModifierIds.every(id => i.modifiers.includes(id))
     )
+
+    // Verifies if the modified route exist, if it doesnt, it goes back to the base instance
+    // Im openly ignoring the warning here
+    useEffect(() => {
+        if (!activeInstance && activeModifierIds.length > 0) {
+            setActiveModifierIds([])
+            router.replace(`/tricks/${trick.slug}`, { scroll: false })
+        }
+    }, [activeInstance, activeModifierIds.length, trick.slug, router])
 
     const availableModifiers = modifiers.filter(m => 
         m.id !== "normal" && 
@@ -102,54 +114,85 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
         .filter(m => m?.position === "suffix")
         .map(m => ({ name: m?.name, id: m!.id, notation:m?.notation }))
 
-    
-
-
     return (
         <div className="flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
             {/* TODO video reacting to state */}
             {/* Video */}
             <div className="mt-16 bg-black w-full">
-                <div className="w-full max-w-4xl mx-auto aspect-video">
-                    {activeVideoUrl ? (
-                        <video 
-                            src={activeVideoUrl}
-                            className="w-full h-full object-contain"
-                            controls
-                            playsInline
-                        />
-                    ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                            <p className="text-gray-500 text-sm font-mono tracking-widest uppercase">Video not available</p>
-                        </div>
-                    )}
-                </div>
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeVideoUrl}
+                        initial={{ opacity: 0}}
+                        animate={{ opacity: 1}}
+                        exit={{ opacity: 0}}
+                        transition={{ duration: 0.25 }}
+                        className="w-full max-w-4xl mx-auto aspect-video"
+                    >
+                        {activeVideoUrl ? (
+                            <VideoPlayer url={activeVideoUrl} isFlipped={isLeftHanded} />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                                <p className="text-gray-500 text-sm font-mono tracking-widest uppercase">Video not available</p>
+                            </div>
+                        )}
+                    </motion.div>
+                </AnimatePresence>
             </div>
 
             {/* Name */}
+            
             <div className="w-full px-5 py-7 flex flex-col  justify-center items-center  bg-white dark:bg-black transition-colors duration-500 ease-in-out">
-                <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1 ">
-                    <div className="justify-center items-center flex flex-row flex-wrap">
-                        {prefixMods.map((mod, i) => (
-                        <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}> 
-                            [{mod.name}]
-                        </span>
-                    ))}
-                    </div>
-                    
-                    <span className="">{trick.name}</span>
-                    <div className="flex flex-row">
-
-                    {suffixMods.map((mod, i) => (
-                        <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
-                            [{mod.name}]
-                        </span>
-                    ))}
-                    </div>
-
-                </h1>
+                        <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1">
+                            <div className="justify-center items-center flex flex-row flex-wrap ">
+                                <AnimatePresence>
+                                {prefixMods.map((mod) => (
+                                    <motion.span
+                                        key={mod.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.4 }}
+                                        className="font-bold"
+                                        style={{ color: modifierColor[mod.id] }}
+                                    >
+                                        [{mod.name}]
+                                    </motion.span>
+                                    
+                                ))}
+                                </AnimatePresence>
+                                
+                            </div>
+                            <span className="mx-auto transition-all duration-300 ease-in-out">{trick.name}</span>
+                            <div className="flex flex-row ">
+                                <AnimatePresence>
+                                {suffixMods.map((mod) => (
+                                    <motion.span
+                                        key={mod.id}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.4 }}
+                                        className="font-bold"
+                                        style={{ color: modifierColor[mod.id] }}
+                                    >
+                                        [{mod.name}]
+                                    </motion.span>
+                                ))}
+                                </AnimatePresence>
+                            </div>
+                        </h1>
+                        
                 <div className="pt-3 ">
-                        <DifficultyBadge badge={activeInstance?.difficulty}/>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeInstance?.difficulty}
+                                initial={{ opacity: 0, y: 0 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 5 }}
+                                transition={{ duration: 0.25 }}
+                                className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1"
+                            >
+                                <DifficultyBadge badge={activeInstance?.difficulty}/>
+                            </motion.div>
+                        </AnimatePresence>
                 </div>
             </div>
 
@@ -158,12 +201,9 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 <div className="max-w-400 mx-auto ">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Steps</h1>
-                        <InfoToolTip text={"Main: Showcases the trick\nStep(x):Indicates the progression you must follow to learn the trick"} />
+                        <InfoToolTip text={"Main: Showcases the trick.\nStep(x):Indicates the progression you must follow to learn the trick.\nIt is recommended you are able to execute 10 times in a row each step before going for the next one."} />
                         {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
                     </div>
-                    
-
-
                     <div className="flex flex-row font-bold rounded-lg transition-colors duration-500 ease-in-out">
                         <div className="flex flex-row flex-wrap bg-white dark:bg-black p-2 gap-2 rounded-lg transition-colors duration-500 ease-in-out">
                             <button 
@@ -218,17 +258,35 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                         {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
                     </div>
                     <div className="flex flex-row gap-1 text-xl justify-center">
-                        {prefixMods.map((mod, i) => (
-                            <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
-                                [{mod.notation}]
-                            </span>
-                        ))}
+                        <AnimatePresence>
+                            {prefixMods.map((mod) => (
+                                <motion.span
+                                    key={mod.id}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.4 }}
+                                    className="font-bold"
+                                    style={{ color: modifierColor[mod.id] }}
+                                >
+                                    [{mod.notation}]
+                                </motion.span>
+                                ))}
+                        </AnimatePresence>
                         <span className="text-gray-400">{trick.notation}</span>
-                        {suffixMods.map((mod, i) => (
-                            <span key={i} className="font-bold" style={{ color: modifierColor[mod.id] }}>
-                                [{mod.notation}]
-                            </span>
-                        ))}
+                        <AnimatePresence>
+                            {suffixMods.map((mod) => (
+                                <motion.span
+                                    key={mod.id}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.4 }}
+                                    className="font-bold"
+                                    style={{ color: modifierColor[mod.id] }}
+                                >
+                                    [{mod.notation}]
+                                </motion.span>
+                            ))}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>

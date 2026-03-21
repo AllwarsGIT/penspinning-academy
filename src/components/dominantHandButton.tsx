@@ -1,12 +1,19 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { IoHandLeftSharp } from "react-icons/io5"
 import { IoHandRight } from "react-icons/io5"
+import { useDominantHand } from "@/app/providers/dominantHandProvider"
 
 function DominantHandButton() {
-    const [isRight, setIsRight] = useState(false)
+    const [mounted, setMounted] = useState(false);
     const [showMessage, setShowMessage] = useState(false)
     const [message, setMessage] = useState("")
+    const { isLeftHanded, toggleHand } = useDominantHand()
+
+    useLayoutEffect(() => {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setMounted(true)
+    }, [])
 
     useEffect(() => {
         if (showMessage) {
@@ -17,9 +24,13 @@ function DominantHandButton() {
 
     const handleClick = () => {
         if (showMessage) return
-        setIsRight(!isRight)
-        setMessage(!isRight ? "Left handed" : "Right handed")
+        toggleHand()
+        setMessage(!isLeftHanded ? "Left handed" : "Right handed")
         setShowMessage(true)
+    }
+
+    if (!mounted) {
+        return <div className="w-18 h-10 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse" />
     }
 
     return (
@@ -28,7 +39,7 @@ function DominantHandButton() {
                 className="bg-gray-400 w-18 h-10 rounded-full items-center flex justify-start cursor-pointer hover:scale-110 transition-all ease-in-out duration-350"
                 onClick={handleClick}
             >
-                {isRight ? 
+                {isLeftHanded ? 
                     <div className="bg-black w-8 h-8 p-0 mx-1 rounded-full flex justify-center items-center transition-all ease-in-out duration-350 rotate-0">
                         <IoHandRight className="text-[20px] text-white font-bold rotate-20 transition-all ease-in-out duration-350"/>
                     </div>

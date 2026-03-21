@@ -3,7 +3,7 @@ import React from 'react'
 import { FiMenu } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
 import { useState } from 'react';
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import DarkmodeButton from './darkmodeButton';
 import DominantHandButton from './dominantHandButton';
 import Link from 'next/link';
@@ -16,12 +16,15 @@ function Header () {
         router.push(href)
         setTimeout(() => setIsOpen(false), 400)
     }
-
+    // Menu state
     const [isOpen, setIsOpen] = useState(false);
+
+    // To leave the menu items activated
+    const pathname = usePathname()
 
     return (
         <header className="bg-white dark:bg-black fixed top-0 px-4 left-0 w-full flex z-50 transition-all ease-in-out duration-500 ">
-            <nav className="flex items-center justify-between w-full h-16 ">
+            <nav className="flex items-center justify-between mx-auto w-full h-16 ">
 
                 {/* Header logo */}
                 <div className="bg-blue-300 w-12 h-12 rounded-full flex items-center justify-center">
@@ -31,15 +34,38 @@ function Header () {
                     
                 </div>
 
-                {/* Toggles */}
-                <div className="flex flex-row items-center gap-3">
-                    <DominantHandButton />
-                    <DarkmodeButton />
+                <div className="flex flex-row gap-4 h-full ">
+                    {/* Toggles */}
+                    <div className="flex flex-row items-center gap-3">
+                        <DominantHandButton />
+                        <DarkmodeButton />
+                    </div>
+
+                    {/* Menu for computer */}
+                    <ul className="p-0 m-0 h-full hidden items-center md:flex">
+                        <li className={`h-full cursor-pointer flex items-center border-b-2 transition-all duration-300 ease-in-out group ${pathname === "/learn" ? "border-black dark:border-white" : "border-transparent hover:border-black dark:hover:border-white"}`}>
+                            <Link 
+                                className={`h-full flex items-center px-4 text-lg font-medium transition-colors duration-300 ${pathname === "/learn" ? "text-black dark:text-white" : "text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
+                                href="/learn"
+                            >
+                                Learn
+                            </Link>
+                        </li>
+                        <li className={`h-full cursor-pointer flex items-center border-b-2 transition-all duration-300 ease-in-out group ${pathname === "/tricks" ? "border-black dark:border-white" : "border-transparent hover:border-black dark:hover:border-white"}`}>
+                            <Link 
+                                className={`h-full flex items-center px-4 text-lg font-medium transition-colors duration-300 ${pathname === "/tricks" ? "text-black dark:text-white" : "text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
+                                href="/tricks"
+                            >
+                                Tricks
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
+                
 
                 {/* Menu for mobile */}
                 <div 
-                    className=" w-12 h-12  flex justify-center items-center hover:scale-120 transition-transform ease-in-out duration-500 cursor-pointer text-black dark:text-white "
+                    className=" w-12 h-12 md:hidden flex justify-center items-center hover:scale-120 transition-transform ease-in-out duration-500 cursor-pointer text-black dark:text-white "
                     onClick={() => {
                         setIsOpen(!isOpen);
                     }}>
@@ -53,6 +79,8 @@ function Header () {
                         </div>
                     }
                 </div>
+
+                
                 
                 {/* Close menu when clicking outside */}
                 {/* {isOpen && (

@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { ThemeProvider } from "./providers/themeProvider";
+import { DominantHandProvider } from "./providers/dominantHandProvider"
 import "./globals.css";
+
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { ThemeProvider } from "./providers/themeProvider";
 import ScrollUpButton from "@/components/scrollUpButton";
+import SmoothScroll from "@/components/SmoothScroll"
+import PageTransition from "@/components/PageTransition"
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +28,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Penspinning Academy",
-  description: "The most complete resource for learning pen spinning online.",
+  description: "Aiming to be the most powerful resource to learn penspinning.",
 };
 
 export default function RootLayout({
@@ -41,10 +46,14 @@ export default function RootLayout({
             defaultTheme="dark"
             enableSystem={(true)}
           >
-            <Header />
-            {children}
-            <ScrollUpButton />
-            <Footer />
+            <DominantHandProvider>
+              <SmoothScroll>
+                <Header />
+                      {children}
+                  <ScrollUpButton/>
+                <Footer />
+              </SmoothScroll>
+            </DominantHandProvider>
           </ThemeProvider>
       </body>
     </html>

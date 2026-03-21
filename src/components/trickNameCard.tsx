@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDominantHand } from "@/app/providers/dominantHandProvider"
+
 import Link from "next/link"
 import Image from "next/image"
 import DifficultyBadge from "@/components/difficultyBadge"
@@ -12,14 +14,19 @@ type TrickNameCardProps = {
 
 
 function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameCardProps) {
+    const { isLeftHanded } = useDominantHand()
 
     return (
-        <Link href={href} className="w-full rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-3 transition-all duration-300 ease-in-out">
+        <Link 
+            href={href} 
+            className="w-full rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-3 transition-all duration-300 ease-in-out"
+            scroll={false}>
             <div className="w-full aspect-video relative overflow-hidden">
                 {thumbnail ? (
                     <Image 
                         src={thumbnail} 
                         alt={title}
+                        style={{transform:isLeftHanded ? 'none' : 'scaleX(-1)'}}
                         fill
                         className="w-full h-full object-cover"
                     />
@@ -35,7 +42,6 @@ function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameC
                     <DifficultyBadge badge={badge}/>
                     
             </div>
-            
         </Link>
     )
 }
