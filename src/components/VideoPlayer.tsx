@@ -72,7 +72,9 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
             />
             
             {/* Controls */}
-            <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-linear-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className={`absolute bottom-0 left-0 right-0 px-4 py-3 bg-linear-to-t from-black/70 to-transparent transition-opacity duration-300 ${
+                isPlaying ? "opacity-0 group-hover:opacity-100 delay-1500" : "opacity-100"
+            }`}>
                 
                 {/* Progress bar */}
                 <div 
