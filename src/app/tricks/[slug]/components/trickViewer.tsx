@@ -48,7 +48,7 @@ const modifierColor: Record<string, string> = {
 function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
     
-    
+    const { isLeftHanded } = useDominantHand()
     const searchParams = useSearchParams()
     const modifiersParam = searchParams.get("modifiers")
     const initialModifiers = modifiersParam ? modifiersParam.split(",") : []
