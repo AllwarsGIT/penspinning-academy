@@ -65,7 +65,7 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
                 ref={videoRef}
                 src={url}
                 className="w-full h-full object-contain cursor-pointer"
-                style={{ transform: isFlipped ? "scaleX(-1)" : "none" }}
+                style={{ transform: isFlipped ? "none" : "scaleX(-1)" }}
                 onTimeUpdate={handleTimeUpdate}
                 onClick={togglePlay}
                 playsInline
