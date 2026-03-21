@@ -16,6 +16,7 @@ export function DominantHandProvider({ children }: { children: React.ReactNode }
 
     useEffect(() => {
         const saved = localStorage.getItem("dominantHand")
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (saved) setIsLeftHanded(saved === "left")
     }, [])
 

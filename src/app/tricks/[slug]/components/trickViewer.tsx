@@ -71,6 +71,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     // Im openly ignoring the warning here
     useEffect(() => {
         if (!activeInstance && activeModifierIds.length > 0) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setActiveModifierIds([])
             router.replace(`/tricks/${trick.slug}`, { scroll: false })
         }
