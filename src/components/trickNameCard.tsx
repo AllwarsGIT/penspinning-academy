@@ -35,7 +35,7 @@ function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameC
                 )}
                 
             </div>
-            <div className="p-3 flex flex-col gap-2 bg-whitePrimary dark:bg-blackPrimary">
+            <div className="p-3 flex flex-col gap-2 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
                     <h2 className="font-semibold ">
                         {title}
                     </h2>
