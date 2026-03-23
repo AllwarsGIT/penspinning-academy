@@ -1,111 +1,230 @@
 [
         {
-            "idTrickName": "thumb-around",
+            "idTrickName": "pass",
             "modifiers": ["normal"],
             "difficulty":"fundamental",
             "thumbnail": "",
+            "trickDetails": "The pass is the most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trickhe most basic pen spinning trick",
             "videos": [
                 { 
-                    "url": "/psaIntro.mp4", 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Regular/main.mp4", 
                     "type": "main" ,
                     "order": 0
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Regular/1.mp4", 
+                    "type": "position" ,
                     "order": 1
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Regular/2.mp4", 
+                    "type": "step" ,
                     "order": 2
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Regular/3.mp4", 
+                    "type": "step" ,
                     "order": 3
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Regular/4.mp4", 
+                    "type": "step" ,
                     "order": 4
-                },
-                { 
-                    "url": "", 
-                    "type": "step",
-                    "order": 5
-                },
-                { 
-                    "url": "", 
-                    "type": "step",
-                    "order": 6
-                },
-                { 
-                    "url": "", 
-                    "type": "step",
-                    "order": 7
-                },
-                { 
-                    "url": "", 
-                    "type": "step",
-                    "order": 8
                 }
             ],
             "tags": [""]
         },
         {
-            "idTrickName": "thumb-around",
+            "idTrickName": "pass",
             "modifiers": ["reverse"],
             "difficulty":"fundamental",
             "thumbnail": "",
+            "trickDetails": "",
             "videos": [
                 { 
-                    "url": "", 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Reverse/main.mp4", 
                     "type": "main" ,
                     "order": 0
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Reverse/1.mp4", 
+                    "type": "position" ,
                     "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Reverse/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Reverse/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Pass/Reverse/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
                 }
             ],
             "tags": [""]
         },
         {
-            "idTrickName": "thumb-around",
-            "modifiers": ["normal", "fingerless"],
-            "difficulty":"beginner",
+            "idTrickName": "wiper",
+            "modifiers": ["normal"],
+            "difficulty":"fundamental",
             "thumbnail": "",
+            "trickDetails": "",
             "videos": [
                 { 
-                    "url": "", 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Regular/main.mp4", 
                     "type": "main" ,
                     "order": 0
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Regular/1.mp4", 
+                    "type": "position" ,
                     "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
                 }
             ],
             "tags": [""]
         },
         {
-            "idTrickName": "thumb-around",
-            "modifiers": ["reverse", "fingerless"],
-            "difficulty":"beginner",
+            "idTrickName": "wiper",
+            "modifiers": ["reverse"],
+            "difficulty":"fundamental",
             "thumbnail": "",
+            "trickDetails": "",
             "videos": [
                 { 
-                    "url": "", 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Reverse/main.mp4", 
                     "type": "main" ,
                     "order": 0
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Reverse/1.mp4", 
+                    "type": "position" ,
                     "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Reverse/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Reverse/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Wiper/Reverse/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "charge",
+            "modifiers": ["normal"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Regular/main.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Regular/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Regular/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Regular/6.mp4", 
+                    "type": "step" ,
+                    "order": 6
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "charge",
+            "modifiers": ["reverse"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Reverse/main.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Reverse/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Reverse/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Reverse/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Reverse/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Reverse/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Charge/Reverse/6.mp4", 
+                    "type": "step" ,
+                    "order": 6
                 }
             ],
             "tags": [""]
@@ -115,16 +234,42 @@
             "modifiers": ["normal"],
             "difficulty":"fundamental",
             "thumbnail": "",
+            "trickDetails": "",
             "videos": [
                 { 
-                    "url": "", 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Regular/main.mp4", 
                     "type": "main" ,
                     "order": 0
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Regular/1.mp4", 
+                    "type": "position" ,
                     "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Regular/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Regular/6.mp4", 
+                    "type": "step" ,
+                    "order": 6
                 }
             ],
             "tags": [""]
@@ -134,18 +279,122 @@
             "modifiers": ["reverse"],
             "difficulty":"fundamental",
             "thumbnail": "",
+            "trickDetails": "",
             "videos": [
                 { 
-                    "url": "", 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Reverse/main.mp4", 
                     "type": "main" ,
                     "order": 0
                 },
                 { 
-                    "url": "", 
-                    "type": "step",
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Reverse/1.mp4", 
+                    "type": "position" ,
                     "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Reverse/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Reverse/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Reverse/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Reverse/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Sonic/Reverse/6.mp4", 
+                    "type": "step" ,
+                    "order": 6
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["normal"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Regular/main.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Regular/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-around",
+            "modifiers": ["reverse"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Reverse/main.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Reverse/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Reverse/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Reverse/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Reverse/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumb%20Around/Reverse/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
                 }
             ],
             "tags": [""]
         }
+        
     ]
+
+    

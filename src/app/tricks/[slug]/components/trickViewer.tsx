@@ -9,12 +9,14 @@ import ModifierToggle from "./modifierToggle"
 import DifficultyBadge from "@/components/difficultyBadge"
 import InfoToolTip from "@/components/InfoToolTip"
 import VideoPlayer from "@/components/VideoPlayer"
+import FamilyBadge from '@/components/familyBadge'
 
 
 
 type Instance = {
     modifiers:string[],
     difficulty: string,
+    trickDetails: string,
     videos: {
         url: string,
         type: string,
@@ -27,6 +29,7 @@ type Trick = {
     name: string,
     notation: string
     slug: string
+    families: string[]
 }
 
 type TrickViewerProps = {
@@ -96,10 +99,14 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
     // Pagination states for video display
     const mainVideo = activeInstance?.videos.find(v => v.type === "main")
+    const positionVideo = activeInstance?.videos.filter(v => v.type === "position") ?? []
     const stepVideos = activeInstance?.videos.filter(v => v.type === "step") ?? []
-    const activeVideoUrl = activeVideo === "main" 
-    ? mainVideo?.url ?? "" 
-    : stepVideos.find(v => v.order.toString() === activeVideo)?.url ?? ""
+    const activeVideoUrl = 
+    activeVideo === "main"
+        ? mainVideo?.url ?? ""
+        : activeVideo === "position"
+            ? positionVideo[0]?.url ?? ""  // Si hay varios position, toma el primero
+            : stepVideos.find(v => v.order.toString() === activeVideo)?.url ?? ""
 
     
     // Suffix prefix management for name composition
@@ -202,7 +209,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 <div className="max-w-400 mx-auto ">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Steps</h1>
-                        <InfoToolTip text={"Main: Showcases the trick.\nStep(x):Indicates the progression you must follow to learn the trick.\nIt is recommended you are able to execute 10 times in a row each step before going for the next one."} />
+                        <InfoToolTip text={"·Main: Showcases the trick.\n·Position: Shows the starting position of the hand and pen mod for the trick.\n·Step(x):Indicates the progression you must follow to learn the trick.\nIt is recommended you are able to execute 10 times in a row each step before going for the next one."} />
                         {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
                     </div>
                     <div className="flex flex-row font-bold rounded-lg transition-colors duration-500 ease-in-out">
@@ -210,8 +217,14 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                             <button 
                             onClick={() => setActiveVideo("main")}
                             className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "main" ? "bg-gray-200 " : "text-gray-400"}`}
-                        >
+                            >
                             Main
+                            </button>
+                            <button 
+                            onClick={() => setActiveVideo("position")}
+                            className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "position" ? "bg-gray-200 " : "text-gray-400"}`}
+                            >
+                            Position
                             </button>
                             {stepVideos.map((step, i) => (
                                 <button 
@@ -292,16 +305,48 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 </div>
             </div>
 
+            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
+                <div className="max-w-400 mx-auto w-full">
+                    <div className="flex items-center mb-5">
+                        <h1 className="font-inter text-2xl ">Trick family</h1>
+                        <InfoToolTip text={"Families are classifficatios of tricks that share the same mechanics."}/>
+                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
+                    </div>
+                    <div className="flex flex-row gap-1 text-xl justify-center">
+                        {trick.families.map((family, index) => (
+                            <span 
+                                key={index} 
+                                className=" text-gray-800 dark:text-gray-300 px-2 py-1 rounded-md text-xl font-medium border border-gray-800 dark:border-gray-300"
+                            >
+                                {family}
+                            </span>
+                        ))}
+                    </div>
+
+
+                </div>
+
+            </div>
+
             {/* explanation details */}
-            <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3 transition-colors duration-500 ease-in-out w-full">
+            {/* <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3 transition-colors duration-500 ease-in-out w-full">
                 <div className="max-w-400 mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Trick details</h1>
                     </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisl vehicula, tincidunt felis vitae, pulvinar diam. Etiam mattis est mi. Mauris convallis tortor nisl, ut pulvinar magna porta vitae. Curabitur auctor rhoncus erat sed vehicula. In at elit dui. Quisque porta erat iaculis, interdum tellus quis, laoreet turpis. Sed hendrerit lectus lorem, placerat efficitur libero accumsan at. Pellentesque porta nulla arcu, et tempor magna accumsan ut. Ut tincidunt felis nunc, vitae suscipit elit venenatis eu. Ut auctor tristique tempor. Morbi imperdiet turpis eu libero fermentum, in luctus odio facilisis. In imperdiet eu sem eget iaculis. Vestibulum ornare varius magna, eget luctus mauris rutrum sit amet. Proin maximus nulla felis, sed pellentesque purus pretium ut. Proin elementum dui enim, blandit auctor nisl suscipit et. Vestibulum pharetra tempus dolor ac viverra. </p>
+                    <div className="border border-gray-700 dark:border-gray-300 bg-gray-300/50 dark:bg-gray-800/50 p-3 rounded-lg ">
+                        {instance.map((instance, i) => (
+                            <p 
+                                key={i}
+                                className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg font-inter rounded-lg "
+                                >
+                                    {instance.trickDetails}
+                                </p>
+                        ))}
+                    </div>
+                   
                 </div>
-            </div>
+            </div> */}
             
         </div>
     )

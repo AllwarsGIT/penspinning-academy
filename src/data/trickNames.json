@@ -1,10 +1,24 @@
 [
     {
-        "id": "thumb-around",
-        "slug": "thumb-around",
-        "name": "Thumb Around",
-        "notation":"TA",
-        "families": ["around"]
+        "id": "pass",
+        "slug": "pass",
+        "name": "Pass",
+        "notation":"Pass",
+        "families": ["pass"]
+    },
+    {
+        "id": "wiper",
+        "slug": "wiper",
+        "name": "Wiper",
+        "notation":"Wiper",
+        "families": ["wiper"]
+    },
+    {
+        "id": "charge",
+        "slug": "charge",
+        "name": "Charge",
+        "notation":"Charge",
+        "families": ["charge"]
     },
     {
         "id": "sonic",
@@ -12,5 +26,14 @@
         "name": "Sonic",
         "notation":"Sonic",
         "families": ["sonic"]
+    },
+    {
+        "id": "thumb-around",
+        "slug": "thumb-around",
+        "name": "Thumb Around",
+        "notation":"TA",
+        "families": ["around"]
     }
+    
+    
 ]

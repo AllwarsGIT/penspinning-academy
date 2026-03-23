@@ -1,10 +1,23 @@
 [
         {
-            "id": "around",
-            "name": "Around"
+            "id": "pass",
+            "name": "Pass"
+        },
+        {
+            "id": "wiper",
+            "name": "Wiper"
         },
         {
             "id": "sonic",
             "name": "Sonic"
+        },
+        {
+            "id": "charge",
+            "name": "Charge"
+        },
+        {
+            "id": "around",
+            "name": "Around"
         }
+
     ]

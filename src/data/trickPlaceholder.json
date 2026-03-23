@@ -2,21 +2,38 @@
     "trickInstance": [
         {
             "idTrickName": "",
-            "modifiers": [],
+            "modifiers": [""],
+            "difficulty":"",
             "thumbnail": "",
+            "trickDetails": "",
             "videos": [
                 { 
                     "url": "", 
                     "type": "main" ,
-                    "order": ""
+                    "order": 0
                 },
                 { 
                     "url": "", 
-                    "type": "step",
-                    "order": ""
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "", 
+                    "type": "step" ,
+                    "order": 4
                 }
             ],
-            "tags": []
+            "tags": [""]
         }
     ],
     "trickName": [

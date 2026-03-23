@@ -4,16 +4,18 @@ import { useDominantHand } from "@/app/providers/dominantHandProvider"
 import Link from "next/link"
 import Image from "next/image"
 import DifficultyBadge from "@/components/difficultyBadge"
+import FamilyBadge from './familyBadge'
 
 type TrickNameCardProps = {
     title: string,
     thumbnail: string,
     href: string,
     badge?: string
+    families: string[]
 }
 
 
-function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameCardProps) {
+function TrickNameCard({ title="", thumbnail="", href="", badge="", families=[""] }: TrickNameCardProps) {
     const { isLeftHanded } = useDominantHand()
 
     return (
@@ -39,7 +41,11 @@ function TrickNameCard({ title="", thumbnail="", href="", badge="" }: TrickNameC
                     <h2 className="font-semibold ">
                         {title}
                     </h2>
-                    <DifficultyBadge badge={badge}/>
+                    <div className="flex flex-row justify-between">
+                        <DifficultyBadge badge={badge}/>
+                        <FamilyBadge families={families} />
+                    </div>
+                    
                     
             </div>
         </Link>
