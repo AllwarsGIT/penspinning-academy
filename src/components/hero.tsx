@@ -23,7 +23,7 @@ function Hero() {
                     ref={subtitleRef}
                     className={`md:text-xl text-gray-400 transition-all duration-1300 delay-400 ${subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
-                    Aiming to be the most powerful resource to learn penspinning
+                    The website to learn penspinning online step by step.
                 </p>
                 <div 
                     ref={buttonRef}
