@@ -27,19 +27,19 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: "Penspinning Academy",
-    description: "Aiming to be the most powerful resource to learn penspinning.",
+    description: "The website to learn penspinning online step by step.",
     openGraph: {
         title: "Penspinning Academy",
-        description: "Aiming to be the most powerful resource to learn penspinning.",
+        description: "The website to learn penspinning online step by step.",
         url: "https://penspinning-academy.vercel.app",
         siteName: "Penspinning Academy",
-        images: [{ url: "/logo.svg", width: 1200, height: 630 }],
+        images: [{ url: "/favicon.png", width: 1200, height: 630 }],
     },
     twitter: {
         card: "summary_large_image",
         title: "Penspinning Academy",
-        description: "Aiming to be the most powerful resource to learn penspinning.",
-        images: ["/logo.svg"],
+        description: "The website to learn penspinning online step by step.",
+        images: ["/favicon.png"],
     }
 }
 
