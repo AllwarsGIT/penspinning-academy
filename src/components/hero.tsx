@@ -9,7 +9,7 @@ function Hero() {
 
     return (
         <section className="relative flex flex-col items-center justify-center min-h-180 max-h-[60vh] overflow-hidden mt-16">
-            <video className="absolute inset-0 w-full h-full object-cover" src="/psaIntro.mp4" autoPlay muted loop playsInline />
+            <video className="absolute inset-0 w-full h-full object-cover" src="/psaIntroFinal.mov" autoPlay muted loop playsInline />
             <div className="absolute inset-0 bg-black/50" />
             
             <div className="relative z-10 flex flex-col items-center gap-4 text-center">

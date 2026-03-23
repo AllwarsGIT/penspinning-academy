@@ -4,6 +4,8 @@ import { FiMenu } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
 import { useState } from 'react';
 import { useRouter, usePathname } from "next/navigation"
+import LogoSrc from "../../public/logo.svg"
+import Image from "next/image"
 import DarkmodeButton from './darkmodeButton';
 import DominantHandButton from './dominantHandButton';
 import Link from 'next/link';
@@ -27,9 +29,9 @@ function Header () {
             <nav className="flex items-center justify-between mx-auto w-full h-16 ">
 
                 {/* Header logo */}
-                <div className="bg-blue-300 w-12 h-12 rounded-full flex items-center justify-center">
+                <div className=" w-16 h-full rounded-full flex items-center justify-center hover:scale-125 transition-all duration-500 ease-in-out">
                     <Link href="/">
-                        <h1 className="text-xl font-bold text-white">PSA</h1>
+                        <Image src={LogoSrc} width={70} height={70} alt="Logo" className="dark:invert"/>
                     </Link>
                     
                 </div>
