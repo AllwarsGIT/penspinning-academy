@@ -3,6 +3,7 @@ export type Instance = {
     idTrickName: string
     modifiers: string[]
     difficulty: string
+    thumbnail: string
 }
 
 export type Trick = {

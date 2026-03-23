@@ -21,18 +21,16 @@ function TrickNameList({ difficulty, trickNames, trickInstances }: TrickNameList
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
             {trickNames.map(trick => {
-                const hasInstance = validInstances.some(i =>
-                    i.idTrickName === trick.slug  // o trick.id según cómo relaciones
-                )
+                const instanceForTrick = validInstances.find(i => i.idTrickName === trick.slug)
 
-                if (!hasInstance) return null
+                if (!instanceForTrick) return null
 
                 return (
                     <TrickNameCard
-                        key={trick.slug} // mejor usar slug único
+                        key={trick.slug}
                         href={`/tricks/${trick.slug}`}
                         title={trick.name}
-                        thumbnail="/learnPortraitUpscaled.jpeg"
+                        thumbnail={instanceForTrick.thumbnail || "/defaultThumbnail.jpeg"} // <--- aquí la thumbnail
                         badge={difficulty}
                         families={trick.families}
                     />

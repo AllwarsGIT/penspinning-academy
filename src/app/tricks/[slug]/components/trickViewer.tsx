@@ -309,7 +309,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 <div className="max-w-400 mx-auto w-full">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Trick family</h1>
-                        <InfoToolTip text={"Families are classifficatios of tricks that share the same mechanics."}/>
+                        <InfoToolTip text={"Families are classiffications of tricks that share the same mechanics."}/>
                         {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
                     </div>
                     <div className="flex flex-row gap-1 text-xl justify-center">
