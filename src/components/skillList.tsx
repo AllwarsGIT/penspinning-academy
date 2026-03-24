@@ -5,7 +5,7 @@ const skillRanges = [
     {   
         number: 1,
         name: "Fundamentals",
-        description: "Welcome to the hobby! On this level, you will learn the 4 fundamental tricks, these tricks are required for all the future tricks you learn. How well you learn these tricks will determine how easily you can learn future tricks. Have fun! ",
+        description: "Welcome to the hobby! On this level, you will learn the fundamental tricks, these tricks are required for all the future tricks you learn. How well you learn these tricks will determine how easily you can learn future tricks. Have fun! ",
         color: "#3b82f6",
         active: true
     },
