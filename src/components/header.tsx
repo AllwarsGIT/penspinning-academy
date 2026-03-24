@@ -53,14 +53,14 @@ function Header () {
                                 Learn
                             </Link>
                         </li>
-                        <li className={`h-full cursor-pointer flex items-center border-b-2 transition-all duration-300 ease-in-out group ${pathname === "/tricks" ? "border-black dark:border-white" : "border-transparent hover:border-black dark:hover:border-white"}`}>
+                        {/* <li className={`h-full cursor-pointer flex items-center border-b-2 transition-all duration-300 ease-in-out group ${pathname === "/tricks" ? "border-black dark:border-white" : "border-transparent hover:border-black dark:hover:border-white"}`}>
                             <Link 
                                 className={`h-full flex items-center px-4 text-lg font-medium transition-colors duration-300 ${pathname === "/tricks" ? "text-black dark:text-white" : "text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
                                 href="/tricks"
                             >
                                 Tricks
                             </Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 
@@ -104,11 +104,11 @@ function Header () {
                                 <h1 className="text-xl font-bold">Learn Pen Spinning</h1>
                             </button>
                         </li>
-                        <li className="w-full  flex items-center hover:bg-gray-400 animation-all ease-in-out duration-500 justify-center  ">
+                        {/* <li className="w-full  flex items-center hover:bg-gray-400 animation-all ease-in-out duration-500 justify-center  ">
                             <button className="w-full h-full cursor-pointer py-4" onClick={() => handleNavClick("/tricks")}>
                                 <h1 className="text-xl font-bold">Tricks</h1>
                             </button>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 
