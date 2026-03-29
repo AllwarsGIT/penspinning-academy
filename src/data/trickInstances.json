@@ -393,6 +393,296 @@
                 }
             ],
             "tags": [""]
+        },
+        {
+            "idTrickName": "finger-pass",
+            "modifiers": ["normal"],
+            "difficulty":"fundamental",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/fingerpass.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/0.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/6.mp4", 
+                    "type": "step" ,
+                    "order": 6
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/7.mp4", 
+                    "type": "step" ,
+                    "order": 7
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/8.mp4", 
+                    "type": "step" ,
+                    "order": 8
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/9.mp4", 
+                    "type": "step" ,
+                    "order": 9
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/10.mp4", 
+                    "type": "step" ,
+                    "order": 10
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Regular/11.mp4", 
+                    "type": "step" ,
+                    "order": 11
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "finger-pass",
+            "modifiers": ["reverse"],
+            "difficulty":"fundamental",
+            "thumbnail": "",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/0.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/6.mp4", 
+                    "type": "step" ,
+                    "order": 6
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/7.mp4", 
+                    "type": "step" ,
+                    "order": 7
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/8.mp4", 
+                    "type": "step" ,
+                    "order": 8
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/9.mp4", 
+                    "type": "step" ,
+                    "order": 9
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/10.mp4", 
+                    "type": "step" ,
+                    "order": 10
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/11.mp4", 
+                    "type": "step" ,
+                    "order": 11
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "half-tap",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Half%20tap/half%20tap.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Half%20tap/Regular/0.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Half%20tap/Regular/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Half%20tap/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Half%20tap/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Half%20tap/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "twisted-sonic",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/tw%20sonic.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Regular/0.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Regular/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Regular/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "twisted-sonic",
+            "modifiers": ["reverse"],
+            "difficulty":"beginner",
+            "thumbnail": "",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Reverse/0.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Reverse/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Reverse/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Reverse/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Reverse/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Reverse/5.mp4", 
+                    "type": "step" ,
+                    "order": 5
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "thumb-spin",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumbspin/thumbspin.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumbspin/Regular/0.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumbspin/Regular/1.mp4", 
+                    "type": "position" ,
+                    "order": 1
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumbspin/Regular/2.mp4", 
+                    "type": "step" ,
+                    "order": 2
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumbspin/Regular/3.mp4", 
+                    "type": "step" ,
+                    "order": 3
+                },
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Thumbspin/Regular/4.mp4", 
+                    "type": "step" ,
+                    "order": 4
+                }
+            ],
+            "tags": [""]
         }
         
     ]

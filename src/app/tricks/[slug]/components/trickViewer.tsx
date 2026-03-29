@@ -241,13 +241,13 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             </div>
 
             {/* Toggles section */}
-            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
-                <div className="max-w-400 mx-auto w-full">
-                    <div className="flex items-center mb-5">
-                        <h1 className="font-inter text-2xl ">Modifiers</h1>
-                        <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
-                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
-                    </div>
+            {availableModifiers.length > 0 && (
+                <div className="px-5 py-7 w-full flex flex-col gap-5 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
+                    <div className="max-w-400 mx-auto w-full">
+                        <div className="flex items-center mb-5">
+                            <h1 className="font-inter text-2xl">Modifiers</h1>
+                            <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
+                        </div>
                         <div className="py-2">
                             {availableModifiers.map(mod => (
                                 <ModifierToggle
@@ -259,9 +259,9 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                                 />
                             ))}
                         </div>
+                    </div>
                 </div>
-
-            </div>
+            )}
 
             {/* Notation section */}
             <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out "> 

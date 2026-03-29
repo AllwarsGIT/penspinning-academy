@@ -33,6 +33,34 @@
         "name": "Thumb Around",
         "notation":"TA",
         "families": ["around"]
+    },
+    {
+        "id": "finger-pass",
+        "slug": "finger-pass",
+        "name": "Finger Pass",
+        "notation":"FP",
+        "families": ["pass"]
+    },
+    {
+        "id": "half-tap",
+        "slug": "half-tap",
+        "name": "Half Tap",
+        "notation":"Half Tap",
+        "families": ["tap"]
+    },
+    {
+        "id": "twisted-sonic",
+        "slug": "twisted-sonic",
+        "name": "Twisted Sonic",
+        "notation":"Tw Sonic",
+        "families": ["sonic"]
+    },
+    {
+        "id": "thumb-spin",
+        "slug": "thumb-spin",
+        "name": "Thumb Spin",
+        "notation":"Thumb Spin",
+        "families": ["spin"]
     }
     
     

@@ -6,17 +6,20 @@ type InfoCardProps = {
     description: string,
     color: string,
     active: boolean
+    onClick?: () => void
 }
 
-function InfoCard({ number=0 ,name="", description="", color="", active=false }: InfoCardProps) {
+function InfoCard({ number=0 ,name="", description="", color="", active=false, onClick  }: InfoCardProps) {
     return (
         <div 
-            className="group relative rounded-xl p-6 transition-all duration-500 h-full"
+            className={`group relative rounded-xl p-6 transition-all duration-500 h-full ${active ? 'cursor-pointer' : ''}`}
+            onClick={onClick}
             style={{ 
-                border: active ? `1px solid ${color}`: `1px solid ${color}50` ,
+                border: active ? `1px solid ${color}` : `1px solid ${color}50`,
                 backgroundColor: `${color}15`,
             }}
-            
+            onMouseEnter={e => { if (active) e.currentTarget.style.backgroundColor = `${color}30` }}
+            onMouseLeave={e => { if (active) e.currentTarget.style.backgroundColor = `${color}15` }}
         >
             <div className="flex items-center gap-4 mb-3">
                 <span 

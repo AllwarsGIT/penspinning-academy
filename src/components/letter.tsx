@@ -1,8 +1,9 @@
 import React from 'react'
+import DiscordButton from "@/components/discordInvite"
 
 function Letter() {
     return (
-        <section className="w-full px-8 py-16 bg-white dark:bg-black transition-colors duration-500 flex justify-center">
+        <section className=" flex flex-col w-full px-8 py-16 bg-white dark:bg-black transition-colors duration-500 items-center justify-center">
             <div className="max-w-2xl w-full flex flex-col gap-6">
                 <h2 className="text-2xl font-bold font-inter">To the penspinning community</h2>
                 <div className="flex flex-col gap-4 text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
@@ -15,6 +16,16 @@ function Letter() {
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-500 italic">— Allwars</p>
             </div>
+
+            <div className="max-w-2xl w-full flex flex-col gap-6 mt-15">
+                <h3 className="text-2xl font-bold font-inter">Join the community!</h3>
+                <div className="flex flex-col gap-4 justify-center">
+                    <DiscordButton inviteCode="tucodigodeinvite" label="Planet Pen Spinning" />
+                    <DiscordButton inviteCode="tucodigodeinvite" label="SPSC - Spanish Pen Spinning Community"/>
+                </div>
+            </div>
+            
+            
         </section>
     )
 }

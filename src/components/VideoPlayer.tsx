@@ -1,6 +1,6 @@
 "use client"
-import { useRef, useState } from "react"
-import { IoIosPause, IoIosPlay  } from "react-icons/io";
+import { useRef, useState, useEffect } from "react"
+import { IoIosPause, IoIosPlay } from "react-icons/io"
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md"
 
 type VideoPlayerProps = {
@@ -11,10 +11,24 @@ type VideoPlayerProps = {
 export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+    const progressRef = useRef<HTMLDivElement>(null)
+    const isDragging = useRef(false)
+
     const [isFullscreen, setIsFullscreen] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const [progress, setProgress] = useState(0)
     const [speed, setSpeed] = useState(1)
+
+    // Limpia el drag si el ratón sale de la ventana o suelta en cualquier sitio
+    useEffect(() => {
+        const stopDragging = () => { isDragging.current = false }
+        window.addEventListener("mouseup", stopDragging)
+        document.addEventListener("mouseleave", stopDragging)
+        return () => {
+            window.removeEventListener("mouseup", stopDragging)
+            document.removeEventListener("mouseleave", stopDragging)
+        }
+    }, [])
 
     const togglePlay = () => {
         if (!videoRef.current) return
@@ -33,16 +47,43 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
     }
 
     const handleTimeUpdate = () => {
-        if (!videoRef.current) return
+        if (!videoRef.current || isDragging.current) return
         const percent = (videoRef.current.currentTime / videoRef.current.duration) * 100
         setProgress(percent)
     }
 
-    const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!videoRef.current) return
-        const rect = e.currentTarget.getBoundingClientRect()
-        const percent = (e.clientX - rect.left) / rect.width
+    const seekToPercent = (clientX: number) => {
+        if (!videoRef.current || !progressRef.current) return
+        const rect = progressRef.current.getBoundingClientRect()
+        const percent = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1)
         videoRef.current.currentTime = percent * videoRef.current.duration
+        setProgress(percent * 100)
+    }
+
+    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.preventDefault()
+        isDragging.current = true
+        seekToPercent(e.clientX)
+    }
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!isDragging.current) return
+        seekToPercent(e.clientX)
+    }
+
+    // Touch support
+    const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        isDragging.current = true
+        seekToPercent(e.touches[0].clientX)
+    }
+
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (!isDragging.current) return
+        seekToPercent(e.touches[0].clientX)
+    }
+
+    const handleTouchEnd = () => {
+        isDragging.current = false
     }
 
     const handleFullscreen = () => {
@@ -57,10 +98,12 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
     }
 
     return (
-        <div 
-            className="relative w-full h-full bg-black group"
+        <div
             ref={containerRef}
-            >
+            className="relative w-full h-full bg-black group"
+            onMouseMove={handleMouseMove}
+            onMouseUp={() => { isDragging.current = false }}
+        >
             <video
                 ref={videoRef}
                 src={url}
@@ -70,20 +113,32 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
                 onClick={togglePlay}
                 playsInline
             />
-            
+
             {/* Controls */}
             <div className={`absolute bottom-0 left-0 right-0 px-4 py-3 bg-linear-to-t from-black/70 to-transparent transition-opacity duration-300 ${
                 isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
             }`}>
-                
+
                 {/* Progress bar */}
-                <div 
-                    className="w-full h-1 bg-gray-600 rounded-full cursor-pointer mb-3"
-                    onClick={handleProgressClick}
+                <div
+                    ref={progressRef}
+                    className="relative w-full h-4 flex items-center cursor-pointer mb-3"
+                    onMouseDown={handleMouseDown}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                 >
-                    <div 
-                        className="h-full bg-white rounded-full"
-                        style={{ width: `${progress}%` }}
+                    {/* Track */}
+                    <div className="absolute w-full h-1 bg-gray-600 rounded-full">
+                        <div
+                            className="h-full bg-white rounded-full"
+                            style={{ width: `${progress}%` }}
+                        />
+                    </div>
+                    {/* Thumb */}
+                    <div
+                        className="absolute w-3 h-3 bg-white rounded-full shadow-md -translate-x-1/2 pointer-events-none"
+                        style={{ left: `${progress}%` }}
                     />
                 </div>
 
@@ -93,26 +148,18 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
                         {isPlaying ? <IoIosPause size={25} /> : <IoIosPlay size={25} />}
                     </button>
                     <div className="flex gap-2">
-                        <button 
-                            onClick={() => setPlaybackSpeed(1)} 
-                            className={`cursor-pointer text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 1 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
-                        >
-                           1.0x
-                        </button>
-                        <button 
-                            onClick={() => setPlaybackSpeed(0.5)} 
-                            className={`cursor-pointer text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 0.5 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
-                        >
-                            0.5x
-                        </button>
-                        <button 
-                            onClick={() => setPlaybackSpeed(0.25)} 
-                            className={`cursor-pointer text-xs font-mono px-2 py-0.5 rounded border transition-colors ${speed === 0.25 ? "border-white text-white" : "border-gray-500 text-gray-400"}`}
-                        >
-                            0.25x
-                        </button>
+                        {[1, 0.5, 0.25].map((s) => (
+                            <button
+                                key={s}
+                                onClick={() => setPlaybackSpeed(s)}
+                                className={`cursor-pointer text-xs font-mono px-2 py-0.5 rounded border transition-colors ${
+                                    speed === s ? "border-white text-white" : "border-gray-500 text-gray-400"
+                                }`}
+                            >
+                                {s}x
+                            </button>
+                        ))}
                     </div>
-                    
                     <button onClick={handleFullscreen} className="cursor-pointer text-white">
                         {isFullscreen ? <MdFullscreenExit size={20} /> : <MdFullscreen size={20} />}
                     </button>

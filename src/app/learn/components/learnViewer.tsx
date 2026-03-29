@@ -32,6 +32,17 @@ type LearnViewerProps = {
 
 
 function TricksPage({ instance, trick }:LearnViewerProps) {
+
+    const handleSkillClick = (name: string) => {
+        const el = document.getElementById(name.toLowerCase())
+        console.log("el:", el)
+        console.log("lenis:", window.__lenis)
+        if (!el) return
+        window.__lenis?.scrollTo(el, { offset: -80 })
+    }
+
+        
+
     return (
         <div className="w-full min-h-[calc(100vh-64px)] ">
 
@@ -54,7 +65,7 @@ function TricksPage({ instance, trick }:LearnViewerProps) {
             {/* Skill range block */}
             <div className=" bg-whitePrimary dark:bg-blackPrimary w-full min-h-1/6 p-5 py-10 flex flex-col justify-center items-center transition-colors ease-in-out duration-500 ">
                 <h2 className="text-3xl p-5 font-inter">Skill levels</h2>
-                <SkillList />
+                <SkillList onSkillClick={handleSkillClick}/>
             </div>
 
 
@@ -73,16 +84,16 @@ function TricksPage({ instance, trick }:LearnViewerProps) {
                         trickNames={trick}
                         trickInstances={instance}
                     />
-
-
                 </section>
 
-                {/* <section id="beginner" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
-                    <h1 className="text-2xl font-bold">Beginner</h1>
-                    <TrickNameList difficulty="beginner"/>
-
-
-                </section> */}
+                <section id="beginner" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
+                    <h1 className="py-5 text-2xl font-bold">Beginner</h1>
+                    <TrickNameList
+                        difficulty="beginner"
+                        trickNames={trick}
+                        trickInstances={instance}
+                    />
+                </section>
 
             </div>
 

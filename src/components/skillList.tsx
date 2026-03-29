@@ -14,7 +14,7 @@ const skillRanges = [
         name: "Beginner",
         description:"Congratulations! You already know all the fundamental tricks, now its time to build up a solid base with some new tricks. It is also recommended to learn the reverse version of the fundamentals before advancing to this level.",
         color: "#22c55e",
-        active: false
+        active: true
     },
     {
         number: 3,
@@ -39,7 +39,13 @@ const skillRanges = [
     }
 ]
 
-function skillList() {
+
+type SkillListProps = {
+    onSkillClick: (name: string) => void
+}
+
+// Reason this is done in this way is to avoid overcomplexity due to only being 5 skill lists, if it grows ill refactor
+function skillList({ onSkillClick }: SkillListProps) {
     return (
         <>
             <div className="flex flex-col items-center justify-center  gap-4 max-w-7xl">
@@ -51,6 +57,7 @@ function skillList() {
                         description={range.description} 
                         color={range.color}
                         active={range.active}
+                        onClick={() => onSkillClick(range.name)}
                     />
              ))}
             </div>
