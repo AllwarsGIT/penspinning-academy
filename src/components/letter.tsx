@@ -20,8 +20,8 @@ function Letter() {
             <div className="max-w-2xl w-full flex flex-col gap-6 mt-15">
                 <h3 className="text-2xl font-bold font-inter">Join the community!</h3>
                 <div className="flex flex-col gap-4 justify-center">
-                    <DiscordButton inviteCode="tucodigodeinvite" label="Planet Pen Spinning" />
-                    <DiscordButton inviteCode="tucodigodeinvite" label="SPSC - Spanish Pen Spinning Community"/>
+                    <DiscordButton inviteCode="YvV3hSPen" label="Planet Pen Spinning" />
+                    <DiscordButton inviteCode="c83J3mPw" label="SPSC - Spanish Pen Spinning Community"/>
                 </div>
             </div>
             
