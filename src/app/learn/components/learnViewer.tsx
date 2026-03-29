@@ -35,12 +35,10 @@ function TricksPage({ instance, trick }:LearnViewerProps) {
 
     const handleSkillClick = (name: string) => {
         const el = document.getElementById(name.toLowerCase())
-        console.log("el:", el)
-        console.log("lenis:", window.__lenis)
         if (!el) return
-        window.__lenis?.scrollTo(el, { offset: -80 })
+        const top = el.getBoundingClientRect().top + window.scrollY - 80
+        window.scrollTo({ top, behavior: "smooth" })
     }
-
         
 
     return (
