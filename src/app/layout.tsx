@@ -33,13 +33,13 @@ export const metadata: Metadata = {
         description: "The website to learn penspinning online step by step.",
         url: "https://penspinning-academy.vercel.app",
         siteName: "Penspinning Academy",
-        images: [{ url: "/public/learnPortraitUpscaled.jpeg", width: 1200, height: 630 }],
+        // images: [{ url: "/public/learnPortraitUpscaled.jpeg", width: 1200, height: 630 }],
     },
     twitter: {
         card: "summary_large_image",
         title: "Penspinning Academy",
         description: "The website to learn penspinning online step by step.",
-        images: ["/public/learnPortraitUpscaled.jpeg"],
+        // images: ["/public/learnPortraitUpscaled.jpeg"],
     }
 }
 
