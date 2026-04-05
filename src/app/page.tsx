@@ -1,5 +1,6 @@
 import Hero from "@/components/hero";
 import Letter from "@/components/letter";
+import { Analytics } from '@vercel/analytics/next';
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <main className="">
         <Hero />
         <Letter />
+        <Analytics />
       </main>
     </>
   );
