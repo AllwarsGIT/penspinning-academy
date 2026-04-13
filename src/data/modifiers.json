@@ -3,31 +3,38 @@
             "id": "normal",
             "name": "Normal",
             "notation": null,
-            "position": null,
-            "category": "direction"
+            "position": null
         },
         {
             "id": "reverse",
             "name": "Reverse",
             "notation": "Rev",
-            "position": "suffix",
-            "category": "direction"
+            "position": "suffix"
 
         },
         {
             "id": "inverse",
             "name": "Inverse",
             "notation": "Inv",
-            "position": "prefix",
-            "category": "trick-orientation"
+            "position": "prefix"
 
         },
         {
             "id": "fingerless",
             "name": "Fingerless",
             "notation": "Fl",
-            "position": "prefix",
-            "category": "impulse"
-
+            "position": "prefix"
+        },
+        {
+            "id": "curled",
+            "name": "Curled",
+            "notation": "Curled",
+            "position": "prefix"
+        },
+        {
+            "id": "mirrored",
+            "name": "Mirrored",
+            "notation": "Mirr",
+            "position": "prefix"
         }
     ]

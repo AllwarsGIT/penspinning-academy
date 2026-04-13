@@ -10,7 +10,7 @@ const difficultyColor: Record<string, string> = {
     beginner: "#22c55e",
     intermediate: "#eab308",
     advanced: "#f97316",
-    expert: "#ef4444"
+    expert: "#8b5cf6"
 }
 
 function DifficultyBadge({ badge="" }:DifficultyBadgeProps) {

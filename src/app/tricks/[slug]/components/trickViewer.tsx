@@ -9,7 +9,7 @@ import ModifierToggle from "./modifierToggle"
 import DifficultyBadge from "@/components/difficultyBadge"
 import InfoToolTip from "@/components/InfoToolTip"
 import VideoPlayer from "@/components/VideoPlayer"
-import FamilyBadge from '@/components/familyBadge'
+import { modifierColor } from "@/app/constants/modifiers"
 
 
 
@@ -42,11 +42,7 @@ type TrickViewerProps = {
         position: string | null }[]
 }
 
-const modifierColor: Record<string, string> = {
-    reverse: "#22c55e",
-    inverse: "#6366f1",
-    fingerless: "#f97316"
-}
+
 
 function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
@@ -87,8 +83,15 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
     const toggleModifier = (id: string) => {
         const newIds = activeModifierIds.includes(id) 
-        ? activeModifierIds.filter(m => m !== id) 
-        : [...activeModifierIds, id]
+            ? activeModifierIds.filter(m => m !== id) 
+            : [...activeModifierIds, id]
+        
+        const combinationExists = instance.some(i =>
+            newIds.every(id => i.modifiers.includes(id)) &&
+            i.modifiers.every(m => m === "normal" || newIds.includes(m))
+        ) || newIds.length === 0
+
+        if (!combinationExists) return
         
         setActiveModifierIds(newIds)
         setActiveVideo("main")
@@ -249,15 +252,30 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                             <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
                         </div>
                         <div className="py-2">
-                            {availableModifiers.map(mod => (
-                                <ModifierToggle
-                                    key={mod.id}
-                                    modifierId={mod.id}
-                                    isActive={activeModifierIds.includes(mod.id)}
-                                    onToggle={toggleModifier}
-                                    options={["Normal", mod.name]}
-                                />
-                            ))}
+                            {availableModifiers.map(mod => {
+                                
+                                const wouldBeIds = activeModifierIds.includes(mod.id)
+                                    ? activeModifierIds.filter(m => m !== mod.id)
+                                    : [...activeModifierIds, mod.id]
+                                
+                                const combinationExists = instance.some(i =>
+                                    wouldBeIds.every(id => i.modifiers.includes(id)) &&
+                                    i.modifiers.every(m => m === "normal" || wouldBeIds.includes(m))
+                                )
+                                console.log(combinationExists, wouldBeIds)
+
+                                return (
+                                    
+                                    <ModifierToggle
+                                        key={mod.id}
+                                        modifierId={mod.id}
+                                        isActive={activeModifierIds.includes(mod.id)}
+                                        onToggle={toggleModifier}
+                                        options={["Normal", mod.name]}
+                                        disabled={!combinationExists}
+                                    />
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

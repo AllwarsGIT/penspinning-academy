@@ -3,25 +3,8 @@ import React from "react"
 import Image from "next/image"
 import SkillList from "@/components/skillList"
 import TrickNameList from "@/components/trickNameList"
+import { Instance, Trick, Modifier } from "@/types/types"
 
-type Instance = {
-    idTrickName: string
-    modifiers: string[]
-    difficulty: string
-    thumbnail: string
-}
-
-type Trick = {
-    name: string,
-    slug:string,
-    families: string[]
-}
-type Modifier ={
-
-    id: string,
-    name: string
-
-}
 
 type LearnViewerProps = {
     instance: Instance[]
@@ -31,7 +14,7 @@ type LearnViewerProps = {
 }
 
 
-function TricksPage({ instance, trick }:LearnViewerProps) {
+function TricksPage({ instance, trick, modifiers }:LearnViewerProps) {
 
     const handleSkillClick = (name: string) => {
         const el = document.getElementById(name.toLowerCase())
@@ -81,6 +64,7 @@ function TricksPage({ instance, trick }:LearnViewerProps) {
                         difficulty="fundamental"
                         trickNames={trick}
                         trickInstances={instance}
+                        modifiers={modifiers}
                     />
                 </section>
 
@@ -90,8 +74,19 @@ function TricksPage({ instance, trick }:LearnViewerProps) {
                         difficulty="beginner"
                         trickNames={trick}
                         trickInstances={instance}
+                        modifiers={modifiers}
                     />
                 </section>
+
+                {/* <section id="expert" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
+                    <h1 className="py-5 text-2xl font-bold">Expert</h1>
+                    <TrickNameList
+                        difficulty="expert"
+                        trickNames={trick}
+                        trickInstances={instance}
+                        modifiers={modifiers}
+                    />
+                </section> */}
 
             </div>
 

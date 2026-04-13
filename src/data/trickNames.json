@@ -59,8 +59,29 @@
         "id": "thumb-spin",
         "slug": "thumb-spin",
         "name": "Thumb Spin",
-        "notation":"Thumb Spin",
+        "notation":"Thumbspin",
         "families": ["spin"]
+    },
+    {
+        "id": "neo-sonic",
+        "slug": "neo-sonic",
+        "name": "Neo Sonic",
+        "notation":"Neo Sonic",
+        "families": ["pass", "around"]
+    },
+    {
+        "id": "palm-spin",
+        "slug": "palm-spin",
+        "name": "Palm Spin",
+        "notation":"Palmspin",
+        "families": ["spin"]
+    },
+    {
+        "id": "power-pass",
+        "slug": "power-pass",
+        "name": "Power Pass",
+        "notation":"PP",
+        "families": ["pass", "around"]
     }
     
     

@@ -2,6 +2,7 @@
 export type Instance = {
     idTrickName: string
     modifiers: string[]
+    isBase?: boolean
     difficulty: string
     thumbnail: string
 }
@@ -16,4 +17,6 @@ export type Trick = {
 export type Modifier = {
     id: string
     name: string
+    notation: string | null
+    position: string | null
 }

@@ -1,22 +1,37 @@
 import React from 'react'
 import { useDominantHand } from "@/app/providers/dominantHandProvider"
-
 import Link from "next/link"
 import Image from "next/image"
 import DifficultyBadge from "@/components/difficultyBadge"
 import FamilyBadge from './familyBadge'
+import { Modifier, Instance } from '@/types/types'
+import { modifierColor } from "@/app/constants/modifiers"
 
 type TrickNameCardProps = {
-    title: string,
+    trickName: string,
     thumbnail: string,
-    href: string,
     badge?: string
-    families: string[]
+    families: string[],
+    modifiers: Modifier[],
+    instance: Instance
 }
 
-
-function TrickNameCard({ title="", thumbnail="", href="", badge="", families=[""] }: TrickNameCardProps) {
+function TrickNameCard({ trickName="", thumbnail="", badge="", families=[""], modifiers=[], instance }: TrickNameCardProps) {
+    
     const { isLeftHanded } = useDominantHand()
+
+    const extraModifiers = instance.modifiers.filter(m => m !== "normal")
+    const href = extraModifiers.length > 0
+        ? `/tricks/${instance.idTrickName}?modifiers=${extraModifiers.join(",")}`
+        : `/tricks/${instance.idTrickName}`
+
+    const prefixMods = instance.modifiers
+        .map(id => modifiers.find(m => m.id === id))
+        .filter(m => m?.position === "prefix")
+
+    const suffixMods = instance.modifiers
+        .map(id => modifiers.find(m => m.id === id))
+        .filter(m => m?.position === "suffix")
 
     return (
         <Link 
@@ -27,7 +42,7 @@ function TrickNameCard({ title="", thumbnail="", href="", badge="", families=[""
                 {thumbnail ? (
                     <Image 
                         src={thumbnail} 
-                        alt={title}
+                        alt={trickName}
                         style={{transform:isLeftHanded ? 'none' : 'scaleX(-1)'}}
                         fill
                         className="w-full h-full object-cover"
@@ -35,22 +50,30 @@ function TrickNameCard({ title="", thumbnail="", href="", badge="", families=[""
                 ) : (
                     <div className="w-full h-full bg-gray-200 dark:bg-gray-800" />
                 )}
-                
             </div>
             <div className="p-3 flex flex-col gap-2 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
-                    <h2 className="font-semibold ">
-                        {title}
-                    </h2>
-                    <div className="flex flex-row justify-between">
-                        <DifficultyBadge badge={badge}/>
+                <h2 className="font-semibold flex flex-row flex-wrap gap-1">
+                    {prefixMods.map(m => (
+                        <span key={m!.id} style={{ color: modifierColor[m!.id] }}>
+                            [{m!.name}]
+                        </span>
+                    ))}
+                    <span>{trickName}</span>
+                    {suffixMods.map(m => (
+                        <span key={m!.id} style={{ color: modifierColor[m!.id] }}>
+                            [{m!.name}]
+                        </span>
+                    ))}
+                </h2>
+                <div className="flex flex-row justify-between">
+                    <DifficultyBadge badge={badge}/>
+                    <div className="flex flex-row">
                         <FamilyBadge families={families} />
                     </div>
-                    
-                    
+                </div>
             </div>
         </Link>
     )
 }
 
 export default TrickNameCard
-

@@ -8,13 +8,14 @@ type TrickNameListProps = {
     difficulty?: string
     trickNames: Trick[]
     trickInstances: Instance[]
+    modifiers: Modifier[]
 }
 
 
-function TrickNameList({ difficulty, trickNames, trickInstances }: TrickNameListProps) {
+function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: TrickNameListProps) {
 
     const validInstances = trickInstances.filter(i =>
-        i.modifiers.includes("normal") &&
+        (i.modifiers.includes("normal") || i.isBase === true) &&
         (!difficulty || i.difficulty === difficulty)
     )
 
@@ -28,11 +29,12 @@ function TrickNameList({ difficulty, trickNames, trickInstances }: TrickNameList
                 return (
                     <TrickNameCard
                         key={trick.slug}
-                        href={`/tricks/${trick.slug}`}
-                        title={trick.name}
-                        thumbnail={instanceForTrick.thumbnail || "/defaultThumbnail.jpeg"} // <--- aquí la thumbnail
+                        trickName={trick.name}
+                        thumbnail={instanceForTrick.thumbnail || "/defaultThumbnail.jpeg"}
                         badge={difficulty}
                         families={trick.families}
+                        modifiers={modifiers}
+                        instance={instanceForTrick}
                     />
                 )
             })}

@@ -12,16 +12,15 @@ function FamilyBadge({ families=[""] }:FamilyBadgeProps) {
 
     return (
         <>
-           {families && (
+           {families && families.map((family, i) => (
                 <span 
+                    key={i}
                     className="text-xs uppercase tracking-widest font-mono w-fit px-2 py-0.5 rounded-full"
-                    style={{ 
-                        color: "#6b7280",
-                    }}
+                    style={{ color: "#6b7280" }}
                 >
-                    {families}
+                    {family}
                 </span>
-            )} 
+            ))}
         </>
     )
 }
