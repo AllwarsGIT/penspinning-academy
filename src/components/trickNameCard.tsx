@@ -36,16 +36,21 @@ function TrickNameCard({ trickName="", thumbnail="", badge="", families=[""], mo
     return (
         <Link 
             href={href} 
-            className="w-full rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-3 transition-all duration-300 ease-in-out"
-            scroll={false}>
+            className="w-full rounded-xl hover:-translate-y-1 overflow-hidden cursor-pointer group transition-all duration-200 ease-in-out"
+            style={{ boxShadow: '0 0 0 0 transparent' }}
+            onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 4px 0 0 #d1d5db' }}
+            onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 0 0 0 transparent' }}
+            scroll={false}
+        >
             <div className="w-full aspect-video relative overflow-hidden">
                 {thumbnail ? (
                     <Image 
                         src={thumbnail} 
                         alt={trickName}
-                        style={{transform:isLeftHanded ? 'none' : 'scaleX(-1)'}}
+                        style={{ transform: isLeftHanded ? 'none' : 'scaleX(-1)' }}
                         fill
                         className="w-full h-full object-cover"
+                        loading="eager"
                     />
                 ) : (
                     <div className="w-full h-full bg-gray-200 dark:bg-gray-800" />

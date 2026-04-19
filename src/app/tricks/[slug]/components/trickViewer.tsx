@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 import { useDominantHand } from "@/app/providers/dominantHandProvider"
+import { MdRefresh } from "react-icons/md"
+import { IoMdArrowRoundBack } from "react-icons/io"
 
 import ModifierToggle from "./modifierToggle"
 import DifficultyBadge from "@/components/difficultyBadge"
@@ -127,7 +129,79 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
     return (
         <div className="flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
-            {/* TODO video reacting to state */}
+
+             {/* Name */}
+            
+            <div className="sticky top-16 z-20 w-full px-5 py-4 flex justify-center items-center bg-white dark:bg-black backdrop-blur-md border-b border-gray-100 dark:border-zinc-900 transition-colors duration-500 ease-in-out">
+                <div className="relative w-full max-w-400 flex justify-center items-center">
+                    {/* Botón back alineado a la izquierda */}
+                    <button
+                        onClick={() => router.back()}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center px-3 py-2 rounded-xl transition-all duration-200 cursor-pointer"
+                        style={{ 
+                            backgroundColor: '#e5e7eb',
+                            boxShadow: '0 4px 0 0 #d1d5db'
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.9)' }}
+                        onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
+                    >
+                        <IoMdArrowRoundBack size={20} className="text-black" />
+                    </button>
+
+                    {/* Título centrado */}
+                    <div className="flex flex-col items-center px-16">
+                        <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1">
+                            <div className="justify-center items-center flex flex-row flex-wrap">
+                                <AnimatePresence>
+                                    {prefixMods.map((mod) => (
+                                        <motion.span
+                                            key={mod.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="font-bold"
+                                            style={{ color: modifierColor[mod.id] }}
+                                        >
+                                            [{mod.name}]
+                                        </motion.span>
+                                    ))}
+                                </AnimatePresence>
+                            </div>
+                            <span className="transition-all duration-300 ease-in-out">{trick.name}</span>
+                            <div className="flex flex-row">
+                                <AnimatePresence>
+                                    {suffixMods.map((mod) => (
+                                        <motion.span
+                                            key={mod.id}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="font-bold"
+                                            style={{ color: modifierColor[mod.id] }}
+                                        >
+                                            [{mod.name}]
+                                        </motion.span>
+                                    ))}
+                                </AnimatePresence>
+                            </div>
+                        </h1>
+                        <div className="pt-2">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeInstance?.difficulty}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0, y: 5 }}
+                                    transition={{ duration: 0.25 }}
+                                >
+                                    <DifficultyBadge badge={activeInstance?.difficulty}/>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {/* Video */}
             <div className="mt-16 bg-black w-full">
                 <AnimatePresence mode="wait">
@@ -150,65 +224,10 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 </AnimatePresence>
             </div>
 
-            {/* Name */}
-            
-            <div className="w-full px-5 py-7 flex flex-col  justify-center items-center  bg-white dark:bg-black transition-colors duration-500 ease-in-out">
-                        <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1">
-                            <div className="justify-center items-center flex flex-row flex-wrap ">
-                                <AnimatePresence>
-                                {prefixMods.map((mod) => (
-                                    <motion.span
-                                        key={mod.id}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ duration: 0.4 }}
-                                        className="font-bold"
-                                        style={{ color: modifierColor[mod.id] }}
-                                    >
-                                        [{mod.name}]
-                                    </motion.span>
-                                    
-                                ))}
-                                </AnimatePresence>
-                                
-                            </div>
-                            <span className="mx-auto transition-all duration-300 ease-in-out">{trick.name}</span>
-                            <div className="flex flex-row ">
-                                <AnimatePresence>
-                                {suffixMods.map((mod) => (
-                                    <motion.span
-                                        key={mod.id}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ duration: 0.4 }}
-                                        className="font-bold"
-                                        style={{ color: modifierColor[mod.id] }}
-                                    >
-                                        [{mod.name}]
-                                    </motion.span>
-                                ))}
-                                </AnimatePresence>
-                            </div>
-                        </h1>
-                        
-                <div className="pt-3 ">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeInstance?.difficulty}
-                                initial={{ opacity: 0, y: 0 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 5 }}
-                                transition={{ duration: 0.25 }}
-                                className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1"
-                            >
-                                <DifficultyBadge badge={activeInstance?.difficulty}/>
-                            </motion.div>
-                        </AnimatePresence>
-                </div>
-            </div>
+           
 
             {/* Step pagination */}
-            <div className="px-5 py-7 w-full bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out  ">
+            <div className="px-5 py-7 w-full bg-white dark:bg-black transition-colors duration-500 ease-in-out  ">
                 <div className="max-w-400 mx-auto ">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Steps</h1>
@@ -250,6 +269,18 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                         <div className="flex items-center mb-5">
                             <h1 className="font-inter text-2xl">Modifiers</h1>
                             <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
+                            {activeModifierIds.length > 0 && (
+                                <button
+                                    onClick={() => {
+                                        setActiveModifierIds([])
+                                        setActiveVideo("main")
+                                        router.replace(`/tricks/${trick.slug}`, { scroll: false })
+                                    }}
+                                    className="ml-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors cursor-pointer"
+                                >
+                                    <MdRefresh size={30} />
+                                </button>
+                            )}
                         </div>
                         <div className="py-2">
                             {availableModifiers.map(mod => {

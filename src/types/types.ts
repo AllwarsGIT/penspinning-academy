@@ -20,3 +20,10 @@ export type Modifier = {
     notation: string | null
     position: string | null
 }
+
+export type Difficulty = {
+    id: string
+    name: string
+    description: string
+    color: string
+}

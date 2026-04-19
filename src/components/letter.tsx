@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import DiscordButton from "@/components/discordInvite"
 
@@ -21,7 +22,7 @@ function Letter() {
                 <h3 className="text-2xl font-bold font-inter">Join the community!</h3>
                 <div className="flex flex-col gap-4 justify-center">
                     <DiscordButton inviteCode="YvV3hSPen" label="Planet Pen Spinning" />
-                    <DiscordButton inviteCode="c83J3mPw" label="SPSC - Spanish Pen Spinning Community"/>
+                    <DiscordButton inviteCode="KcYtDuTc" label="SPSC - Spanish Pen Spinning Community"/>
                 </div>
             </div>
             

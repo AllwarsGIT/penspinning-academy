@@ -1,96 +1,66 @@
 "use client"
 import React from "react"
-import Image from "next/image"
 import SkillList from "@/components/skillList"
-import TrickNameList from "@/components/trickNameList"
 import { Instance, Trick, Modifier } from "@/types/types"
-
+import Announcement from "./announcement"
+import { FaDiscord } from "react-icons/fa"
 
 type LearnViewerProps = {
     instance: Instance[]
     trick: Trick[]
     modifiers: Modifier[]
-    
 }
 
-
-function TricksPage({ instance, trick, modifiers }:LearnViewerProps) {
-
-    const handleSkillClick = (name: string) => {
-        const el = document.getElementById(name.toLowerCase())
-        if (!el) return
-        const top = el.getBoundingClientRect().top + window.scrollY - 80
-        window.scrollTo({ top, behavior: "smooth" })
-    }
-        
-
+function TricksPage({ instance, trick, modifiers }: LearnViewerProps) {
     return (
-        <div className="w-full min-h-[calc(100vh-64px)] ">
+        <div className="w-full min-h-[calc(100vh-64px)] mt-16 bg-whitePrimary dark:bg-blackPrimary *:transition-colors ease-in-out duration-500">
+            <div className="flex flex-row items-start max-w-screen-2xl mx-auto px-5 py-10 gap-8">
+                
+                {/* Sidebar izquierdo */}
+                <aside className="hidden xl:flex xl:w-72 shrink-0 sticky top-31 self-start flex-col gap-4">
+                    <Announcement
+                        title="Planet Pen Spinning"
+                        description="Join the planet pen spinning community on Discord to share your progress and get help."
+                        link="https://discord.gg/YvV3hSPen"
+                        linkLabel="Join Discord"
+                        icon={<FaDiscord size={18} />}
+                        color="#5865F2"
+                        shadowColor="#4752c499"
+                    />
+                    <Announcement
+                        title="SPSC"
+                        description="Únete a la comunidad hispanohablante de pen spinning!"
+                        link="https://discord.gg/KcYtDuTc"
+                        linkLabel="Join Discord"
+                        icon={<FaDiscord size={18} />}
+                        color="#5865F2"
+                        shadowColor="#4752c499"
+                    />
+                </aside>
 
-            {/* Hero */}
-            <div className="relative  mt-16  min-h-150 py-12 w-full flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black transition-all duration-500 ease-in-out">
-                <Image 
-                    src="/learnPortraitUpscaled.jpeg"
-                    alt="Learn Pen Spinning"
-                    fill
-                    priority
-                    sizes="100vw"
-                    className="object-cover opacity-60 "
-                />
-                <div className="relative z-10 flex flex-col justify-center items-center">
-                    <h1 className="text-center text-4xl md:text-6xl font-bold">Learn Pen Spinning</h1>
-                    <p className=" text-sm md:text-lg text-gray-800 dark:text-gray-300 mt-2">From fundamentals to expert tricks</p>
+                {/* Contenido principal */}
+                <div className="flex-1 flex flex-col gap-8 items-center">
+                    <div className="w-full bg-whitePrimary dark:bg-blackPrimary rounded-2xl p-5 flex flex-col justify-center items-center transition-colors ease-in-out duration-500">
+                        <SkillList />
+                    </div>
                 </div>
-            </div>
 
-            {/* Skill range block */}
-            <div className=" bg-whitePrimary dark:bg-blackPrimary w-full min-h-1/6 p-5 py-10 flex flex-col justify-center items-center transition-colors ease-in-out duration-500 ">
-                <h2 className="text-3xl p-5 font-inter">Skill levels</h2>
-                <SkillList onSkillClick={handleSkillClick}/>
-            </div>
-
-
-
-            <div className=" p-5 py-10 flex flex-col justify-center items-center gap-16 bg-white dark:bg-black transition-colors ease-in-out duration-500">
-                {/* <section id="intro" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
-                    <h1 className="py-5 text-2xl font-bold">Intro</h1>
-                        
-                    
-                </section> */}
-
-                <section id="fundamentals" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
-                    <h1 className="py-5 text-2xl font-bold">Fundamentals</h1>
-                    <TrickNameList
-                        difficulty="fundamental"
-                        trickNames={trick}
-                        trickInstances={instance}
-                        modifiers={modifiers}
+                {/* Sidebar derecho */}
+                <aside className="hidden xl:flex xl:w-72 shrink-0 sticky top-31 self-start flex-col gap-4">
+                    <Announcement
+                        title="NXGC"
+                        description="Check out the NeXTGen Cup! A pen spinning tournament for the new generation of spinners."
+                        link="https://discord.gg/4g7KSm9a"
+                        linkLabel="Join Discord"
+                        icon={<FaDiscord size={18} />}
+                        color="#5865F2"
+                        shadowColor="#4752c499"
                     />
-                </section>
-
-                <section id="beginner" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
-                    <h1 className="py-5 text-2xl font-bold">Beginner</h1>
-                    <TrickNameList
-                        difficulty="beginner"
-                        trickNames={trick}
-                        trickInstances={instance}
-                        modifiers={modifiers}
-                    />
-                </section>
-
-                {/* <section id="expert" className="flex flex-col w-full max-w-400 gap-4 scroll-mt-32">
-                    <h1 className="py-5 text-2xl font-bold">Expert</h1>
-                    <TrickNameList
-                        difficulty="expert"
-                        trickNames={trick}
-                        trickInstances={instance}
-                        modifiers={modifiers}
-                    />
-                </section> */}
+                </aside>
 
             </div>
-
         </div>
     )
 }
+
 export default TricksPage

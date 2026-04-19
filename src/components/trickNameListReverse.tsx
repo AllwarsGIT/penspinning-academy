@@ -3,18 +3,18 @@ import React, { useState, useEffect } from 'react'
 import TrickNameCard from "@/components/trickNameCard"
 import { Trick, Instance, Modifier } from "@/types/types"
 
-type TrickNameListProps = {
+type ReverseListProps = {
     difficulty?: string
     trickNames: Trick[]
     trickInstances: Instance[]
     modifiers: Modifier[]
 }
 
-function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: TrickNameListProps) {
+function TrickNameListReverse({ difficulty, trickNames, trickInstances, modifiers }: ReverseListProps) {
     const [allLoaded, setAllLoaded] = useState(false)
 
     const validInstances = trickInstances.filter(i =>
-        (i.modifiers.includes("normal") || i.isBase === true) &&
+        i.modifiers.includes("reverse") &&
         (!difficulty || i.difficulty === difficulty)
     )
 
@@ -24,16 +24,19 @@ function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: Tr
 
     useEffect(() => {
         if (visibleTricks.length === 0) return
-        const promises = visibleTricks.map(({ instance }) =>
-            new Promise<void>((resolve) => {
-                const thumbnail = instance!.thumbnail
+        const promises = visibleTricks.map(({ instance, trick }) => {
+            const baseInstance = trickInstances.find(i =>
+                i.idTrickName === trick.slug && i.modifiers.includes("normal")
+            )
+            return new Promise<void>((resolve) => {
+                const thumbnail = baseInstance?.thumbnail || instance!.thumbnail
                 if (!thumbnail) return resolve()
                 const img = new window.Image()
                 img.src = thumbnail
                 img.onload = () => resolve()
                 img.onerror = () => resolve()
             })
-        )
+        })
         Promise.all(promises).then(() => setAllLoaded(true))
     }, [])
 
@@ -54,20 +57,25 @@ function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: Tr
                         </div>
                     </div>
                 ))
-                : visibleTricks.map(({ trick, instance }) => (
-                    <TrickNameCard
-                        key={trick.slug}
-                        trickName={trick.name}
-                        thumbnail={instance!.thumbnail || "/defaultThumbnail.jpeg"}
-                        badge={difficulty}
-                        families={trick.families}
-                        modifiers={modifiers}
-                        instance={instance!}
-                    />
-                ))
+                : visibleTricks.map(({ trick, instance }) => {
+                    const baseInstance = trickInstances.find(i =>
+                        i.idTrickName === trick.slug && i.modifiers.includes("normal")
+                    )
+                    return (
+                        <TrickNameCard
+                            key={`${trick.slug}-reverse`}
+                            trickName={trick.name}
+                            thumbnail={baseInstance?.thumbnail || instance!.thumbnail || "/defaultThumbnail.jpeg"}
+                            badge={difficulty}
+                            families={trick.families}
+                            modifiers={modifiers}
+                            instance={instance!}
+                        />
+                    )
+                })
             }
         </div>
     )
 }
 
-export default TrickNameList
+export default TrickNameListReverse

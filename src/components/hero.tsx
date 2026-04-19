@@ -22,21 +22,27 @@ function Hero() {
             <div className="relative z-10 flex flex-col items-center gap-4 text-center">
                 <h1 
                     ref={titleRef}
-                    className={`text-4xl md:text-6xl font-bold text-gray-300 font-inter transition-all duration-1300 ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                    className={`text-4xl md:text-6xl font-bold text-gray-300 font-inter transition-all duration-800 ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
                     <span className="text-white">P</span>en <span className="text-white">S</span>pinning <span className="text-white">A</span>cademy
                 </h1>
                 <p 
                     ref={subtitleRef}
-                    className={`md:text-xl text-gray-400 transition-all duration-1300 delay-400 ${subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                    className={`md:text-xl text-gray-400 transition-all duration-800 delay-200 ${subtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
                     The website to learn penspinning online step by step.
                 </p>
                 <div 
                     ref={buttonRef}
-                    className={`flex flex-row gap-3 mt-2 transition-all duration-1300 delay-800 ${buttonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                    className={`flex flex-row gap-3 mt-2 transition-all duration-800 delay-400 ${buttonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
-                    <Link href="/learn" className="px-6 py-2.5 bg-white text-black rounded-lg text-xs sm:text-sm font-bold hover:scale-110 transition-all duration-300 ease-in-out ">
+                   <Link 
+                        href="/learn" 
+                        className="px-6 py-2.5 bg-white text-black rounded-xl text-xs sm:text-sm font-bold transition-all duration-200"
+                        style={{ boxShadow: '0 4px 0 0 #d1d5db' }}
+                        onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.95)' }}
+                        onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
+                    >
                         Start learning
                     </Link>
                 </div>
