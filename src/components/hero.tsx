@@ -12,6 +12,7 @@ function Hero() {
             <video 
                 className="absolute inset-0 w-full h-full object-cover" 
                 src="/psaIntroFinal.mp4" 
+                preload="metadata"
                 autoPlay 
                 muted 
                 loop 
