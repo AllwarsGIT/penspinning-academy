@@ -11,7 +11,7 @@ function Hero() {
         <section className="relative flex flex-col items-center justify-center min-h-180 max-h-[60vh] overflow-hidden mt-16">
             <video 
                 className="absolute inset-0 w-full h-full object-cover" 
-                src="/psaIntroFinal.mp4" 
+                src="https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/psaIntroFinal.mp4" 
                 // poster="/learnPortraitUpscaled.jpeg"
                 preload="none"
                 autoPlay 

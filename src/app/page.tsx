@@ -5,7 +5,7 @@ import { Analytics } from '@vercel/analytics/next';
 export default function Home() {
   return (
     <>
-      <main className="">
+      <main >
         <Hero />
         <Letter />
         <Analytics />
