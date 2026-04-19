@@ -14,7 +14,7 @@ type LearnViewerProps = {
 function TricksPage({ instance, trick, modifiers }: LearnViewerProps) {
     return (
         <div className="w-full min-h-[calc(100vh-64px)] mt-16 bg-whitePrimary dark:bg-blackPrimary *:transition-colors ease-in-out duration-500">
-            <div className="flex flex-row items-start max-w-screen-2xl mx-auto px-5 py-10 gap-8">
+            <div className="flex flex-row items-start max-w-screen-2xl mx-auto py-10 gap-8">
                 
                 {/* Sidebar izquierdo */}
                 <aside className="hidden xl:flex xl:w-72 shrink-0 sticky top-31 self-start flex-col gap-4">
