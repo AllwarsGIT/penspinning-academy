@@ -1,6 +1,9 @@
 "use client"
 import Link from "next/link"
+import Video from 'next-video'
+import Image from "next/image"
 import { useIntersectionObserver } from "@/app/hooks/useIntersectionObserver"
+import VideoCanvas from "./videoCanvas"
 
 function Hero() {
     const { elementRef: titleRef, hasIntersected: titleVisible } = useIntersectionObserver({ threshold: 0.1 })
@@ -9,16 +12,28 @@ function Hero() {
 
     return (
         <section className="relative flex flex-col items-center justify-center min-h-180 max-h-[60vh] overflow-hidden mt-16">
-            <video 
-                className="absolute inset-0 w-full h-full object-cover" 
+            {/* <video
+                className="absolute inset-0 w-full h-full object-cover"
                 style={{ willChange: 'transform' }}
-                src="https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/psaIntroFinal.mp4" 
+                src="/psaIntroFinal.webm"
                 // poster="/learnPortraitUpscaled.jpeg"
                 preload="none"
-                autoPlay 
-                muted 
-                loop 
-                playsInline 
+                autoPlay
+                muted
+                loop
+                playsInline
+            /> */}
+            {/* <VideoCanvas
+                src="psaIntroFinal.mp4"
+                className="absolute inset-0 w-full h-full object-cover"
+            /> */}
+            <Image
+                src="/learnPortraitUpscaled.jpeg"
+                alt="Pen Spinning Academy"
+                fill
+                priority
+                sizes="100vw"
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
             />
             <div className="absolute inset-0 bg-black/50" />
             
@@ -41,7 +56,7 @@ function Hero() {
                 >
                    <Link 
                         href="/learn" 
-                        className="px-6 py-2.5 bg-white text-black rounded-xl text-xs sm:text-sm font-bold transition-all duration-200"
+                        className="px-6 py-2.5 bg-white text-black rounded-xl text-sm sm:text-lg font-bold transition-all duration-200"
                         style={{ boxShadow: '0 4px 0 0 #d1d5db' }}
                         onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.95)' }}
                         onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
