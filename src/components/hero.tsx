@@ -12,7 +12,8 @@ function Hero() {
             <video 
                 className="absolute inset-0 w-full h-full object-cover" 
                 src="/psaIntroFinal.mp4" 
-                preload="metadata"
+                // poster="/learnPortraitUpscaled.jpeg"
+                preload="none"
                 autoPlay 
                 muted 
                 loop 
