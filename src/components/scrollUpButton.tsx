@@ -31,7 +31,13 @@ function ScrollUpButton() {
                 ? "opacity-100 translate-y-0" 
                 : "opacity-0 translate-y-5 pointer-events-none"
             }`}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => {
+                if (window.__lenis) {
+                    window.__lenis.scrollTo(0, { duration: 1.5 })
+                } else {
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                }
+            }}
         >
             <IoIosArrowUp size={30} className="  font-bold"/>
         </div>
