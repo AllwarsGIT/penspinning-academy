@@ -46,10 +46,7 @@ function TrickNameCard({ trickName="", thumbnail="", badge="", families=[""], mo
     return (
         <Link 
             href={href} 
-            className="w-full rounded-xl hover:-translate-y-1 overflow-hidden cursor-pointer group transition-all duration-200 ease-in-out"
-            style={{ boxShadow: '0 0 0 0 transparent' }}
-            onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 4px 0 0 ${shadowColor}` }}
-            onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 0 0 0 transparent' }}
+            className="w-full rounded-xl overflow-hidden cursor-pointer group transition-all duration-200 ease-in-out"
             scroll={false}
         >
             <div className="w-full aspect-video relative overflow-hidden">
@@ -66,7 +63,7 @@ function TrickNameCard({ trickName="", thumbnail="", badge="", families=[""], mo
                     <div className="w-full h-full bg-gray-200 dark:bg-gray-800" />
                 )}
             </div>
-            <div className="p-3 flex flex-col gap-2 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
+            <div className="p-3 flex flex-col gap-2 bg-whitePrimary dark:bg-blackPrimary group-hover:bg-gray-200 dark:group-hover:bg-zinc-800 transition-colors duration-200 ease-in-out">
                 <h2 className="font-semibold flex flex-row flex-wrap gap-1">
                     {prefixMods.map(m => (
                         <span key={m!.id} style={{ color: modifierColor[m!.id] }}>
