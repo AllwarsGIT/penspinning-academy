@@ -15,7 +15,7 @@ function InfoCard({ number = 0, name = "", description = "", color = "", active 
     return (
         <div className="relative rounded-2xl p-6 h-full bg-white dark:bg-black border border-gray-200 dark:border-zinc-800 transition-colors ease-in-out duration-500">
             <div className="flex items-center gap-3 mb-3">
-                <h4 className="text-lg font-bold">{name}</h4>
+                <h4 className="text-2xl font-bold">{name}</h4>
                 {!active && <span className="text-xs text-gray-400 font-medium">Coming soon</span>}
                 
             </div>
@@ -28,7 +28,7 @@ function InfoCard({ number = 0, name = "", description = "", color = "", active 
             {active && (
                 <Link
                     href={`/learn/${slug}`}
-                    className="block w-full py-3 rounded-xl font-bold text-white text-sm text-center transition-all duration-200 cursor-pointer"
+                    className="block w-full py-3 rounded-xl font-bold text-white text-lg text-center transition-all duration-200 cursor-pointer"
                     style={{ 
                         backgroundColor: color,
                         boxShadow: `0 4px 0 0 ${color}99`
