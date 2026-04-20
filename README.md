@@ -3,7 +3,7 @@
 [![Live](https://img.shields.io/badge/Live-penspinning--academy.vercel.app-black?style=flat-square&logo=vercel)](https://penspinning-academy.vercel.app)
 [![Next.js](https://img.shields.io/badge/Next.js%2015-App%20Router-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-3-38BDF8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
+[![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-4-38BDF8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 [![Community](https://img.shields.io/badge/Discord-2000%2B%20members-5865F2?style=flat-square&logo=discord)](https://discord.gg/YvV3hSPen)
 
 </div>
