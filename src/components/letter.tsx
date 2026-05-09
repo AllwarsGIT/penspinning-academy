@@ -4,7 +4,7 @@ import DiscordButton from "@/components/discordInvite"
 
 function Letter() {
     return (
-        <section className=" flex flex-col w-full px-8 py-16 bg-white dark:bg-black transition-colors duration-500 items-center justify-center">
+        <section className=" flex flex-col w-full  px-8 py-16 bg-white dark:bg-black transition-colors duration-500 items-center justify-center">
             <div className="max-w-2xl w-full flex flex-col gap-6">
                 <h2 className="text-2xl font-bold font-inter">To the penspinning community</h2>
                 <div className="flex flex-col gap-4 text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
@@ -17,15 +17,28 @@ function Letter() {
                 </div>
                 <p className="text-sm text-gray-500 dark:text-gray-500 italic">— Allwars</p>
             </div>
-
-            <div className="max-w-2xl w-full flex flex-col gap-6 mt-15">
-                <h3 className="text-2xl font-bold font-inter">Join the community!</h3>
-                <div className="flex flex-col gap-4 justify-center">
-                    <DiscordButton inviteCode="YvV3hSPen" label="Planet Pen Spinning" />
-                    <DiscordButton inviteCode="KcYtDuTc" label="SPSC - Spanish Pen Spinning Community"/>
-                </div>
-            </div>
             
+            <a
+                className="flex flex-col w-full max-w-3xl rounded-2xl p-5 mt-10 
+                    bg-whitePrimary dark:bg-blackPrimary
+                    transition-all ease-in-out duration-500
+                    shadow-card dark:shadow-card-dark cursor-pointer"
+                href="https://drive.google.com/file/d/1R9tjFANDDUTLGyHXJHEht6B_H7vWwYog/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.95)' }}
+                onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
+                >
+                <div className="flex items-center gap-2 mb-3">
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-black dark:text-white">
+                    COMPLETE BEGINNER GUIDE TO PEN SPINNING
+                    </h3>
+                </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400  justify-self-center">
+                    Made by Lisan
+                </p>
+            </a>
+                            
             
         </section>
     )

@@ -6,6 +6,15 @@ html {
   scroll-behavior: auto !important;
 }
 
+@layer utilities {
+  .shadow-card-dark {
+    box-shadow: 0 4px 0 0 #383a3b;
+  }
+  .shadow-card {
+    box-shadow: 0 4px 0 0 #5b5b5f; /* zinc-700 */
+  }
+}
+
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-4px); }
