@@ -11,9 +11,9 @@ type InfoCardProps = {
     trickCount?: number
 }
 
-function InfoCard({ number = 0, name = "", description = "", color = "", active = false, slug, trickCount }: InfoCardProps) {
+function InfoCard({ name = "", description = "", color = "", active = false, slug, trickCount }: InfoCardProps) {
     return (
-        <div className="relative rounded-2xl p-6 h-full bg-white dark:bg-black border border-gray-200 dark:border-zinc-800 transition-colors ease-in-out duration-500">
+        <div className={`relative rounded-2xl p-6 h-full bg-white dark:bg-black border border-gray-200 dark:border-zinc-800 transition-colors ease-in-out duration-500 ${!active ? 'opacity-50' : ''}`}>
             <div className="flex items-center gap-3 mb-3">
                 <h4 className="text-2xl font-bold">{name}</h4>
                 {!active && <span className="text-xs text-gray-400 font-medium">Coming soon</span>}

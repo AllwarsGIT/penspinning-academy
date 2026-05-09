@@ -2,8 +2,6 @@
 import React from "react"
 import SkillList from "@/components/skillList"
 import { Instance, Trick, Modifier } from "@/types/types"
-import Announcement from "./announcement"
-import { FaDiscord } from "react-icons/fa"
 
 type LearnViewerProps = {
     instance: Instance[]
@@ -17,7 +15,7 @@ function TricksPage({ instance, trick, modifiers }: LearnViewerProps) {
             <div className="flex flex-row items-start max-w-screen-2xl mx-auto py-10 gap-8">
                 
                 {/* Sidebar izquierdo */}
-                <aside className="hidden xl:flex xl:w-72 shrink-0 sticky top-31 self-start flex-col gap-4">
+                {/* <aside className="hidden xl:flex xl:w-72 shrink-0 sticky top-31 self-start flex-col gap-4">
                     <Announcement
                         title="Planet Pen Spinning"
                         description="Join the planet pen spinning community on Discord to share your progress and get help."
@@ -36,7 +34,7 @@ function TricksPage({ instance, trick, modifiers }: LearnViewerProps) {
                         color="#5865F2"
                         shadowColor="#4752c499"
                     />
-                </aside>
+                </aside> */}
 
                 {/* Contenido principal */}
                 <div className="flex-1 flex flex-col gap-8 items-center">
@@ -46,7 +44,7 @@ function TricksPage({ instance, trick, modifiers }: LearnViewerProps) {
                 </div>
 
                 {/* Sidebar derecho */}
-                <aside className="hidden xl:flex xl:w-72 shrink-0 sticky top-31 self-start flex-col gap-4">
+                {/* <aside className="hidden xl:flex xl:w-72 shrink-0 sticky top-31 self-start flex-col gap-4">
                     <Announcement
                         title="NXGC"
                         description="Check out the NeXTGen Cup! A pen spinning tournament for the new generation of spinners."
@@ -56,7 +54,7 @@ function TricksPage({ instance, trick, modifiers }: LearnViewerProps) {
                         color="#5865F2"
                         shadowColor="#4752c499"
                     />
-                </aside>
+                </aside> */}
 
             </div>
         </div>
