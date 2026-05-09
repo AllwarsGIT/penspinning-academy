@@ -49,7 +49,7 @@ function TricksPage() {
                         youtube="https://www.youtube.com/@spsc_oficial"
                         discord="https://discord.gg/qDQRZ2FR"
                     /> */}
-                    <div className="flex flex-col w-full rounded-2xl p-5  bg-white dark:bg-black border border-purple-400 dark:border-purple-800 transition-colors ease-in-out duration-500">
+                    <div className="flex flex-col w-full rounded-2xl p-5  bg-white dark:bg-black border border-gray-600 dark:border-gray-400 transition-colors ease-in-out duration-500">
                         <div className="flex items-center gap-2 mb-3">
                             {/* <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
