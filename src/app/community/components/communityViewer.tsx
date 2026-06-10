@@ -16,7 +16,7 @@ function TricksPage() {
                 
                     <Event
                         title="Pen Spinning Olympics"
-                        description="Open inscriptions until May 31th"
+                        description="Ongoing"
                         twitter="https://x.com/WorldPSEvents"
                         web="https://pso26.penspinning.world/"
 
