@@ -873,6 +873,66 @@
                 }
             ],
             "tags": [""]
+        },
+        {
+            "idTrickName": "demon-sonic",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Demon%20sonic/thumbnail.jpg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Demon%20sonic/Regular/Demon%20Sonic(1).mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "shadow",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Shadow/thumbnail.jpg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Shadow/Regular/Shadow.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "side-sonic",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Side%20sonic/thumbnail.jpg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Side%20sonic/Regular/Side%20Sonic.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "flush-sonic",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/thumbnail.jpg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/Regular/Flush%20Sonic.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
         }
         
         

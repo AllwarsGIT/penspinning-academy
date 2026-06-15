@@ -26,7 +26,7 @@ function Header () {
 
     return (
         <header className="bg-white dark:bg-black fixed top-0 px-4 left-0 w-full flex z-50 transition-all ease-in-out duration-500 ">
-            <nav className="flex items-center justify-between mx-auto w-full h-16 ">
+            <nav className="flex items-center justify-start mx-auto w-full h-16 gap-3 ">
 
                 {/* Header logo */}
                 <div className=" w-16 h-full rounded-full flex items-center justify-center hover:scale-125 transition-all duration-500 ease-in-out">
@@ -53,7 +53,7 @@ function Header () {
                                 Learn
                             </Link>
                         </li>
-                        <li className={`h-full cursor-pointer flex items-center border-b-2 transition-all duration-300 ease-in-out group ${pathname === "/communities" ? "border-black dark:border-white" : "border-transparent hover:border-black dark:hover:border-white"}`}>
+                        <li className={`h-full cursor-pointer flex items-center border-b-2 transition-all duration-300 ease-in-out group ${pathname === "/community" ? "border-black dark:border-white" : "border-transparent hover:border-black dark:hover:border-white"}`}>
                             <Link 
                                 className={`h-full flex items-center px-4 text-lg font-medium transition-colors duration-300 ${pathname === "/community" ? "text-black dark:text-white" : "text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
                                 href="/community"

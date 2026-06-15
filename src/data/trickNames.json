@@ -70,6 +70,35 @@
         "families": ["pass", "around"]
     },
     {
+        "id": "side-sonic",
+        "slug": "side-sonic",
+        "name": "Side Sonic",
+        "notation":"Side Sonic",
+        "families": ["sonic"]
+    },
+    {
+        "id": "shadow",
+        "slug": "shadow",
+        "name": "Shadow",
+        "notation":"Shadow",
+        "families": ["charge", "around"]
+    },
+    
+    {
+        "id": "demon-sonic",
+        "slug": "demon-sonic",
+        "name": "Demon Sonic",
+        "notation":"Demon Sonic",
+        "families": ["sonic", "pass"]
+    },
+    {
+        "id": "flush-sonic",
+        "slug": "flush-sonic",
+        "name": "Flush Sonic",
+        "notation":"Flush Sonic",
+        "families": ["sonic", "pass"]
+    },
+    {
         "id": "palm-spin",
         "slug": "palm-spin",
         "name": "Palm Spin",
