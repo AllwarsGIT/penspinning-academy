@@ -25,7 +25,7 @@ const skillRanges = [
         slug: "intermediate",
         description: "You know the fundamentals and the beginner tricks plus you got a more solid understanding of Pen Spinning mechanics, you're up for the challenge. It is recommended to learn the reverse versions of the beginner tricks before advancing to this level.",
         color: "#ca8a04",
-        active: false
+        active: true
     },
     {
         number: 4,

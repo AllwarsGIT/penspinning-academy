@@ -43,7 +43,7 @@ function Header () {
                         className={`h-full flex items-center px-4 text-lg font-medium transition-colors duration-300 ${pathname === "/learn" ? "text-black dark:text-white" : "text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
                         href="/learn"
                     >
-                        Learn
+                        Tricks
                     </Link>
                 </li>
                 <li className={`h-full cursor-pointer flex items-center border-b-2 transition-all duration-300 ease-in-out group ${pathname === "/community" ? "border-black dark:border-white" : "border-transparent hover:border-black dark:hover:border-white"}`}>
@@ -98,7 +98,7 @@ function Header () {
             <ul className="p-0 m-0">
                 <li className="w-full flex items-center hover:bg-gray-400 animation-all ease-in-out duration-500 justify-center">
                     <button className="w-full h-full cursor-pointer py-4 mx-24" onClick={() => handleNavClick("/learn")}>
-                        <h1 className="text-xl font-bold">Learn Pen Spinning</h1>
+                        <h1 className="text-xl font-bold">Pen Spinning Tricks</h1>
                     </button>
                 </li>
                 <li className="w-full flex items-center hover:bg-gray-400 animation-all ease-in-out duration-500 justify-center">

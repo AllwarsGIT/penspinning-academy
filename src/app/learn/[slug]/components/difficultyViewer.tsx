@@ -13,6 +13,14 @@ type DifficultyViewerProps = {
 }
 
 export default function DifficultyViewer({ difficulty, tricks, instances, modifiers }: DifficultyViewerProps) {
+    const hasReverseTricks = tricks.some(trick =>
+        instances.find(i =>
+            i.idTrickName === trick.slug &&
+            i.modifiers.includes("reverse") &&
+            i.difficulty === difficulty.id
+        )
+    )
+
     return (
         <div className="w-full min-h-[calc(100vh-64px)] p-5 py-10 flex flex-col justify-center items-center bg-white dark:bg-black transition-colors ease-in-out duration-500">
             <section className="flex flex-col w-full max-w-400 gap-4 ">
@@ -45,16 +53,17 @@ export default function DifficultyViewer({ difficulty, tricks, instances, modifi
                     />
                 </div>
                 
-
-                 <div className="flex sticky flex-col gap-4 mt-20">
-                    <h2 className="text-2xl font-bold">Reverse </h2>
-                    <TrickNameListReverse
-                        difficulty={difficulty.id}
-                        trickNames={tricks}
-                        trickInstances={instances}
-                        modifiers={modifiers}
-                    />
-                </div>
+                {hasReverseTricks && (
+                    <div className="flex sticky flex-col gap-4 mt-20">
+                        <h2 className="text-2xl font-bold">Reverse</h2>
+                        <TrickNameListReverse
+                            difficulty={difficulty.id}
+                            trickNames={tricks}
+                            trickInstances={instances}
+                            modifiers={modifiers}
+                        />
+                    </div>
+                )}
             </section>
         </div>
     )

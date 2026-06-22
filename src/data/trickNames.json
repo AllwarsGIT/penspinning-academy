@@ -14,6 +14,13 @@
         "families": ["wiper"]
     },
     {
+        "id": "figure-8",
+        "slug": "figure-8",
+        "name": "Figure 8",
+        "notation":"figure 8",
+        "families": ["wiper"]
+    },
+    {
         "id": "charge",
         "slug": "charge",
         "name": "Charge",
@@ -56,6 +63,13 @@
         "families": ["sonic"]
     },
     {
+        "id": "infinity",
+        "slug": "infinity",
+        "name": "Infinity",
+        "notation":"infinity",
+        "families": ["wiper"]
+    },
+    {
         "id": "thumb-spin",
         "slug": "thumb-spin",
         "name": "Thumb Spin",
@@ -68,6 +82,13 @@
         "name": "Neo Sonic",
         "notation":"Neo Sonic",
         "families": ["pass", "around"]
+    },
+    {
+        "id": "warped-sonic",
+        "slug": "warped-sonic",
+        "name": "Warped Sonic",
+        "notation":"warped sonic",
+        "families": ["sonic"]
     },
     {
         "id": "side-sonic",
@@ -83,7 +104,13 @@
         "notation":"Shadow",
         "families": ["charge", "around"]
     },
-    
+    {
+        "id": "swivel",
+        "slug": "swivel",
+        "name": "Swivel",
+        "notation":"Swivel",
+        "families": ["pass" , "around"]
+    },
     {
         "id": "demon-sonic",
         "slug": "demon-sonic",
@@ -92,10 +119,38 @@
         "families": ["sonic", "pass"]
     },
     {
+        "id": "backaround",
+        "slug": "backaround",
+        "name": "Back Around",
+        "notation":"backaround",
+        "families": ["around"]
+    },
+    {
+        "id": "around",
+        "slug": "around",
+        "name": "Around",
+        "notation":"A",
+        "families": ["around"]
+    },
+    {
+        "id": "bakfall",
+        "slug": "bakfall",
+        "name": "Bakfall",
+        "notation":"bakfall",
+        "families": ["around"]
+    },
+    {
+        "id": "twisted-sonic-bust",
+        "slug": "twisted-sonic-bust",
+        "name": "Twisted Sonic Bust",
+        "notation":"tw sonic bust",
+        "families": ["sonic", "around"]
+    },
+    {
         "id": "flush-sonic",
         "slug": "flush-sonic",
         "name": "Flush Sonic",
-        "notation":"Flush Sonic",
+        "notation":"flush sonic",
         "families": ["sonic", "pass"]
     },
     {
@@ -106,12 +161,20 @@
         "families": ["spin"]
     },
     {
-        "id": "power-pass",
-        "slug": "power-pass",
-        "name": "Power Pass",
-        "notation":"PP",
-        "families": ["pass", "around"]
+        "id": "hai-tua",
+        "slug": "hai-tua",
+        "name": "Hai Tua",
+        "notation":"hai tua",
+        "families": ["around"]
+    },
+    {
+        "id": "pun-kan",
+        "slug": "pun-kan",
+        "name": "Pun Kan",
+        "notation":"pun kan",
+        "families": ["around"]
     }
+    
     
     
 ]

@@ -242,12 +242,14 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                             >
                             Main
                             </button>
-                            <button 
-                            onClick={() => setActiveVideo("position")}
-                            className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "position" ? "bg-gray-200 " : "text-gray-400"}`}
-                            >
-                            Position
-                            </button>
+                            {positionVideo.length > 0 && (
+                                <button 
+                                    onClick={() => setActiveVideo("position")}
+                                    className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "position" ? "bg-gray-200 " : "text-gray-400"}`}
+                                >
+                                    Position
+                                </button>
+                            )}
                             {stepVideos.map((step, i) => (
                                 <button 
                                     key={i}

@@ -355,6 +355,21 @@
             "tags": [""]
         },
         {
+            "idTrickName": "sonic",
+            "modifiers": ["reverse", "inverse"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/inv%20sonic.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Reverse/inv%20sonic%20rev.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
             "idTrickName": "thumb-around",
             "modifiers": ["normal"],
             "difficulty":"fundamental",
@@ -922,7 +937,7 @@
         {
             "idTrickName": "flush-sonic",
             "modifiers": ["normal"],
-            "difficulty":"beginner",
+            "difficulty":"intermediate",
             "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/thumbnail.jpg",
             "trickDetails": "",
             "videos": [
@@ -933,7 +948,143 @@
                 }
             ],
             "tags": [""]
+        },
+        {
+            "idTrickName": "bakfall",
+            "modifiers": ["normal"],
+            "difficulty":"intermediate",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/bakfall/WhatsApp%20Image%202026-06-23%20at%2000.07.54%20(2).jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/bakfall/Regular/bakfall.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "backaround",
+            "modifiers": ["normal"],
+            "difficulty":"intermediate",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/WhatsApp%20Image%202026-06-23%20at%2000.07.54%20(1).jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/Regular/backaroudns.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "figure-8",
+            "modifiers": ["normal"],
+            "difficulty":"fundamental",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/figure%208/WhatsApp%20Image%202026-06-23%20at%2000.07.52%20(3).jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/figure%208/Regular/figure%208.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "hai-tua",
+            "modifiers": ["normal"],
+            "difficulty":"intermediate",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/hai%20tua/WhatsApp%20Image%202026-06-23%20at%2000.07.52%20(2).jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/hai%20tua/Regular/hai%20tua.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "infinity",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/infinity/WhatsApp%20Image%202026-06-23%20at%2000.11.57.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/infinity/Regular/infinity.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "pun-kan",
+            "modifiers": ["normal"],
+            "difficulty":"intermediate",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/pun%20kan/WhatsApp%20Image%202026-06-23%20at%2000.09.56.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/pun%20kan/Regular/pun%20kan.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "swivel",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/swivel/WhatsApp%20Image%202026-06-23%20at%2000.07.52%20(1).jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/swivel/Regular/swivel.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "twisted-sonic-bust",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/tw%20sonic%20bust/WhatsApp%20Image%202026-06-23%20at%2000.07.52.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/tw%20sonic%20bust/Regular/tw%20sonic%20bust.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
+        },
+        {
+            "idTrickName": "warped-sonic",
+            "modifiers": ["normal"],
+            "difficulty":"beginner",
+            "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/warped%20sonic/WhatsApp%20Image%202026-06-23%20at%2000.07.51.jpeg",
+            "trickDetails": "",
+            "videos": [
+                { 
+                    "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/warped%20sonic/Regular/warped%20sonic.mp4", 
+                    "type": "main" ,
+                    "order": 0
+                }
+            ],
+            "tags": [""]
         }
+        
         
         
     ]
