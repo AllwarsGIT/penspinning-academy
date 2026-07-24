@@ -1,9 +1,10 @@
 import DifficultyViewer from "./components/difficultyViewer"
 import difficulties from "@/data/difficulty.json"
-import instances from "@/data/trickInstances.json"
+import instancesRaw from "@/data/trickInstances.json"
 import tricks from "@/data/trickNames.json"
 import modifiers from "@/data/modifiers.json"
 import { notFound } from "next/navigation"
+import type { Instance } from "@/types/types"
 
 export function generateStaticParams() {
     return difficulties.map(d => ({ slug: d.id }))
@@ -13,6 +14,8 @@ export default async function DifficultyPage({ params }: { params: Promise<{ slu
     const { slug } = await params
     const difficulty = difficulties.find(d => d.id === slug)
     if (!difficulty) notFound()
+
+    const instances = instancesRaw as unknown as Instance[]
 
     return (
         <DifficultyViewer
