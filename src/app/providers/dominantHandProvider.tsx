@@ -15,15 +15,20 @@ export function DominantHandProvider({ children }: { children: React.ReactNode }
     const [isLeftHanded, setIsLeftHanded] = useState(false)
 
     useEffect(() => {
-        const saved = localStorage.getItem("dominantHand")
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+        if (typeof window === "undefined") return
+
+        const saved = window.localStorage.getItem("dominantHand")
         if (saved) setIsLeftHanded(saved === "left")
     }, [])
 
     const toggleHand = () => {
         setIsLeftHanded(prev => {
             const newValue = !prev
-            localStorage.setItem("dominantHand", newValue ? "left" : "right")
+
+            if (typeof window !== "undefined") {
+                window.localStorage.setItem("dominantHand", newValue ? "left" : "right")
+            }
+
             return newValue
         })
     }

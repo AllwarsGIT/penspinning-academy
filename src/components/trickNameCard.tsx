@@ -11,13 +11,14 @@ import { modifierColor } from "@/app/constants/modifiers"
 type TrickNameCardProps = {
     trickName: string,
     thumbnail: string,
+    thumbnailHand?: "left" | "right", // mano de quien grabó/aportó el thumbnail — por defecto "left"
     badge?: string
     families: string[],
     modifiers: Modifier[],
     instance: Instance
 }
 
-function TrickNameCard({ trickName="", thumbnail="", badge="", families=[""], modifiers=[], instance }: TrickNameCardProps) {
+function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge="", families=[""], modifiers=[], instance }: TrickNameCardProps) {
     
     const { isLeftHanded } = useDominantHand()
     const [isDark, setIsDark] = useState(false)
@@ -31,6 +32,10 @@ function TrickNameCard({ trickName="", thumbnail="", badge="", families=[""], mo
     }, [])
 
     const shadowColor = isDark ? '#3f3f46' : '#d1d5db' // zinc-700 : gray-200
+
+    // Misma lógica que en VideoPlayer: se refleja solo si la mano de origen no coincide con la del viewer
+    const viewerHand = isLeftHanded ? "left" : "right"
+    const needsMirror = thumbnailHand !== viewerHand
 
     const extraModifiers = instance.modifiers.filter(m => m !== "normal")
     const href = extraModifiers.length > 0
@@ -54,7 +59,7 @@ function TrickNameCard({ trickName="", thumbnail="", badge="", families=[""], mo
                     <Image 
                         src={thumbnail} 
                         alt={trickName}
-                        style={{ transform: isLeftHanded ? 'none' : 'scaleX(-1)' }}
+                        style={{ transform: needsMirror ? 'scaleX(-1)' : 'none' }}
                         fill
                         className="w-full h-full object-cover"
                         loading="eager"

@@ -14,7 +14,7 @@ function TricksPage() {
             <div className="flex flex-col items-center max-w-7xl mx-auto py-10 gap-3">
                     {/* <h1 className="text-3xl font-bold text-center text-black dark:text-white">Live events</h1> */}
                 
-                    <Event
+                    {/* <Event
                         title="Pen Spinning Olympics"
                         description="Ongoing"
                         twitter="https://x.com/WorldPSEvents"
@@ -28,7 +28,7 @@ function TricksPage() {
                         discord="https://discord.gg/mR3HBgEf"
                         youtube="https://www.youtube.com/@nextgencup-b3r"
 
-                    />
+                    /> */}
                     <h1 className="text-3xl my-5 font-bold text-center text-black dark:text-white">Communities</h1>
                     <CommunityCard
                         title="Planet Pen Spinning"

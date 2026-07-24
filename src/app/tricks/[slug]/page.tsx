@@ -1,10 +1,11 @@
 
 import trickNames from "@/data/trickNames.json"
-import instances from "@/data/trickInstances.json"
+import instancesRaw from "@/data/trickInstances.json"
 import modifiers from "@/data/modifiers.json"
 import TrickViewer from "./components/trickViewer"
+import { Instance } from "@/types/types"
 
-
+const instances = instancesRaw as Instance[]
 
 
 export default async function TrickPage({ params }: { params: { slug: string } }) {

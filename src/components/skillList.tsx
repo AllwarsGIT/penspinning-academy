@@ -33,7 +33,7 @@ const skillRanges = [
         slug: "advanced",
         description: "You have mastered the intermediate tricks and are ready to tackle more challenging maneuvers in Pen Spinning. This level requires good understanding of the previous mechanics and specially a solid understanding of the fundamentals. Get ready to push your skills to the limit.",
         color: "#dc2626",
-        active: false
+        active: true
     },
     {
         number: 5,

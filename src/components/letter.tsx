@@ -21,13 +21,11 @@ function Letter() {
             <a
                 className="flex flex-col w-full max-w-3xl rounded-2xl p-5 mt-10 
                     bg-whitePrimary dark:bg-blackPrimary
-                    transition-all ease-in-out duration-500
-                    shadow-card dark:shadow-card-dark cursor-pointer"
+                    transition-all ease-in-out duration-300
+                    cursor-pointer hover:*:transition-colors hover:bg-gray-200 dark:hover:bg-zinc-800"
                 href="https://drive.google.com/file/d/1R9tjFANDDUTLGyHXJHEht6B_H7vWwYog/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.95)' }}
-                onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
                 >
                 <div className="flex items-center gap-2 mb-3">
                     <h3 className="text-sm font-bold uppercase tracking-widest text-black dark:text-white">

@@ -66,6 +66,7 @@ function TrickNameListReverse({ difficulty, trickNames, trickInstances, modifier
                             key={`${trick.slug}-reverse`}
                             trickName={trick.name}
                             thumbnail={baseInstance?.thumbnail || instance!.thumbnail || "/defaultThumbnail.jpeg"}
+                            thumbnailHand={instance!.thumbnailHand ?? "left"}
                             badge={difficulty}
                             families={trick.families}
                             modifiers={modifiers}

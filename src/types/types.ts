@@ -1,10 +1,20 @@
 // @/types/types.ts
+export type Video = {
+    url: string
+    type: string
+    order: number
+    hand?: "left" | "right"
+}
+
 export type Instance = {
     idTrickName: string
     modifiers: string[]
     isBase?: boolean
     difficulty: string
     thumbnail: string
+    thumbnailHand?: "left" | "right"
+    trickDetails: string
+    videos: Video[]
 }
 
 export type Trick = {

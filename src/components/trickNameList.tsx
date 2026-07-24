@@ -19,8 +19,16 @@ function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: Tr
     )
 
     const visibleTricks = trickNames
-        .map(trick => ({ trick, instance: validInstances.find(i => i.idTrickName === trick.slug) }))
-        .filter(({ instance }) => !!instance)
+        .map(trick => {
+            const matchingInstances = validInstances.filter(i => i.idTrickName === trick.slug)
+            const preferredInstance =
+                matchingInstances.find(i => i.isBase === true) ??
+                matchingInstances.find(i => i.modifiers.includes("normal")) ??
+                matchingInstances[0]
+
+            return preferredInstance ? { trick, instance: preferredInstance } : null
+        })
+        .filter((item): item is { trick: Trick; instance: Instance } => !!item)
 
     useEffect(() => {
         if (visibleTricks.length === 0) return
@@ -59,6 +67,7 @@ function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: Tr
                         key={trick.slug}
                         trickName={trick.name}
                         thumbnail={instance!.thumbnail || "/defaultThumbnail.jpeg"}
+                        thumbnailHand={instance!.thumbnailHand ?? "left"}
                         badge={difficulty}
                         families={trick.families}
                         modifiers={modifiers}

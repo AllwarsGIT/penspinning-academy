@@ -2,22 +2,36 @@
 import { useRef, useState, useEffect } from "react"
 import { IoIosPause, IoIosPlay } from "react-icons/io"
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md"
+import { useDominantHand } from "@/app/providers/dominantHandProvider"
 
 type VideoPlayerProps = {
     url: string
-    isFlipped?: boolean
+    recordedHand?: "left" | "right" // mano de quien grabó el vídeo — por defecto "left"
 }
 
-export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps) {
+export default function VideoPlayer({ url, recordedHand = "left" }: VideoPlayerProps) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
     const progressRef = useRef<HTMLDivElement>(null)
     const isDragging = useRef(false)
 
+    const { isLeftHanded } = useDominantHand()
+
     const [isFullscreen, setIsFullscreen] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const [progress, setProgress] = useState(0)
     const [speed, setSpeed] = useState(1)
+
+    // La mano del viewer determina si hace falta espejar este vídeo concreto
+    const viewerHand = isLeftHanded ? "left" : "right"
+    const needsMirror = recordedHand !== viewerHand
+
+    useEffect(() => {
+        if (!videoRef.current) return
+
+        videoRef.current.style.transform = needsMirror ? "scaleX(-1)" : "none"
+        videoRef.current.style.transformOrigin = "center center"
+    }, [needsMirror, url])
 
     // Limpia el drag si el ratón sale de la ventana o suelta en cualquier sitio
     useEffect(() => {
@@ -108,7 +122,10 @@ export default function VideoPlayer({ url, isFlipped = false }: VideoPlayerProps
                 ref={videoRef}
                 src={url}
                 className="w-full h-full object-contain cursor-pointer"
-                style={{ transform: isFlipped ? "none" : "scaleX(-1)" }}
+                style={{
+                    transform: needsMirror ? "scaleX(-1)" : "none",
+                    transformOrigin: "center center"
+                }}
                 onTimeUpdate={handleTimeUpdate}
                 onClick={togglePlay}
                 playsInline

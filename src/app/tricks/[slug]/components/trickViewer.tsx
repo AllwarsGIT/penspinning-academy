@@ -12,20 +12,7 @@ import DifficultyBadge from "@/components/difficultyBadge"
 import InfoToolTip from "@/components/InfoToolTip"
 import VideoPlayer from "@/components/VideoPlayer"
 import { modifierColor } from "@/app/constants/modifiers"
-
-
-
-type Instance = {
-    modifiers:string[],
-    difficulty: string,
-    trickDetails: string,
-    videos: {
-        url: string,
-        type: string,
-        order: number
-    }[]
-
-}
+import type { Instance } from "@/types/types"
 
 type Trick = {
     name: string,
@@ -49,7 +36,7 @@ type TrickViewerProps = {
 function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
     
-    const { isLeftHanded } = useDominantHand()
+    useDominantHand()
     const searchParams = useSearchParams()
     const modifiersParam = searchParams.get("modifiers")
     const initialModifiers = modifiersParam ? modifiersParam.split(",") : []
@@ -106,12 +93,16 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     const mainVideo = activeInstance?.videos.find(v => v.type === "main")
     const positionVideo = activeInstance?.videos.filter(v => v.type === "position") ?? []
     const stepVideos = activeInstance?.videos.filter(v => v.type === "step") ?? []
-    const activeVideoUrl = 
-    activeVideo === "main"
-        ? mainVideo?.url ?? ""
-        : activeVideo === "position"
-            ? positionVideo[0]?.url ?? ""  // Si hay varios position, toma el primero
-            : stepVideos.find(v => v.order.toString() === activeVideo)?.url ?? ""
+
+    // Nos quedamos con el objeto entero (no solo la url) para poder leer .hand
+    const activeVideoObj =
+        activeVideo === "main"
+            ? mainVideo
+            : activeVideo === "position"
+                ? positionVideo[0]  // Si hay varios position, toma el primero
+                : stepVideos.find(v => v.order.toString() === activeVideo)
+
+    const activeVideoUrl = activeVideoObj?.url ?? ""
 
     
     // Suffix prefix management for name composition
@@ -132,7 +123,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
 
              {/* Name */}
             
-            <div className="sticky top-16 z-20 w-full px-5 py-4 flex justify-center items-center bg-white dark:bg-black backdrop-blur-md border-b border-gray-100 dark:border-zinc-900 transition-colors duration-500 ease-in-out">
+            <div className="sticky top-16 z-20 w-full px-5 py-4 flex justify-center items-center bg-white dark:bg-black backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-500 ease-in-out">
                 <div className="relative w-full max-w-400 flex justify-center items-center">
                     {/* Botón back alineado a la izquierda */}
                     <button
@@ -214,7 +205,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                         className="w-full max-w-4xl mx-auto aspect-video"
                     >
                         {activeVideoUrl ? (
-                            <VideoPlayer url={activeVideoUrl} isFlipped={isLeftHanded} />
+                            <VideoPlayer url={activeVideoUrl} recordedHand={activeVideoObj?.hand ?? "left"} />
                         ) : (
                             <div className="w-full h-full flex items-center justify-center">
                                 <p className="text-gray-500 text-sm font-mono tracking-widest uppercase">Video not available</p>

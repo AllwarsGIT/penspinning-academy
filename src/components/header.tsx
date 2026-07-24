@@ -25,7 +25,7 @@ function Header () {
     const pathname = usePathname()
 
     return (
-        <header className="bg-white dark:bg-black fixed top-0 px-4 left-0 w-full flex z-50 transition-all ease-in-out duration-500">
+        <header className="bg-white dark:bg-black fixed top-0 px-4 left-0 w-full flex z-50 transition-all ease-in-out duration-500 ">
     <nav className="flex items-center justify-between mx-auto w-full h-16">
 
         {/* Izquierda: logo + links desktop */}

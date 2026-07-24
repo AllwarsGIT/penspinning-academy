@@ -7,6 +7,13 @@
         "families": ["pass"]
     },
     {
+        "id": "triangle-pass",
+        "slug": "triangle-pass",
+        "name": "Triangle Pass",
+        "notation":"Triangle Pass",
+        "families": ["pass"]
+    },
+    {
         "id": "wiper",
         "slug": "wiper",
         "name": "Wiper",
@@ -105,6 +112,13 @@
         "families": ["charge", "around"]
     },
     {
+        "id": "extended-thumb-around",
+        "slug": "extended-thumb-around",
+        "name": "Extended Thumb Around",
+        "notation":"Extended Thumb Around",
+        "families": ["around"]
+    },
+    {
         "id": "swivel",
         "slug": "swivel",
         "name": "Swivel",
@@ -117,6 +131,27 @@
         "name": "Demon Sonic",
         "notation":"Demon Sonic",
         "families": ["sonic", "pass"]
+    },
+    {
+        "id": "east-sonic",
+        "slug": "east-sonic",
+        "name": "East Sonic",
+        "notation":"East Sonic",
+        "families": ["sonic", "pass"]
+    },
+    {
+        "id": "angel-sonic",
+        "slug": "angel-sonic",
+        "name": "Angel Sonic",
+        "notation":"Angel Sonic",
+        "families": ["sonic", "pass"]
+    },
+    {
+        "id": "baktap",
+        "slug": "baktap",
+        "name": "Bak Tap",
+        "notation":"baktap",
+        "families": ["around"]
     },
     {
         "id": "backaround",
@@ -133,6 +168,41 @@
         "families": ["around"]
     },
     {
+        "id": "index-around",
+        "slug": "index-around",
+        "name": "Index Around",
+        "notation":"IA",
+        "families": ["around"]
+    },
+    {
+        "id": "middle-around",
+        "slug": "middle-around",
+        "name": "Middle Around",
+        "notation":"MA",
+        "families": ["around"]
+    },
+    {
+        "id": "ring-around",
+        "slug": "ring-around",
+        "name": "Ring Around",
+        "notation":"RA",
+        "families": ["around"]
+    },
+    {
+        "id": "corkscrew",
+        "slug": "corkscrew",
+        "name": "Corkscrew",
+        "notation":"Corkscrew",
+        "families": ["around"]
+    },
+    {
+        "id": "powerpass",
+        "slug": "powerpass",
+        "name": "Powerpass",
+        "notation":"PP",
+        "families": ["pass"]
+    },
+    {
         "id": "bakfall",
         "slug": "bakfall",
         "name": "Bakfall",
@@ -144,6 +214,13 @@
         "slug": "twisted-sonic-bust",
         "name": "Twisted Sonic Bust",
         "notation":"tw sonic bust",
+        "families": ["sonic", "around"]
+    },
+    {
+        "id": "bust-1.5",
+        "slug": "bust-1.5",
+        "name": "Bust 1.5",
+        "notation":"bust 1.5",
         "families": ["sonic", "around"]
     },
     {
@@ -173,6 +250,13 @@
         "name": "Pun Kan",
         "notation":"pun kan",
         "families": ["around"]
+    },
+    {
+        "id": "cthulhu-sonic",
+        "slug": "cthulhu-sonic",
+        "name": "Cthulhu Sonic",
+        "notation":"cthulhu sonic",
+        "families": ["sonic", "around"]
     }
     
     
