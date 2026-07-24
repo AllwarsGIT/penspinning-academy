@@ -18,6 +18,7 @@ export function DominantHandProvider({ children }: { children: React.ReactNode }
         if (typeof window === "undefined") return
 
         const saved = window.localStorage.getItem("dominantHand")
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         if (saved) setIsLeftHanded(saved === "left")
     }, [])
 
