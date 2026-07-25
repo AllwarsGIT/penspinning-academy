@@ -593,74 +593,6 @@
         "thumbnailHand": "left"
     },
     {
-        "idTrickName": "thumb-around",
-        "modifiers": [
-            "normal",
-            "fingerless"
-        ],
-        "difficulty": "beginner",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/WhatsApp%20Image%202026-04-13%20at%2020.08.57.jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Regular/0.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Regular/1.mp4",
-                "type": "position",
-                "order": 1,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Regular/2.mp4",
-                "type": "step",
-                "order": 2,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
-        "idTrickName": "thumb-around",
-        "modifiers": [
-            "reverse",
-            "fingerless"
-        ],
-        "difficulty": "beginner",
-        "thumbnail": "",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Reverse/0.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Reverse/1.mp4",
-                "type": "position",
-                "order": 1,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Reverse/2.mp4",
-                "type": "step",
-                "order": 2,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
         "idTrickName": "finger-pass",
         "modifiers": [
             "normal"
@@ -826,6 +758,95 @@
                 "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerpass/Reverse/11.mp4",
                 "type": "step",
                 "order": 11,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "figure-8",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "fundamental",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/figure%208/WhatsApp%20Image%202026-06-23%20at%2000.07.52%20(3).jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/figure%208/Regular/figure%208.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "thumb-around",
+        "modifiers": [
+            "normal",
+            "fingerless"
+        ],
+        "difficulty": "beginner",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/WhatsApp%20Image%202026-04-13%20at%2020.08.57.jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Regular/1.mp4",
+                "type": "position",
+                "order": 1,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Regular/2.mp4",
+                "type": "step",
+                "order": 2,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "thumb-around",
+        "modifiers": [
+            "reverse",
+            "fingerless"
+        ],
+        "difficulty": "beginner",
+        "thumbnail": "",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Reverse/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Reverse/1.mp4",
+                "type": "position",
+                "order": 1,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Fingerless%20TA/Reverse/2.mp4",
+                "type": "step",
+                "order": 2,
                 "hand": "left"
             }
         ],
@@ -1225,111 +1246,6 @@
         "thumbnailHand": "right"
     },
     {
-        "idTrickName": "flush-sonic",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "intermediate",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/thumbnail.jpg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/Regular/4%20Basic%20Flush%20Sonics.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "right"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "right"
-    },
-    {
-        "idTrickName": "bakfall",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "intermediate",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/bakfall/WhatsApp%20Image%202026-06-23%20at%2000.07.54%20(2).jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/bakfall/Regular/bakfall.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
-        "idTrickName": "backaround",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "intermediate",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/WhatsApp%20Image%202026-06-23%20at%2000.07.54%20(1).jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/Regular/backaroudns.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
-        "idTrickName": "figure-8",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "fundamental",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/figure%208/WhatsApp%20Image%202026-06-23%20at%2000.07.52%20(3).jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/figure%208/Regular/figure%208.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
-        "idTrickName": "hai-tua",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "intermediate",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/hai%20tua/WhatsApp%20Image%202026-06-23%20at%2000.07.52%20(2).jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/hai%20tua/Regular/hai%20tua.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
         "idTrickName": "infinity",
         "modifiers": [
             "normal"
@@ -1340,27 +1256,6 @@
         "videos": [
             {
                 "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/infinity/Regular/infinity.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
-        "idTrickName": "pun-kan",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "intermediate",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/pun%20kan/WhatsApp%20Image%202026-06-23%20at%2000.09.56.jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/pun%20kan/Regular/pun%20kan.mp4",
                 "type": "main",
                 "order": 0,
                 "hand": "left"
@@ -1519,27 +1414,6 @@
         "thumbnailHand": "right"
     },
     {
-        "idTrickName": "cthulhu-sonic",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "advanced",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Cthulhu%20sonic/Captura%20de%20pantalla%202026-07-24%20213110.jpg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Cthulhu%20sonic/Regular/0.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
         "idTrickName": "east-sonic",
         "modifiers": [
             "normal"
@@ -1581,6 +1455,134 @@
         ],
         "thumbnailHand": "right"
     },
+    {
+        "idTrickName": "powerpass",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "beginner",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Powerpass/Captura%20de%20pantalla%202026-07-24%20213515.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Powerpass/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "flush-sonic",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "intermediate",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/thumbnail.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/Regular/4%20Basic%20Flush%20Sonics.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "bakfall",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "intermediate",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/bakfall/WhatsApp%20Image%202026-06-23%20at%2000.07.54%20(2).jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/bakfall/Regular/bakfall.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "backaround",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "intermediate",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/WhatsApp%20Image%202026-06-23%20at%2000.07.54%20(1).jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/Regular/backaroudns.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    
+    {
+        "idTrickName": "hai-tua",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "intermediate",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/hai%20tua/WhatsApp%20Image%202026-06-23%20at%2000.07.52%20(2).jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/hai%20tua/Regular/hai%20tua.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "pun-kan",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "intermediate",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/pun%20kan/WhatsApp%20Image%202026-06-23%20at%2000.09.56.jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/pun%20kan/Regular/pun%20kan.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    
     {
         "idTrickName": "index-around",
         "modifiers": [
@@ -1644,27 +1646,7 @@
         ],
         "thumbnailHand": "right"
     },
-    {
-        "idTrickName": "powerpass",
-        "modifiers": [
-            "normal"
-        ],
-        "difficulty": "beginner",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Powerpass/Captura%20de%20pantalla%202026-07-24%20213515.jpg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Powerpass/Regular/0.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "right"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "right"
-    },
+    
     {
         "idTrickName": "powerpass",
         "modifiers": [
@@ -1686,6 +1668,27 @@
             ""
         ],
         "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "cthulhu-sonic",
+        "modifiers": [
+            "normal"
+        ],
+        "difficulty": "advanced",
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Cthulhu%20sonic/Captura%20de%20pantalla%202026-07-24%20213110.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Cthulhu%20sonic/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
     }
     
 ]

@@ -51,7 +51,7 @@ function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge
     return (
         <Link 
             href={href} 
-            className="w-full rounded-xl overflow-hidden cursor-pointer group transition-all duration-200 ease-in-out"
+            className="w-full rounded-md overflow-hidden cursor-pointer group transition-all duration-200 ease-in-out"
             scroll={false}
         >
             <div className="w-full aspect-video relative overflow-hidden">

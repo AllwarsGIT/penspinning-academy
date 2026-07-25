@@ -51,7 +51,7 @@ function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: Tr
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
             {!allLoaded
                 ? Array.from({ length: skeletonCount }).map((_, i) => (
-                    <div key={i} className="w-full rounded-xl overflow-hidden animate-pulse">
+                    <div key={i} className="w-full rounded-md overflow-hidden animate-pulse">
                         <div className="w-full aspect-video bg-gray-200 dark:bg-zinc-800" />
                         <div className="p-3 flex flex-col gap-2 bg-whitePrimary dark:bg-blackPrimary">
                             <div className="h-4 w-2/3 bg-gray-200 dark:bg-zinc-800 rounded" />

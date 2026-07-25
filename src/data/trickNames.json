@@ -151,7 +151,7 @@
         "slug": "baktap",
         "name": "Bak Tap",
         "notation":"baktap",
-        "families": ["around"]
+        "families": ["tap"]
     },
     {
         "id": "backaround",
@@ -193,14 +193,14 @@
         "slug": "corkscrew",
         "name": "Corkscrew",
         "notation":"Corkscrew",
-        "families": ["around"]
+        "families": ["sonic","around"]
     },
     {
         "id": "powerpass",
         "slug": "powerpass",
         "name": "Powerpass",
         "notation":"PP",
-        "families": ["pass"]
+        "families": ["pass", "around"]
     },
     {
         "id": "bakfall",
@@ -256,7 +256,7 @@
         "slug": "cthulhu-sonic",
         "name": "Cthulhu Sonic",
         "notation":"cthulhu sonic",
-        "families": ["sonic", "around"]
+        "families": ["sonic", "pass"]
     }
     
     
