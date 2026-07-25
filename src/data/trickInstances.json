@@ -431,11 +431,11 @@
     {
         "idTrickName": "sonic",
         "modifiers": [
-            "normal",
+            
             "inverse"
         ],
         "difficulty": "beginner",
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/inv%20sonic.jpeg",
+        "thumbnail": "",
         "trickDetails": "",
         "videos": [
             {
@@ -790,7 +790,7 @@
     {
         "idTrickName": "thumb-around",
         "modifiers": [
-            "normal",
+            
             "fingerless"
         ],
         "difficulty": "beginner",
