@@ -10,7 +10,7 @@ import DarkmodeButton from './darkmodeButton';
 import DominantHandButton from './dominantHandButton';
 import Link from 'next/link';
 import SearchBar from '@/app/tricks/components/searchBar';
-
+import { Suspense } from 'react';
 
 function Header () {
     const router = useRouter()
@@ -74,13 +74,18 @@ function Header () {
 
             <div className="hidden md:flex flex-1 justify-center">
                 <div className="w-[clamp(10rem,20vw,20rem)]">
-                    <SearchBar />
+                    <Suspense fallback={null}>
+                        <SearchBar />
+
+                    </Suspense>
                 </div>
             </div>
 
             {/* Searchbar para movil */}
             <div className="absolute left-1/2 -translate-x-1/2 md:hidden w-50">
-                <SearchBar />
+                <Suspense fallback={null}>
+                    <SearchBar />
+                </Suspense>
             </div>
 
             {/* Toggles solo en desktop */}

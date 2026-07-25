@@ -5,6 +5,7 @@ import TrickSearchList from "./trickSearchList"
 import SearchBar from "./searchBar"
 import FilterSideBar from "./filterSideBar"
 import { Instance, Trick, Modifier } from "@/types/types"
+import { Suspense } from "react";
 
 type TricksViewerProps = {
     instance: Instance[]
@@ -34,14 +35,19 @@ function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
                 {/* Debajo: sidebar (si está visible) + grid, en columna en móvil / fila en desktop */}
                 <div className="flex flex-col md:flex-row gap-6">
                     {showFilters && (
-                        <FilterSideBar trickNames={trick} trickInstances={instance} modifiers={modifiers} />
+                        <Suspense fallback={null}>
+                            <FilterSideBar trickNames={trick} trickInstances={instance} modifiers={modifiers} />
+                        </Suspense>
                     )}
                     <div className="flex-1">
-                        <TrickSearchList
-                            trickNames={trick}
-                            trickInstances={instance}
-                            modifiers={modifiers}
-                        />
+                        <Suspense fallback={null}>
+                            <TrickSearchList
+                                trickNames={trick}
+                                trickInstances={instance}
+                                modifiers={modifiers}
+                            />
+                        </Suspense>
+                        
                     </div>
                 </div>
 

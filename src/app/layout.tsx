@@ -59,12 +59,12 @@ export default function RootLayout({
             enableSystem={(true)}
           >
             <DominantHandProvider>
-              <SmoothScroll>
+              {/* <SmoothScroll> */}
                 <Header />
                       {children}
                   <ScrollUpButton/>
                 <Footer />
-              </SmoothScroll>
+              {/* </SmoothScroll> */}
             </DominantHandProvider>
           </ThemeProvider>
       </body>
