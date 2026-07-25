@@ -55,7 +55,7 @@ function Hero() {
                     className={`flex flex-row gap-3 mt-2 transition-all duration-800 delay-400 ${buttonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
                    <Link 
-                        href="/Trick" 
+                        href="/tricks" 
                         className="px-6 py-2.5 bg-white text-black rounded-xl text-sm sm:text-lg font-bold transition-all duration-200"
                         onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.95)' }}
                         onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
