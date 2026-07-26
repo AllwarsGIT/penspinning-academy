@@ -26,7 +26,7 @@ function TrickNameListReverse({ difficulty, trickNames, trickInstances, modifier
         if (visibleTricks.length === 0) return
         const promises = visibleTricks.map(({ instance, trick }) => {
             const baseInstance = trickInstances.find(i =>
-                i.idTrickName === trick.slug && i.modifiers.includes("normal")
+                i.idTrickName === trick.slug && (i.isBase === true || i.modifiers.length === 0)
             )
             return new Promise<void>((resolve) => {
                 const thumbnail = baseInstance?.thumbnail || instance!.thumbnail
@@ -59,7 +59,7 @@ function TrickNameListReverse({ difficulty, trickNames, trickInstances, modifier
                 ))
                 : visibleTricks.map(({ trick, instance }) => {
                     const baseInstance = trickInstances.find(i =>
-                        i.idTrickName === trick.slug && i.modifiers.includes("normal")
+                        i.idTrickName === trick.slug && (i.isBase === true || i.modifiers.length === 0)
                     )
                     return (
                         <TrickNameCard

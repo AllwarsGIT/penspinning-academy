@@ -1,40 +1,56 @@
 [
-        {
-            "id": "normal",
-            "name": "Normal",
-            "notation": null,
-            "position": null
-        },
-        {
-            "id": "reverse",
-            "name": "Reverse",
-            "notation": "Rev",
-            "position": "suffix"
-
-        },
-        {
-            "id": "inverse",
-            "name": "Inverse",
-            "notation": "Inv",
-            "position": "prefix"
-
-        },
-        {
-            "id": "fingerless",
-            "name": "Fingerless",
-            "notation": "Fl",
-            "position": "prefix"
-        },
-        {
-            "id": "curled",
-            "name": "Curled",
-            "notation": "Curled",
-            "position": "prefix"
-        },
-        {
-            "id": "mirrored",
-            "name": "Mirrored",
-            "notation": "Mirr",
-            "position": "prefix"
-        }
-    ]
+    {
+        "id": "reverse",
+        "name": "Reverse",
+        "notation": "Rev",
+        "position": "suffix"
+    },
+    {
+        "id": "inverse",
+        "name": "Inverse",
+        "notation": "Inv",
+        "position": "prefix"
+    },
+    {
+        "id": "fingerless",
+        "name": "Fingerless",
+        "notation": "Fl",
+        "position": "prefix"
+    },
+    {   
+        "id": "moonwalk",
+        "name": "Moonwalk",
+        "notation": "Moonwalk",
+        "position": "prefix"
+    },
+    {
+        "id": "curled",
+        "name": "Curled",
+        "notation": "Curled",
+        "position": "prefix"
+    },
+    {
+        "id": "tipped",
+        "name": "Tipped",
+        "notation": "Tipped",
+        "position": "prefix"
+    },
+    {
+        "id": "release",
+        "name": "Release",
+        "notation": "Release",
+        "position": "suffix"
+    },
+    {
+        "id": "aerial",
+        "name": "Aerial",
+        "notation": "Aerial",
+        "position": "prefix"
+    },
+    {
+        "id": "mirrored",
+        "name": "Mirrored",
+        "notation": "Mirr",
+        "position": "prefix"
+    }
+]

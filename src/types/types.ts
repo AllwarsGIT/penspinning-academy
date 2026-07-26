@@ -15,13 +15,14 @@ export type Instance = {
     thumbnailHand?: "left" | "right"
     trickDetails: string
     videos: Video[]
+    prerequisites?: string[]
 }
 
 export type Trick = {
     name: string
     slug: string
+    notation: string
     families: string[]
-
 }
 
 export type Modifier = {

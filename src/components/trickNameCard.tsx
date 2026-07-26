@@ -37,7 +37,7 @@ function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge
     const viewerHand = isLeftHanded ? "left" : "right"
     const needsMirror = thumbnailHand !== viewerHand
 
-    const extraModifiers = instance.modifiers.filter(m => m !== "normal")
+    const extraModifiers = instance.modifiers
     const href = extraModifiers.length > 0
         ? `/tricks/${instance.idTrickName}?modifiers=${extraModifiers.join(",")}`
         : `/tricks/${instance.idTrickName}`

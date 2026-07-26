@@ -3,5 +3,6 @@ export const modifierColor: Record<string, string> = {
     inverse: "#6366f1",
     fingerless: "#f97316",
     curled: "#a855f7",
-    mirrored: "#ef4444"
+    mirrored: "#ef4444",
+    moonwalk: "#06b6d4"
 }

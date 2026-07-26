@@ -1,124 +1,145 @@
-
 {
     "trickInstance": [
         {
             "idTrickName": "thumb-around",
-            "modifiers": ["normal"],
-            "difficulty":"fundamental",
+            "modifiers": [],
+            "difficulty": "fundamental",
             "thumbnail": "",
             "videos": [
-                { 
-                    "url": "", 
-                    "type": "main" ,
+                {
+                    "url": "",
+                    "type": "main",
                     "order": 0
                 },
-                { 
-                    "url": "", 
+                {
+                    "url": "",
                     "type": "step",
                     "order": 1
                 },
-                { 
-                    "url": "", 
+                {
+                    "url": "",
                     "type": "step",
                     "order": 2
                 }
             ],
-            "tags": [""]
+            "tags": [
+                ""
+            ]
         },
         {
             "idTrickName": "thumb-around",
-            "modifiers": ["reverse"],
-            "difficulty":"fundamental",
+            "modifiers": [
+                "reverse"
+            ],
+            "difficulty": "fundamental",
             "thumbnail": "",
             "videos": [
-                { 
-                    "url": "", 
-                    "type": "main" ,
+                {
+                    "url": "",
+                    "type": "main",
                     "order": 0
                 },
-                { 
-                    "url": "", 
+                {
+                    "url": "",
                     "type": "step",
                     "order": 1
                 }
             ],
-            "tags": [""]
+            "tags": [
+                ""
+            ]
         },
         {
             "idTrickName": "thumb-around",
-            "modifiers": ["normal", "fingerless", "mirrored"],
-            "difficulty":"beginner",
+            "modifiers": [
+                "fingerless",
+                "mirrored"
+            ],
+            "difficulty": "beginner",
             "thumbnail": "",
             "videos": [
-                { 
-                    "url": "", 
-                    "type": "main" ,
+                {
+                    "url": "",
+                    "type": "main",
                     "order": 0
                 },
-                { 
-                    "url": "", 
+                {
+                    "url": "",
                     "type": "step",
                     "order": 1
                 }
             ],
-            "tags": [""]
+            "tags": [
+                ""
+            ]
         },
         {
             "idTrickName": "thumb-around",
-            "modifiers": ["reverse", "fingerless"],
-            "difficulty":"beginner",
+            "modifiers": [
+                "reverse",
+                "fingerless"
+            ],
+            "difficulty": "beginner",
             "thumbnail": "",
             "videos": [
-                { 
-                    "url": "", 
-                    "type": "main" ,
+                {
+                    "url": "",
+                    "type": "main",
                     "order": 0
                 },
-                { 
-                    "url": "", 
+                {
+                    "url": "",
                     "type": "step",
                     "order": 1
                 }
             ],
-            "tags": [""]
+            "tags": [
+                ""
+            ]
         },
         {
             "idTrickName": "sonic",
-            "modifiers": ["normal"],
-            "difficulty":"fundamental",
+            "modifiers": [],
+            "difficulty": "fundamental",
             "thumbnail": "",
             "videos": [
-                { 
-                    "url": "", 
-                    "type": "main" ,
+                {
+                    "url": "",
+                    "type": "main",
                     "order": 0
                 },
-                { 
-                    "url": "", 
+                {
+                    "url": "",
                     "type": "step",
                     "order": 1
                 }
             ],
-            "tags": [""]
+            "tags": [
+                ""
+            ]
         },
         {
             "idTrickName": "sonic",
-            "modifiers": ["reverse"],
-            "difficulty":"fundamental",
+            "modifiers": [
+                "reverse"
+            ],
+            "difficulty": "fundamental",
             "thumbnail": "",
             "videos": [
-                { 
-                    "url": "", 
-                    "type": "main" ,
+                {
+                    "url": "",
+                    "type": "main",
                     "order": 0
                 },
-                { 
-                    "url": "", 
+                {
+                    "url": "",
                     "type": "step",
                     "order": 1
                 }
             ],
-            "tags": [""]
+            "tags": [
+                ""
+            ]
         }
     ],
     "trickName": [
@@ -126,18 +147,22 @@
             "id": "thumb-around",
             "slug": "thumb-around",
             "name": "Thumb Around",
-            "notation":"TA",
-            "families": ["around"]
+            "notation": "TA",
+            "families": [
+                "around"
+            ]
         },
         {
             "id": "sonic",
             "slug": "sonic",
             "name": "Sonic",
-            "notation":"Sonic",
-            "families": ["sonic"]
+            "notation": "Sonic",
+            "families": [
+                "sonic"
+            ]
         }
     ],
-    "trickFamily":[
+    "trickFamily": [
         {
             "id": "around",
             "name": "Around"
@@ -147,21 +172,13 @@
             "name": "Sonic"
         }
     ],
-    "modifiers":[
-        {
-            "id": "normal",
-            "name": "Normal",
-            "notation": null,
-            "position": null,
-            "category": "direction"
-        },
+    "modifiers": [
         {
             "id": "reverse",
             "name": "Reverse",
             "notation": "Rev",
             "position": "suffix",
             "category": "direction"
-
         },
         {
             "id": "inverse",
@@ -169,7 +186,6 @@
             "notation": "Inv",
             "position": "prefix",
             "category": "trick-orientation"
-
         },
         {
             "id": "fingerless",
@@ -177,20 +193,19 @@
             "notation": "Fl",
             "position": "prefix",
             "category": "impulse"
-
         }
     ],
     "modifierCategory": [
-        { 
-            "id": "direction", 
-            "name": "Direction" 
+        {
+            "id": "direction",
+            "name": "Direction"
         },
-        { 
-            "id": "trick-orientation", 
-            "name": "Trick Orientation" 
+        {
+            "id": "trick-orientation",
+            "name": "Trick Orientation"
         }
     ],
-    "difficulty":[
+    "difficulty": [
         {
             "id": "fundamental",
             "name": "Fundamental"

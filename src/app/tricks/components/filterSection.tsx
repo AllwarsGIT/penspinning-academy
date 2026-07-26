@@ -9,8 +9,6 @@ type FilterSectionProps = {
 }
 
 function FilterSection({ title, children, defaultOpen = true }: FilterSectionProps) {
-    // Estado local: solo controla si el bloque está desplegado o no.
-    // No va en la URL porque es preferencia de UI, no un filtro que afecte a los resultados.
     const [isOpen, setIsOpen] = useState(defaultOpen)
 
     return (
@@ -25,11 +23,16 @@ function FilterSection({ title, children, defaultOpen = true }: FilterSectionPro
                 {isOpen ? <IoChevronUp size={16} /> : <IoChevronDown size={16} />}
             </button>
 
-            {isOpen && (
-                <div className="flex flex-col gap-2 mt-3">
-                    {children}
+            <div
+                className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+            >
+                <div className="overflow-hidden">
+                    <div className="flex flex-col gap-2 mt-3">
+                        {children}
+                    </div>
                 </div>
-            )}
+            </div>
         </div>
     )
 }

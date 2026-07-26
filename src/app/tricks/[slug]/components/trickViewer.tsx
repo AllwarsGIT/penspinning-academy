@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
@@ -12,14 +13,7 @@ import DifficultyBadge from "@/components/difficultyBadge"
 import InfoToolTip from "@/components/InfoToolTip"
 import VideoPlayer from "@/components/VideoPlayer"
 import { modifierColor } from "@/app/constants/modifiers"
-import type { Instance } from "@/types/types"
-
-type Trick = {
-    name: string,
-    notation: string
-    slug: string
-    families: string[]
-}
+import type { Instance, Trick } from "@/types/types"
 
 type TrickViewerProps = {
     instance: Instance[]
@@ -29,11 +23,12 @@ type TrickViewerProps = {
         name: string, 
         notation: string | null,
         position: string | null }[]
+    allTricks: Trick[]
 }
 
 
 
-function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
+function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
 
     
     useDominantHand()
@@ -47,12 +42,13 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
     // Video state for pagination
     const [activeVideo, setActiveVideo] = useState("main")
 
+    const matchesModifierSelection = (instanceModifiers: string[], selectedIds: string[]) =>
+        selectedIds.every(id => instanceModifiers.includes(id)) &&
+        instanceModifiers.every(m => selectedIds.includes(m))
+
     // activeInstance 
     const activeInstance = instance.find(i =>
-        i.modifiers.every(m => 
-            m === "normal" || activeModifierIds.includes(m)
-        ) &&
-        activeModifierIds.every(id => i.modifiers.includes(id))
+        matchesModifierSelection(i.modifiers, activeModifierIds)
     )
 
     // Verifies if the modified route exist, if it doesnt, it goes back to the base instance
@@ -65,8 +61,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
         }
     }, [activeInstance, activeModifierIds.length, trick.slug, router])
 
-    const availableModifiers = modifiers.filter(m => 
-        m.id !== "normal" && 
+    const availableModifiers = modifiers.filter(m =>
         instance.some(i => i.modifiers.includes(m.id))
     )
 
@@ -76,8 +71,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
             : [...activeModifierIds, id]
         
         const combinationExists = instance.some(i =>
-            newIds.every(id => i.modifiers.includes(id)) &&
-            i.modifiers.every(m => m === "normal" || newIds.includes(m))
+            matchesModifierSelection(i.modifiers, newIds)
         ) || newIds.length === 0
 
         if (!combinationExists) return
@@ -117,6 +111,10 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
         .map(id => modifiers.find(m => m.id === id))
         .filter(m => m?.position === "suffix")
         .map(m => ({ name: m?.name, id: m!.id, notation:m?.notation }))
+
+    const prerequisiteTricks = (activeInstance?.prerequisites ?? [])
+        .map(slug => allTricks.find(item => item.slug === slug))
+        .filter((item): item is Trick => Boolean(item))
 
     return (
         <div className="flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
@@ -215,10 +213,30 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 </AnimatePresence>
             </div>
 
-           
+           {prerequisiteTricks.length > 0 && (
+                <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out">
+                    <div className="max-w-400 mx-auto w-full">
+                        <div className="flex items-center mb-5">
+                            <h1 className="font-inter text-2xl">Prerequisites</h1>
+                            <InfoToolTip text={"These are the base tricks(and all their variations) you should feel comfortable with before learning this one."}/>
+                        </div>
+                        <div className="flex flex-wrap justify-center gap-2">
+                            {prerequisiteTricks.map(prerequisite => (
+                                <Link
+                                    key={prerequisite.slug}
+                                    href={`/tricks/${prerequisite.slug}`}
+                                    className="rounded-full border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+                                >
+                                    {prerequisite.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Step pagination */}
-            <div className="px-5 py-7 w-full bg-white dark:bg-black transition-colors duration-500 ease-in-out  ">
+            <div className="px-5 py-7 w-full bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out  ">
                 <div className="max-w-400 mx-auto ">
                     <div className="flex items-center mb-5">
                         <h1 className="font-inter text-2xl ">Steps</h1>
@@ -283,8 +301,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                                     : [...activeModifierIds, mod.id]
                                 
                                 const combinationExists = instance.some(i =>
-                                    wouldBeIds.every(id => i.modifiers.includes(id)) &&
-                                    i.modifiers.every(m => m === "normal" || wouldBeIds.includes(m))
+                                    matchesModifierSelection(i.modifiers, wouldBeIds)
                                 )
                                 console.log(combinationExists, wouldBeIds)
 
@@ -295,7 +312,7 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                                         modifierId={mod.id}
                                         isActive={activeModifierIds.includes(mod.id)}
                                         onToggle={toggleModifier}
-                                        options={["Normal", mod.name]}
+                                        options={["Base", mod.name]}
                                         disabled={!combinationExists}
                                     />
                                 )
@@ -369,6 +386,8 @@ function TrickViewer({trick, instance, modifiers}:TrickViewerProps) {
                 </div>
 
             </div>
+
+            
 
             {/* explanation details */}
             {/* <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3 transition-colors duration-500 ease-in-out w-full">
