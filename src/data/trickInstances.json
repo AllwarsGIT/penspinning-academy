@@ -1573,7 +1573,7 @@
         "idTrickName": "index-around",
         "modifiers": [],
         "difficulty": "intermediate",
-        "prerequisites": [],
+        "prerequisites": ["thumb-around"],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Index%20around/Captura%20de%20pantalla%202026-07-24%20213335.jpg",
         "trickDetails": "",
         "videos": [
@@ -1593,7 +1593,7 @@
         "idTrickName": "middle-around",
         "modifiers": [],
         "difficulty": "intermediate",
-        "prerequisites": [],
+        "prerequisites": ["thumb-around"],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Middle%20around/Captura%20de%20pantalla%202026-07-24%20213410.jpg",
         "trickDetails": "",
         "videos": [
@@ -1613,7 +1613,7 @@
         "idTrickName": "ring-around",
         "modifiers": [],
         "difficulty": "intermediate",
-        "prerequisites": [],
+        "prerequisites": ["thumb-around"],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Ring%20around/Captura%20de%20pantalla%202026-07-24%20213559.jpg",
         "trickDetails": "",
         "videos": [
