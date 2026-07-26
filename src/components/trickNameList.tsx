@@ -14,7 +14,7 @@ function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: Tr
     const [allLoaded, setAllLoaded] = useState(false)
 
     const validInstances = trickInstances.filter(i =>
-        (i.isBase === true || i.modifiers.length === 0) &&
+        (i.modifiers.includes("normal") || i.isBase === true) &&
         (!difficulty || i.difficulty === difficulty)
     )
 
@@ -22,7 +22,8 @@ function TrickNameList({ difficulty, trickNames, trickInstances, modifiers }: Tr
         .map(trick => {
             const matchingInstances = validInstances.filter(i => i.idTrickName === trick.slug)
             const preferredInstance =
-                matchingInstances.find(i => i.isBase === true || i.modifiers.length === 0) ??
+                matchingInstances.find(i => i.isBase === true) ??
+                matchingInstances.find(i => i.modifiers.includes("normal")) ??
                 matchingInstances[0]
 
             return preferredInstance ? { trick, instance: preferredInstance } : null
