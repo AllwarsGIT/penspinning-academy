@@ -61,6 +61,7 @@ function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge
                         alt={trickName}
                         style={{ transform: needsMirror ? 'scaleX(-1)' : 'none' }}
                         fill
+                        unoptimized
                         className="w-full h-full object-cover"
                         loading="eager"
                     />
