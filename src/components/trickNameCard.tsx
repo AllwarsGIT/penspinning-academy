@@ -22,6 +22,7 @@ function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge
     
     const { isLeftHanded } = useDominantHand()
     const [isDark, setIsDark] = useState(false)
+    const [isImageLoaded, setIsImageLoaded] = useState(false)
 
     useEffect(() => {
         const check = () => setIsDark(document.documentElement.classList.contains('dark'))
@@ -54,7 +55,12 @@ function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge
             className="w-full rounded-md overflow-hidden cursor-pointer group transition-all duration-200 ease-in-out"
             scroll={false}
         >
-            <div className="w-full aspect-video relative overflow-hidden">
+            <div className="w-full aspect-video relative overflow-hidden bg-gray-200 dark:bg-gray-800">
+                {/* Template/skeleton — visible hasta que el thumbnail termina de cargar */}
+                {thumbnail && !isImageLoaded && (
+                    <div className="absolute inset-0 animate-pulse bg-gray-300 dark:bg-zinc-700" />
+                )}
+
                 {thumbnail ? (
                     <Image 
                         src={thumbnail} 
@@ -62,8 +68,11 @@ function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge
                         style={{ transform: needsMirror ? 'scaleX(-1)' : 'none' }}
                         fill
                         unoptimized
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover transition-opacity duration-300 ease-in-out ${
+                            isImageLoaded ? "opacity-100" : "opacity-0"
+                        }`}
                         loading="eager"
+                        onLoad={() => setIsImageLoaded(true)}
                     />
                 ) : (
                     <div className="w-full h-full bg-gray-200 dark:bg-gray-800" />

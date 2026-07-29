@@ -56,6 +56,13 @@
         "families": ["pass"]
     },
     {
+        "id": "test",
+        "slug": "test",
+        "name": "Test",
+        "notation":"Test",
+        "families": ["pass"]
+    },
+    {
         "id": "half-tap",
         "slug": "half-tap",
         "name": "Half Tap",

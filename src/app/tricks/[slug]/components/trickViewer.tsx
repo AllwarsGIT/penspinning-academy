@@ -129,7 +129,6 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                         className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center px-3 py-2 rounded-xl transition-all duration-200 cursor-pointer"
                         style={{ 
                             backgroundColor: '#e5e7eb',
-                            boxShadow: '0 4px 0 0 #d1d5db'
                         }}
                         onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.9)' }}
                         onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
