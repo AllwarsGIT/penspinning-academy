@@ -311,7 +311,7 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                         modifierId={mod.id}
                                         isActive={activeModifierIds.includes(mod.id)}
                                         onToggle={toggleModifier}
-                                        options={["Base", mod.name]}
+                                        options={["Regular", mod.name]}
                                         disabled={!combinationExists}
                                     />
                                 )
