@@ -42,7 +42,7 @@ function Hero() {
                     ref={titleRef}
                     className={`text-4xl md:text-6xl font-bold text-gray-300 font-inter transition-all duration-800 ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 >
-                    <span className="text-white">P</span>en <span className="text-white">S</span>pinning <span className="text-white">A</span>cademy
+                    <span className="text-white">P</span>en <span className="text-white">S</span>pinning <span className="text-white">A</span>cademy(Open Beta)
                 </h1>
                 <p 
                     ref={subtitleRef}
