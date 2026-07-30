@@ -8,6 +8,7 @@ export function useFilteredTricks(trickNames: Trick[], trickInstances: Instance[
     const activeFamilies = searchParams.get("family")?.split(",").filter(Boolean) ?? []
     const activeDifficulties = searchParams.get("difficulty")?.split(",").filter(Boolean) ?? []
     const activeModifiers = searchParams.get("modifiers")?.split(",").filter(Boolean) ?? []
+    const REGULAR_MODIFIER = "__regular__"
 
     const getBaseKey = (idTrickName: string, modifiers: string[]) =>
         [idTrickName, ...modifiers.filter(m => m !== "reverse").sort()].join("|")
@@ -36,7 +37,16 @@ export function useFilteredTricks(trickNames: Trick[], trickInstances: Instance[
             if (q && !trick.name.toLowerCase().includes(q)) return false
             if (activeFamilies.length > 0 && !activeFamilies.some(f => trick.families.includes(f))) return false
             if (activeDifficulties.length > 0 && !activeDifficulties.includes(instance.difficulty)) return false
-            if (activeModifiers.length > 0 && !activeModifiers.some(m => instance.modifiers.includes(m))) return false
+            if (
+                activeModifiers.length > 0 &&
+                !activeModifiers.some(m =>
+                    m === REGULAR_MODIFIER
+                        ? instance.modifiers.length === 0
+                        : instance.modifiers.includes(m)
+                )
+            ) {
+                return false
+            }
             return true
         })
 

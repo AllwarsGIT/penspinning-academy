@@ -13,6 +13,7 @@ type FilterSidebarProps = {
 function FilterSidebar({ trickNames, trickInstances, modifiers }: FilterSidebarProps) {
     const router = useRouter()
     const searchParams = useSearchParams()
+    const REGULAR_MODIFIER = "__regular__"
 
     const activeFamilies = searchParams.get("family")?.split(",").filter(Boolean) ?? []
     const activeDifficulties = searchParams.get("difficulty")?.split(",").filter(Boolean) ?? []
@@ -51,7 +52,11 @@ function FilterSidebar({ trickNames, trickInstances, modifiers }: FilterSidebarP
         if (
             !options.excludeModifier &&
             activeModifiers.length > 0 &&
-            !activeModifiers.some(m => instance.modifiers.includes(m))
+            !activeModifiers.some(m =>
+                m === REGULAR_MODIFIER
+                    ? instance.modifiers.length === 0
+                    : instance.modifiers.includes(m)
+            )
         ) {
             return false
         }
@@ -93,11 +98,17 @@ function FilterSidebar({ trickNames, trickInstances, modifiers }: FilterSidebarP
         const trick = trickMap.get(instance.idTrickName)
         if (!trick) return acc
 
-        instance.modifiers.forEach(modifierId => {
-            if (matchesCurrentFilters(trick, instance, { excludeModifier: true })) {
+        if (!matchesCurrentFilters(trick, instance, { excludeModifier: true })) {
+            return acc
+        }
+
+        if (instance.modifiers.length === 0) {
+            acc[REGULAR_MODIFIER] = (acc[REGULAR_MODIFIER] ?? 0) + 1
+        } else {
+            instance.modifiers.forEach(modifierId => {
                 acc[modifierId] = (acc[modifierId] ?? 0) + 1
-            }
-        })
+            })
+        }
 
         return acc
     }, {})
@@ -175,10 +186,11 @@ function FilterSidebar({ trickNames, trickInstances, modifiers }: FilterSidebarP
     ]
 
     const modifierOptions = [
-        ...new Set([
-            ...modifiers.map(modifier => modifier.id),
-            ...activeModifiers
-        ])
+    ...new Set([
+        REGULAR_MODIFIER,
+        ...modifiers.map(m => m.id),
+        ...activeModifiers
+    ])
     ].sort((a, b) => {
         const labelA = modifiers.find(modifier => modifier.id === a)?.name ?? a
         const labelB = modifiers.find(modifier => modifier.id === b)?.name ?? b
@@ -256,13 +268,16 @@ function FilterSidebar({ trickNames, trickInstances, modifiers }: FilterSidebarP
 
             <FilterSection title="Modifiers">
                 {modifierOptions.map(modifierId => {
-                    const modDef = modifiers.find(m => m.id === modifierId)
+                    const label =
+                        modifierId === REGULAR_MODIFIER
+                            ? "Unmodified"
+                            : modifiers.find(m => m.id === modifierId)?.name ?? modifierId
 
                     return renderFilterOption(
                         modifierId,
                         activeModifiers.includes(modifierId),
                         modifierCounts[modifierId] ?? 0,
-                        modDef?.name ?? modifierId,
+                        label,
                         () => toggleModifier(modifierId)
                     )
                 })}
