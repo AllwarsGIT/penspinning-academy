@@ -217,7 +217,7 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                         </div>
                         
                     </div>
-                    <div className="relative flex justify-end">
+                    <div className="relative flex justify-end cursor-pointer">
                         <button
                             onClick={copyLink}
                             className="flex items-center justify-center h-10 w-10 rounded-xl transition-colors"
