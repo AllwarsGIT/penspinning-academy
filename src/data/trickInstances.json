@@ -435,75 +435,7 @@
         ],
         "thumbnailHand": "left"
     },
-    {
-        "idTrickName": "sonic",
-        "modifiers": [
-            "inverse"
-        ],
-        "difficulty": "beginner",
-        "prerequisites": ["pass", "charge"],
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/inv%20sonic.jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/0.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/1.mp4",
-                "type": "position",
-                "order": 1,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/2.mp4",
-                "type": "step",
-                "order": 2,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/3.mp4",
-                "type": "step",
-                "order": 3,
-                "hand": "left"
-            },
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/4.mp4",
-                "type": "step",
-                "order": 4,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
-    {
-        "idTrickName": "sonic",
-        "modifiers": [
-            "reverse",
-            "inverse"
-        ],
-        "difficulty": "beginner",
-        "prerequisites": ["pass", "charge"],
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/inv%20sonic.jpeg",
-        "trickDetails": "",
-        "videos": [
-            {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Reverse/inv%20sonic%20rev.mp4",
-                "type": "main",
-                "order": 0,
-                "hand": "left"
-            }
-        ],
-        "tags": [
-            ""
-        ],
-        "thumbnailHand": "left"
-    },
+    
     {
         "idTrickName": "thumb-around",
         "modifiers": [],
@@ -1003,6 +935,75 @@
                 "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/Reverse/5.mp4",
                 "type": "step",
                 "order": 5,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "sonic",
+        "modifiers": [
+            "inverse"
+        ],
+        "difficulty": "beginner",
+        "prerequisites": ["pass", "charge"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/inv%20sonic.jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/1.mp4",
+                "type": "position",
+                "order": 1,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/2.mp4",
+                "type": "step",
+                "order": 2,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/3.mp4",
+                "type": "step",
+                "order": 3,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Regular/4.mp4",
+                "type": "step",
+                "order": 4,
+                "hand": "left"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "sonic",
+        "modifiers": [
+            "reverse",
+            "inverse"
+        ],
+        "difficulty": "beginner",
+        "prerequisites": ["pass", "charge"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/inv%20sonic.jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20Sonic/Reverse/inv%20sonic%20rev.mp4",
+                "type": "main",
+                "order": 0,
                 "hand": "left"
             }
         ],
