@@ -7,13 +7,19 @@ type TrickSearchListProps = {
     trickNames: Trick[]
     trickInstances: Instance[]
     modifiers: Modifier[]
+    viewMode?: "grid" | "list"
 }
 
-function TrickSearchList({ trickNames, trickInstances, modifiers }: TrickSearchListProps) {
+function TrickSearchList({ trickNames, trickInstances, modifiers, viewMode = "grid" }: TrickSearchListProps) {
     const results = useFilteredTricks(trickNames, trickInstances)
 
+    const containerClass =
+        viewMode === "list"
+            ? "flex flex-col gap-2"
+            : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className={containerClass}>
             {results.length === 0 ? (
                 <p className="text-gray-500 col-span-full text-center">No tricks found.</p>
             ) : (
@@ -27,6 +33,7 @@ function TrickSearchList({ trickNames, trickInstances, modifiers }: TrickSearchL
                         families={trick!.families}
                         modifiers={modifiers}
                         instance={instance}
+                        variant={viewMode}
                     />
                 ))
             )}

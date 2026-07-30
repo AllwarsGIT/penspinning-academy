@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { MdFilterList, MdFilterListOff, MdClear } from "react-icons/md"
+import { MdFilterList, MdFilterListOff, MdClear, MdGridView, MdViewList } from "react-icons/md"
 import TrickSearchList from "./trickSearchList"
 import FilterSideBar from "./filterSideBar"
 import { Instance, Trick, Modifier } from "@/types/types"
@@ -25,6 +25,7 @@ function ResultsCount({ trick, instance }: { trick: Trick[], instance: Instance[
 
 function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
     const [showFilters, setShowFilters] = useState(true)
+    const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -57,8 +58,16 @@ function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
                             <MdClear size={18} />
                             Clear filters
                         </button>
+
+                        <button
+                            onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}
+                            className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors"
+                        >
+                            {viewMode === "grid" ? <MdViewList size={18} /> : <MdGridView size={18} />}
+                            {viewMode === "grid" ? "List view" : "Grid view"}
+                        </button>
                     </div>
-                    
+
 
                     <Suspense fallback={null}>
                         <ResultsCount trick={trick} instance={instance} />
@@ -77,6 +86,7 @@ function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
                                 trickNames={trick}
                                 trickInstances={instance}
                                 modifiers={modifiers}
+                                viewMode={viewMode}
                             />
                         </Suspense>
                     </div>
