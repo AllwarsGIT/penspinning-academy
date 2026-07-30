@@ -96,7 +96,7 @@ function TrickNameCard({ trickName="", thumbnail="", thumbnailHand="left", badge
         return (
             <Link
                 href={href}
-                className="w-full rounded-md cursor-pointer group transition-all duration-200 ease-in-out flex flex-row items-center justify-between gap-3 px-4 py-3 bg-whitePrimary dark:bg-blackPrimary hover:bg-gray-200 dark:hover:bg-zinc-800 border border-gray-200 dark:border-gray-800"
+                className="w-full rounded-md cursor-pointer group transition-all duration-200 ease-in-out flex flex-row items-center justify-between gap-3 px-4 py-3 bg-whitePrimary dark:bg-blackPrimary hover:bg-gray-200 dark:hover:bg-zinc-800 "
                 scroll={false}
             >
                 {nameNode}
