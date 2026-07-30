@@ -41,7 +41,7 @@ function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
         <div className="w-full min-h-[calc(100vh-64px)]  bg-white dark:bg-black overflow-visible ">
             <div className="max-w-screen-2xl mx-auto py-10 px-5 flex flex-col gap-6">
 
-                <div className={`flex items-center gap-3 sticky top-16 z-15 bg-white dark:bg-black py-3  ${showFilters ? "gap-7" : ""}`}>
+                <div className={`flex items-center gap-3 sticky top-16 z-15 flex-wrap bg-white dark:bg-black py-3  ${showFilters ? "gap-7" : ""}`}>
                     <div className="flex flex-row gap-3">
                         <button
                             onClick={() => setShowFilters(!showFilters)}
@@ -56,7 +56,6 @@ function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
                             className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors"
                         >
                             <MdClear size={18} />
-                            Clear filters
                         </button>
 
                         <button
@@ -64,7 +63,6 @@ function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
                             className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors"
                         >
                             {viewMode === "grid" ? <MdViewList size={18} /> : <MdGridView size={18} />}
-                            {viewMode === "grid" ? "List view" : "Grid view"}
                         </button>
                     </div>
 

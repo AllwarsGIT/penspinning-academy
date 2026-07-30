@@ -1655,7 +1655,7 @@
     {
         "idTrickName": "cthulhu-sonic",
         "modifiers": [],
-        "difficulty": "advanced",
+        "difficulty": "expert",
         "prerequisites": ["pass","sonic", "twisted-sonic","side-sonic"],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Cthulhu%20sonic/Captura%20de%20pantalla%202026-07-24%20213110.jpg",
         "trickDetails": "",
