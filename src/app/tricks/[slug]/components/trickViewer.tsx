@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useDominantHand } from "@/app/providers/dominantHandProvider"
 import { MdRefresh } from "react-icons/md"
 import { IoMdArrowRoundBack } from "react-icons/io"
+import { IoLinkOutline, IoCheckmark } from "react-icons/io5"
 
 import ModifierToggle from "./modifierToggle"
 import DifficultyBadge from "@/components/difficultyBadge"
@@ -29,7 +30,8 @@ type TrickViewerProps = {
 
 
 function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
-
+    
+    const [copied, setCopied] = useState(false)
     
     useDominantHand()
     const searchParams = useSearchParams()
@@ -83,6 +85,14 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
         router.replace(`/tricks/${trick.slug}${params}`, { scroll: false })
     }
 
+    const handleBack = () => {
+    if (window.history.length > 1) {
+        router.back()
+    } else {
+        router.push("/tricks")
+    }
+}
+
     // Pagination states for video display
     const mainVideo = activeInstance?.videos.find(v => v.type === "main")
     const positionVideo = activeInstance?.videos.filter(v => v.type === "position") ?? []
@@ -116,22 +126,35 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
         .map(slug => allTricks.find(item => item.slug === slug))
         .filter((item): item is Trick => Boolean(item))
 
+    
+    const copyLink = async () => {
+        await navigator.clipboard.writeText(window.location.href)
+
+        setCopied(true)
+
+        setTimeout(() => {
+            setCopied(false)
+        }, 2000)
+    }
+
     return (
         <div className="flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
 
              {/* Name */}
             
             <div className="sticky top-16 z-20 w-full px-5 py-4 flex justify-center items-center bg-white dark:bg-black backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-500 ease-in-out">
-                <div className="relative w-full max-w-400 flex justify-center items-center">
+                <div className="w-full max-w-400 grid grid-cols-[48px_1fr_48px] items-center">
                     {/* Botón back alineado a la izquierda */}
                     <button
-                        onClick={() => router.back()}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center px-3 py-2 rounded-xl transition-all duration-200 cursor-pointer"
-                        style={{ 
-                            backgroundColor: '#e5e7eb',
+                        onClick={() => handleBack()}
+                        className="flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-200 cursor-pointer"
+                        style={{ backgroundColor: "#e5e7eb" }}
+                        onMouseEnter={e => {
+                            e.currentTarget.style.filter = "brightness(0.9)"
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.9)' }}
-                        onMouseLeave={e => { e.currentTarget.style.filter = 'brightness(1)' }}
+                        onMouseLeave={e => {
+                            e.currentTarget.style.filter = "brightness(1)"
+                        }}
                     >
                         <IoMdArrowRoundBack size={20} className="text-black" />
                     </button>
@@ -155,7 +178,11 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                     ))}
                                 </AnimatePresence>
                             </div>
-                            <span className="transition-all duration-300 ease-in-out">{trick.name}</span>
+                            <div className="flex items-center gap-2">
+                                <span className="transition-all duration-300 ease-in-out">
+                                    {trick.name}
+                                </span>
+                            </div>
                             <div className="flex flex-row">
                                 <AnimatePresence>
                                     {suffixMods.map((mod) => (
@@ -171,8 +198,10 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                         </motion.span>
                                     ))}
                                 </AnimatePresence>
+                                
                             </div>
                         </h1>
+                        
                         <div className="pt-2">
                             <AnimatePresence mode="wait">
                                 <motion.div
@@ -186,9 +215,44 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                 </motion.div>
                             </AnimatePresence>
                         </div>
+                        
+                    </div>
+                    <div className="relative flex justify-end">
+                        <button
+                            onClick={copyLink}
+                            className="flex items-center justify-center h-10 w-10 rounded-xl transition-colors"
+                        >
+                            {copied ? (
+                                <IoCheckmark
+                                    size={28}
+                                    className="text-green-500"
+                                />
+                            ) : (
+                                <IoLinkOutline
+                                    size={30}
+                                    className="text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                                />
+                            )}
+                            
+                        </button>
+                        <AnimatePresence>
+                            {copied && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -8 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -8 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute top-full mt-2 right-0 whitespace-nowrap text-xs font-mono tracking-widest uppercase bg-white  text-gray-600 border border-gray-200  px-4 py-1.5 rounded-full shadow-sm"
+                                >
+                                    Link copied
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
+
+            
 
             {/* Video */}
             <div className="mt-16 bg-black w-full">
@@ -409,6 +473,7 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
             </div> */}
             
         </div>
+        
     )
 }
 
