@@ -1,43 +1,53 @@
-"use client"
-import { useEffect, useRef } from "react"
-import { usePathname } from "next/navigation"
-import Lenis from "lenis"
+// "use client"
 
-declare global {
-    interface Window { __lenis: Lenis }
-}
+// import { useEffect, useRef } from "react"
+// import { usePathname } from "next/navigation"
+// import Lenis from "lenis"
 
-export default function SmoothScroll({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname()
-    const lenisRef = useRef<Lenis | null>(null)
+// export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+//   const pathname = usePathname()
+//   const lenisRef = useRef<Lenis | null>(null)
+//   const rafRef = useRef<number | null>(null)
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [pathname])
+//   useEffect(() => {
+//     window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+//     lenisRef.current?.scrollTo(0, { immediate: true })
+//   }, [pathname])
 
-    useEffect(() => {
-        const handlePopState = () => window.scrollTo(0, 0)
-        window.addEventListener("popstate", handlePopState)
-        return () => window.removeEventListener("popstate", handlePopState)
-    }, [])
+//   useEffect(() => {
+//     const handlePopState = () => {
+//       window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+//       lenisRef.current?.scrollTo(0, { immediate: true })
+//     }
 
-    useEffect(() => {
-        const lenis = new Lenis()
-        lenisRef.current = lenis
-        window.__lenis = lenis
+//     window.addEventListener("popstate", handlePopState)
+//     return () => window.removeEventListener("popstate", handlePopState)
+//   }, [])
 
-        console.log("Lenis iniciado:", window.__lenis) // comprueba que se inicia
+//   useEffect(() => {
+//     const lenis = new Lenis({
+//       duration: 1.1,
+//       smoothWheel: true,
+//       wheelMultiplier: 1,
+//       touchMultiplier: 1.2,
+//       lerp: 0.08,
+//     })
 
-        function raf(time: number) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
-        }
-        requestAnimationFrame(raf)
-        return () => {
-            lenis.destroy()
-            lenisRef.current = null
-        }
-    }, [])
+//     lenisRef.current = lenis
 
-    return <>{children}</>
-}
+//     const raf = (time: number) => {
+//       lenis.raf(time)
+//       rafRef.current = requestAnimationFrame(raf)
+//     }
+
+//     rafRef.current = requestAnimationFrame(raf)
+
+//     return () => {
+//       if (rafRef.current) cancelAnimationFrame(rafRef.current)
+//       lenis.destroy()
+//       lenisRef.current = null
+//     }
+//   }, [])
+
+//   return <>{children}</>
+// }

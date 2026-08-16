@@ -11,6 +11,7 @@ import DominantHandButton from './dominantHandButton';
 import Link from 'next/link';
 import SearchBar from '@/app/tricks/components/searchBar';
 import DonateButton from './donateButton';
+import RandomTrickButton from './RandomTrickButton'
 import { Suspense } from 'react';
 
 function Header () {
@@ -61,7 +62,7 @@ function Header () {
                                 className={`h-full flex items-center px-4 text-lg font-medium transition-colors duration-300 ${pathname === "/community" ? "text-black dark:text-white" : "text-gray-400 group-hover:text-black dark:group-hover:text-white"}`}
                                 href="/community"
                             >
-                                Community
+                                Community & Resources
                             </Link>
                         </li>
                         
@@ -73,25 +74,30 @@ function Header () {
 
                     {/* SearchBar solo en desktop */}
 
-                    <div className="hidden md:flex flex-1 justify-center">
+                    <div className="hidden md:flex flex-1 gap-2 justify-center">
                         <div className="w-[clamp(10rem,20vw,20rem)]">
                             <Suspense fallback={null}>
                                 <SearchBar />
 
                             </Suspense>
                         </div>
+                        <RandomTrickButton />
                     </div>
 
                     {/* Searchbar para movil */}
-                    <div className="absolute left-1/2 -translate-x-1/2 md:hidden w-50">
+                    <div className="absolute flex flex-row gap-2 left-1/2 -translate-x-1/2 md:hidden w-50">
                         <Suspense fallback={null}>
                             <SearchBar />
+
                         </Suspense>
+                        <RandomTrickButton />
+
                     </div>
+
 
                     {/* Toggles solo en desktop */}
                     <div className="hidden md:flex items-center gap-3">
-                        {/* <DonateButton /> */}
+                        <DonateButton />
                         <DominantHandButton />
                         <DarkmodeButton />
                     </div>
@@ -115,7 +121,7 @@ function Header () {
 
                 {/* Menu panel for mobile */}
                 <div
-                    className={`fixed top-16 right-0 h-[calc(100%-64px)] w-full bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 z-50 transform transition-transform duration-500 ease-in-out flex flex-col justify-between ${
+                    className={`lg:hidden fixed top-16 right-0 h-[calc(100%-64px)] w-full bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 z-50 transform transition-transform duration-500 ease-in-out flex flex-col justify-between ${
                         isOpen ? "translate-x-0" : "translate-x-full"
                     }`}
                 >
@@ -143,9 +149,13 @@ function Header () {
                                 onClick={() => handleNavClick("/community")}
                                 className="w-full py-5 flex items-center justify-center text-center text-lg font-semibold hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors duration-300"
                             >
-                                Community
+                                Community & Resources
                             </button>
                         </li>
+                        <li className="w-full py-5 flex items-center justify-center text-center text-lg font-semibold  transition-colors duration-300">
+                           <DonateButton />
+                        </li>
+                        
 
                         
 

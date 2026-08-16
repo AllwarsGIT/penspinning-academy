@@ -17,7 +17,7 @@
         "notation": "Fl",
         "position": "prefix"
     },
-    {   
+    {
         "id": "moonwalk",
         "name": "Moonwalk",
         "notation": "Moonwalk",
@@ -30,9 +30,27 @@
         "position": "prefix"
     },
     {
+        "id": "side",
+        "name": "Side",
+        "notation": "Side",
+        "position": "prefix"
+    },
+    {
+        "id": "continuous",
+        "name": "Continuous",
+        "notation": "Cont",
+        "position": "prefix"
+    },
+    {
         "id": "tipped",
         "name": "Tipped",
         "notation": "Tipped",
+        "position": "prefix"
+    },
+    {
+        "id": "counter",
+        "name": "Counter",
+        "notation": "Counter",
         "position": "prefix"
     },
     {
@@ -52,5 +70,23 @@
         "name": "Mirrored",
         "notation": "Mirr",
         "position": "prefix"
+    },
+    {
+        "id": "harmonic",
+        "name": "Harmonic",
+        "notation": "Harmo",
+        "position": "suffix"
+    },
+    {
+        "id": "rise",
+        "name": "Rise",
+        "notation": "Rise",
+        "position": "suffix"
+    },
+    {
+        "id": "fall",
+        "name": "Fall",
+        "notation": "Fall",
+        "position": "suffix"
     }
 ]

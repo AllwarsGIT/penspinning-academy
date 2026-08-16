@@ -1,22 +1,32 @@
 "use client"
+
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { MdFavorite } from "react-icons/md"
 
 type DonateNavButtonProps = {
     className?: string
 }
 
-export default function DonateNavButton({ className = "" }: DonateNavButtonProps) {
+export default function DonateNavButton({
+    className = "",
+}: DonateNavButtonProps) {
     const [isShining, setIsShining] = useState(false)
 
     useEffect(() => {
         const triggerShine = () => {
             setIsShining(true)
-            setTimeout(() => setIsShining(false), 900)
+
+            setTimeout(() => {
+                setIsShining(false)
+            }, 900)
         }
 
-        triggerShine() // brillo inicial al cargar
-        const interval = setInterval(triggerShine, 5 * 60 * 10)
+        // Brillo inicial
+        triggerShine()
+
+        // Cada 2 minutos
+        const interval = setInterval(triggerShine, 2 * 30 * 1000)
 
         return () => clearInterval(interval)
     }, [])
@@ -24,30 +34,85 @@ export default function DonateNavButton({ className = "" }: DonateNavButtonProps
     return (
         <Link
             href="/donate"
-            className={`relative inline-flex items-center overflow-hidden rounded-md bg-gradient-to-r from-[#d92b4b] to-[#a91538] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5 hover:shadow-xl ${className}`}
+            className={`
+                group
+                relative
+                inline-flex
+                items-center
+                gap-2
+                overflow-hidden
+                rounded-md
+                border
+                border-[#FF5E5B]/30
+                bg-[#FF5E5B]
+                px-5
+                py-2.5
+                text-sm
+                font-semibold
+                text-white
+                shadow-[0_4px_18px_rgba(255,94,91,0.15)]
+                transition-all
+                duration-300
+                hover:-translate-y-0.5
+                hover:border-[#FF5E5B]/60
+                hover:bg-[#ff6966]
+                hover:shadow-[0_6px_24px_rgba(255,94,91,0.25)]
+                ${className}
+            `}
         >
-            Donate
 
-            {/* Barrido de brillo — se dispara cada 5 minutos */}
-            <span
-                className={`pointer-events-none absolute inset-y-0 left-0 w-1/3 -skew-x-12 bg-white/40 ${
-                    isShining ? "animate-donate-shine" : "-translate-x-[200%]"
-                }`}
+            <MdFavorite
+                size={16}
+                className="
+                    relative
+                    z-10
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                "
             />
+
+            <span className="relative z-10">
+                Donate
+            </span>
+
+
+            {/* Shine */}
+            <span
+                className={`
+                    pointer-events-none
+                    absolute
+                    inset-y-0
+                    left-0
+                    w-1/3
+                    -skew-x-12
+                    bg-white/35
+                    blur-[1px]
+                    ${
+                        isShining
+                            ? "animate-donate-shine"
+                            : "-translate-x-[200%]"
+                    }
+                `}
+            />
+
 
             <style jsx>{`
                 @keyframes donate-shine {
                     from {
                         transform: translateX(-200%) skewX(-12deg);
                     }
+
                     to {
-                        transform: translateX(400%) skewX(-12deg);
+                        transform: translateX(500%) skewX(-12deg);
                     }
                 }
+
                 .animate-donate-shine {
                     animation: donate-shine 0.9s ease-in-out;
                 }
             `}</style>
+
         </Link>
     )
 }

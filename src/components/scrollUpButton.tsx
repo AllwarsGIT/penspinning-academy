@@ -3,6 +3,14 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { IoIosArrowUp } from "react-icons/io";
 
+declare global {
+    interface Window {
+        __lenis?: {
+            scrollTo: (top: number, options?: { duration?: number }) => void
+        }
+    }
+}
+
 function ScrollUpButton() {
     
     const [visible, setVisible] = useState(false)

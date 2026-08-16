@@ -2,15 +2,14 @@
 import { useRef, useState, useEffect } from "react"
 import { IoIosPause, IoIosPlay } from "react-icons/io"
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md"
-import { TbFrame} from "react-icons/tb"
-import { RiPlayMiniFill, RiPlayReverseFill  } from "react-icons/ri";
+import { RiPlayMiniFill, RiPlayReverseFill } from "react-icons/ri"
 import { useDominantHand } from "@/app/providers/dominantHandProvider"
 import VideoInfoTooltip from "./VideoInfoTooltip"
 
 type VideoPlayerProps = {
     url: string
-    recordedHand?: "left" | "right" // mano de quien grabó el vídeo — por defecto "left"
-    fps?: number // fps del vídeo, usado para calcular la duración de un frame en modo frame-by-frame
+    recordedHand?: "left" | "right"
+    fps?: number
 }
 
 export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: VideoPlayerProps) {
@@ -18,6 +17,7 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
     const containerRef = useRef<HTMLDivElement>(null)
     const progressRef = useRef<HTMLDivElement>(null)
     const isDragging = useRef(false)
+    const loadTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
     const { isLeftHanded } = useDominantHand()
 
@@ -25,10 +25,11 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
     const [isPlaying, setIsPlaying] = useState(false)
     const [progress, setProgress] = useState(0)
     const [speed, setSpeed] = useState(1)
+    const [isLoading, setIsLoading] = useState(true)
+    const [hasError, setHasError] = useState(false)
 
     const frameDuration = 1 / fps
 
-    // La mano del viewer determina si hace falta espejar este vídeo concreto
     const viewerHand = isLeftHanded ? "left" : "right"
     const needsMirror = recordedHand !== viewerHand
 
@@ -39,7 +40,43 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
         videoRef.current.style.transformOrigin = "center center"
     }, [needsMirror, url])
 
-    // Limpia el drag si el ratón sale de la ventana o suelta en cualquier sitio
+    // Reset de estado + timeout de seguridad cada vez que cambia el vídeo
+    // (cambio de step/main/position, o de instancia/modifiers).
+    useEffect(() => {
+        setIsLoading(true)
+        setHasError(false)
+        setIsPlaying(false)
+        setProgress(0)
+
+        if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current)
+        loadTimeoutRef.current = setTimeout(() => {
+            setIsLoading(false)
+            setHasError(true)
+        }, 8000)
+
+        return () => {
+            if (loadTimeoutRef.current) clearTimeout(loadTimeoutRef.current)
+        }
+    }, [url])
+
+    const handleCanPlay = () => {
+        if (loadTimeoutRef.current) {
+            clearTimeout(loadTimeoutRef.current)
+            loadTimeoutRef.current = null
+        }
+        setIsLoading(false)
+        setHasError(false)
+    }
+
+    const handleError = () => {
+        if (loadTimeoutRef.current) {
+            clearTimeout(loadTimeoutRef.current)
+            loadTimeoutRef.current = null
+        }
+        setIsLoading(false)
+        setHasError(true)
+    }
+
     useEffect(() => {
         const stopDragging = () => { isDragging.current = false }
         window.addEventListener("mouseup", stopDragging)
@@ -51,7 +88,7 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
     }, [])
 
     const togglePlay = () => {
-        if (!videoRef.current) return
+        if (!videoRef.current || hasError) return
 
         const video = videoRef.current
 
@@ -59,7 +96,6 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
             video.pause()
             setIsPlaying(false)
         } else {
-            // Si el vídeo terminó, volver al inicio
             if (video.ended || video.currentTime >= video.duration) {
                 video.currentTime = 0
                 setProgress(0)
@@ -82,7 +118,7 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
     }
 
     const seekToPercent = (clientX: number) => {
-        if (!videoRef.current || !progressRef.current) return
+        if (!videoRef.current || !progressRef.current || hasError) return
 
         const rect = progressRef.current.getBoundingClientRect()
         const percent = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1)
@@ -91,7 +127,6 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
 
         video.currentTime = percent * video.duration
 
-        // Fuerza la actualización del frame en iOS/Android
         if (video.paused) {
             video.pause()
         }
@@ -110,7 +145,6 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
         seekToPercent(e.clientX)
     }
 
-    // Touch support
     const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
         isDragging.current = true
         seekToPercent(e.touches[0].clientX)
@@ -134,7 +168,6 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
             await containerRef.current.requestFullscreen()
         }
     }
-    
 
     useEffect(() => {
         const handleFullscreenChange = () => {
@@ -161,7 +194,7 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
     }, [])
 
     const stepFrame = (direction: 1 | -1) => {
-        if (!videoRef.current) return
+        if (!videoRef.current || hasError) return
         if (!videoRef.current.paused) {
             videoRef.current.pause()
             setIsPlaying(false)
@@ -177,7 +210,6 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            // No interceptar si el usuario está escribiendo
             const target = e.target as HTMLElement
             if (
                 target.tagName === "INPUT" ||
@@ -192,18 +224,15 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
                     e.preventDefault()
                     togglePlay()
                     break
-
                 case "f":
                 case "F":
                     e.preventDefault()
                     handleFullscreen()
                     break
-
                 case ".":
                     e.preventDefault()
                     stepFrame(1)
                     break
-
                 case ",":
                     e.preventDefault()
                     stepFrame(-1)
@@ -211,18 +240,14 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
                 case "s":
                 case "S": {
                     e.preventDefault()
-
                     if (!videoRef.current) return
-
                     const speeds = [1, 0.5, 0.25]
                     const current = speeds.indexOf(videoRef.current.playbackRate)
                     const next = speeds[(current + 1) % speeds.length]
-
                     setPlaybackSpeed(next)
                     break
                 }
             }
-            
         }
 
         window.addEventListener("keydown", handleKeyDown)
@@ -232,7 +257,6 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPlaying, isFullscreen])
-
 
     return (
         <div
@@ -244,38 +268,56 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
             <video
                 ref={videoRef}
                 src={url}
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain"
                 style={{
                     transform: needsMirror ? "scaleX(-1)" : "none",
                     transformOrigin: "center center"
                 }}
                 onTimeUpdate={handleTimeUpdate}
+                onCanPlay={handleCanPlay}
+                onError={handleError}
                 onClick={togglePlay}
                 onEnded={() => setIsPlaying(false)}
                 playsInline
             />
 
-            {/* Toggle frame a frame — visible en pausa/hover, y permanente mientras el modo está activo */}
-            <div
-                className={`hidden lg:flex absolute top-0 left-0 right-0 px-2 py-3  justify-start transition-opacity duration-300 ${
-                    isPlaying
-                        ? "opacity-0 group-hover:opacity-100"
-                        : "opacity-100"
-                }`}
-            >
-                <VideoInfoTooltip
-                    shortcuts={[
-                        { key: "Space", action: "Play / Pause" },
-                        { key: "F", action: "Fullscreen" },
-                        { key: "S", action: "Change speed" },
-                        { key: ".", action: "Next frame" },
-                        { key: ",", action: "Previous frame" },
-                    ]}
-                />
-            </div>
+            {/* Estado de error — mismo lenguaje que "Video not available" de TrickViewer */}
+            {hasError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black">
+                    <p className="text-gray-500 text-sm font-mono tracking-widest uppercase">
+                        Video unavailable
+                    </p>
+                </div>
+            )}
+            {isLoading && !hasError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black pointer-events-none">
+                    <div className="h-8 w-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+                </div>
+            )}
 
-            {/* Botones flotantes de frame a frame — solo en modo frame */}
-            
+            {/* Toggle frame a frame */}
+            {!hasError && (
+                <div
+                    className={`hidden lg:flex absolute top-0 left-0 right-0 px-2 py-3 justify-start transition-opacity duration-300 ${
+                        isPlaying
+                            ? "opacity-0 group-hover:opacity-100"
+                            : "opacity-100"
+                    }`}
+                >
+                    <VideoInfoTooltip
+                        shortcuts={[
+                            { key: "Space", action: "Play / Pause" },
+                            { key: "F", action: "Fullscreen" },
+                            { key: "S", action: "Change speed" },
+                            { key: ".", action: "Next frame" },
+                            { key: ",", action: "Previous frame" },
+                        ]}
+                    />
+                </div>
+            )}
+
+            {!hasError && (
+                <>
                     <button
                         onClick={() => stepFrame(-1)}
                         aria-label="Frame anterior"
@@ -289,8 +331,6 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
                             md:hover:opacity-100!
                             opacity-50
                             md:opacity-0
-                            
-
                             ${!isPlaying ? "md:opacity-100 opacity-100" : "md:group-hover:opacity-50"}
                             `}
                     >
@@ -311,46 +351,42 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
                             md:hover:opacity-100!
                             opacity-50
                             md:opacity-0
-
                             ${!isPlaying ? "md:opacity-100 opacity-100" : "md:group-hover:opacity-50"}
                             `}
                     >
                         <span className="text-lg font-semibold">+1</span>
                         <RiPlayMiniFill size={20} />
                     </button>
-               
+                </>
+            )}
 
             {/* Controls */}
-            <div className={`absolute bottom-0 left-0 right-0 px-4 py-3 transition-opacity duration-300 ${
-                isPlaying
-                    ? "opacity-0 group-hover:opacity-100"
-                    : "opacity-100"
-            }`}>
-
-                {/* Progress bar — permanente en modo frame */}
-                <div
-                    ref={progressRef}
-                    className="relative w-full h-4 flex items-center cursor-pointer mb-3 touch-none"
-                    onMouseDown={handleMouseDown}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                >
-                    {/* Track */}
-                    <div className="absolute w-full h-1 bg-gray-400 rounded-full ">
+            {!hasError && (
+                <div className={`absolute bottom-0 left-0 right-0 px-4 py-3 transition-opacity duration-300 ${
+                    isPlaying
+                        ? "opacity-0 group-hover:opacity-100"
+                        : "opacity-100"
+                }`}>
+                    <div
+                        ref={progressRef}
+                        className="relative w-full h-4 flex items-center cursor-pointer mb-3 touch-none"
+                        onMouseDown={handleMouseDown}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                    >
+                        <div className="absolute w-full h-1 bg-gray-400 rounded-full">
+                            <div
+                                className="h-full bg-white rounded-full"
+                                style={{ width: `${progress}%` }}
+                            />
+                        </div>
                         <div
-                            className="h-full bg-white rounded-full "
-                            style={{ width: `${progress}%` }}
+                            className="absolute w-3 h-3 hover:w-5 hover:h-5 bg-white rounded-full shadow-md -translate-x-1/2 pointer-events-none"
+                            style={{ left: `${progress}%` }}
                         />
                     </div>
-                    {/* Thumb */}
-                    <div
-                        className="absolute w-3 h-3 hover:w-5 hover:h-5 bg-white rounded-full shadow-md -translate-x-1/2 pointer-events-none"
-                        style={{ left: `${progress}%` }}
-                    />
-                </div>
 
-                {/* Play/pause, velocidad y fullscreen — ocultos en modo frame */}
                     <div className="flex items-center justify-between">
                         <button onClick={togglePlay} className="cursor-pointer p-2 text-white bg-black/50 hover:bg-black transition-colors ease-in-out rounded-full">
                             {isPlaying ? <IoIosPause size={25} /> : <IoIosPlay size={25} />}
@@ -373,7 +409,9 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
                             {isFullscreen ? <MdFullscreenExit size={20} /> : <MdFullscreen size={20} />}
                         </button>
                     </div>
-            </div>
+                </div>
+            )}
+
         </div>
     )
 }

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { MdFilterList, MdFilterListOff, MdClear, MdGridView, MdViewList } from "react-icons/md"
 import TrickSearchList from "./trickSearchList"
@@ -23,11 +23,27 @@ function ResultsCount({ trick, instance }: { trick: Trick[], instance: Instance[
     )
 }
 
+const SHOW_FILTERS_KEY = "tricks:showFilters"
+
 function TricksViewer({ instance, trick, modifiers }: TricksViewerProps) {
-    const [showFilters, setShowFilters] = useState(true)
+    // Arranca en false para que coincida con el render de servidor (evita mismatch de hidratación)
+    const [showFilters, setShowFilters] = useState(false)
     const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+    const [hydrated, setHydrated] = useState(false)
     const router = useRouter()
     const searchParams = useSearchParams()
+
+    useEffect(() => {
+        const stored = localStorage.getItem(SHOW_FILTERS_KEY)
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- lectura única de localStorage en el montaje, no hay cascada
+        if (stored !== null) setShowFilters(stored === "true")
+        setHydrated(true)
+    }, [])
+
+    useEffect(() => {
+        if (!hydrated) return
+        localStorage.setItem(SHOW_FILTERS_KEY, String(showFilters))
+    }, [showFilters, hydrated])
 
     const clearFilters = () => {
         const params = new URLSearchParams(searchParams.toString())

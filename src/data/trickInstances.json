@@ -323,6 +323,26 @@
     },
     {
         "idTrickName": "sonic",
+        "modifiers": ["tipped"],
+        "difficulty": "fundamental",
+        "prerequisites": ["charge"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Tipped%20Sonic/Captura%20de%20pantalla%202026-08-16%20203906.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Tipped%20Sonic/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "sonic",
         "modifiers": [],
         "difficulty": "fundamental",
         "prerequisites": ["charge"],
@@ -845,7 +865,7 @@
         "idTrickName": "twisted-sonic",
         "modifiers": [],
         "difficulty": "beginner",
-        "prerequisites": ["charge"],
+        "prerequisites": ["charge", "pass"],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Twisted%20Sonic/tw%20sonic.jpeg",
         "trickDetails": "",
         "videos": [
@@ -897,7 +917,7 @@
             "reverse"
         ],
         "difficulty": "beginner",
-        "prerequisites": ["charge"],
+        "prerequisites": ["charge", "pass"],
         "thumbnail": "",
         "trickDetails": "",
         "videos": [
@@ -1056,6 +1076,7 @@
         ],
         "thumbnailHand": "left"
     },
+    
     {
         "idTrickName": "neo-sonic",
         "modifiers": [],
@@ -1147,6 +1168,46 @@
         "thumbnailHand": "left"
     },
     {
+        "idTrickName": "fake-double",
+        "modifiers": [],
+        "difficulty": "beginner",
+        "prerequisites": ["thumb-around"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/fake%20double/Captura%20de%20pantalla%202026-08-14%20185255.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/fake%20double/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            }        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "extended-thumb-around",
+        "modifiers": [],
+        "difficulty": "beginner",
+        "prerequisites": ["thumb-around", "extended-thumb-around", "thumb-spin"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Extended%20TA/Captura%20de%20pantalla%202026-07-24%20213249.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Extended%20TA/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+   
+    {
         "idTrickName": "palm-spin",
         "modifiers": [],
         "difficulty": "beginner",
@@ -1211,6 +1272,26 @@
         "thumbnailHand": "right"
     },
     {
+        "idTrickName": "demon-sonic",
+        "modifiers": ["reverse"],
+        "difficulty": "beginner",
+        "prerequisites": [ "sonic", "twisted-sonic"],
+        "thumbnail": "",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Demon%20sonic%20reverse/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
         "idTrickName": "shadow",
         "modifiers": [],
         "difficulty": "beginner",
@@ -1231,15 +1312,55 @@
         "thumbnailHand": "right"
     },
     {
-        "idTrickName": "side-sonic",
-        "modifiers": [],
+        "idTrickName": "shadow",
+        "modifiers": ["reverse"],
         "difficulty": "beginner",
-        "prerequisites": ["sonic"],
+        "prerequisites": ["charge"],
+        "thumbnail": "",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Shadow%20Reverse/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "sonic",
+        "modifiers": ["side"],
+        "difficulty": "beginner",
+        "prerequisites": [],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Side%20sonic/thumbnail.jpg",
         "trickDetails": "",
         "videos": [
             {
                 "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Side%20sonic/Regular/Side%20Sonic.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "sonic",
+        "modifiers": ["inverse", "side"],
+        "difficulty": "beginner",
+        "prerequisites": [],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20side%20sonic/Captura%20de%20pantalla%202026-08-14%20190230.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inverse%20side%20sonic/0.mp4",
                 "type": "main",
                 "order": 0,
                 "hand": "right"
@@ -1323,6 +1444,12 @@
                 "type": "main",
                 "order": 0,
                 "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Moonwalk%20sonic/0.mp4",
+                "type": "step",
+                "order": 1,
+                "hand": "right"
             }
         ],
         "tags": [
@@ -1360,6 +1487,26 @@
         "videos": [
             {
                 "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Baktap/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "thumb-around",
+        "modifiers": ["release"],
+        "difficulty": "beginner",
+        "prerequisites": ["thumb-around"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Ta%20rel/Captura%20de%20pantalla%202026-08-16%20203237.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Ta%20rel/0.mp4",
                 "type": "main",
                 "order": 0,
                 "hand": "right"
@@ -1431,15 +1578,15 @@
         "thumbnailHand": "right"
     },
     {
-        "idTrickName": "extended-thumb-around",
+        "idTrickName": "west-sonic",
         "modifiers": [],
         "difficulty": "beginner",
-        "prerequisites": ["thumb-around"],
-        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Extended%20TA/Captura%20de%20pantalla%202026-07-24%20213249.jpg",
+        "prerequisites": ["pass", "twisted-sonic"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/West%20sonic/Captura%20de%20pantalla%202026-08-16%20204124.jpg",
         "trickDetails": "",
         "videos": [
             {
-                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Extended%20TA/Regular/0.mp4",
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/West%20sonic/Regular/0.mp4",
                 "type": "main",
                 "order": 0,
                 "hand": "right"
@@ -1450,6 +1597,7 @@
         ],
         "thumbnailHand": "right"
     },
+    
     {
         "idTrickName": "powerpass",
         "modifiers": [],
@@ -1491,10 +1639,30 @@
         "thumbnailHand": "right"
     },
     {
+        "idTrickName": "flush-sonic",
+        "modifiers": ["side"],
+        "difficulty": "intermediate",
+        "prerequisites": ["pass", "sonic" ],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Side%20Flush%20sonic/Captura%20de%20pantalla%202026-08-16%20203012.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Flush%20sonic/Regular/4%20Basic%20Flush%20Sonics.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
         "idTrickName": "bakfall",
         "modifiers": [],
         "difficulty": "intermediate",
-        "prerequisites": ["backaround"],
+        "prerequisites": ["bak"],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/bakfall/WhatsApp%20Image%202026-06-23%20at%2000.07.54%20(2).jpeg",
         "trickDetails": "",
         "videos": [
@@ -1510,8 +1678,9 @@
         ],
         "thumbnailHand": "left"
     },
+    
     {
-        "idTrickName": "backaround",
+        "idTrickName": "bak",
         "modifiers": [],
         "difficulty": "intermediate",
         "prerequisites": [],
@@ -1520,6 +1689,52 @@
         "videos": [
             {
                 "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/Regular/backaroudns.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "left"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/backarounds/Regular/1.mp4",
+                "type": "step",
+                "order": 1,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "left"
+    },
+    {
+        "idTrickName": "neosa",
+        "modifiers": [],
+        "difficulty": "intermediate",
+        "prerequisites": [],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/NeoSA/Captura%20de%20pantalla%202026-08-14%20191712.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/NeoSA/Regular/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "bak",
+        "modifiers": ["release"],
+        "difficulty": "intermediate",
+        "prerequisites": [],
+        "thumbnail": "",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Air%20bak%20Riser/WIN_20260804_16_16_11_Pro.mp4",
                 "type": "main",
                 "order": 0,
                 "hand": "left"
@@ -1631,17 +1846,125 @@
         "thumbnailHand": "right"
     },
     {
+        "idTrickName": "around",
+        "modifiers": ["mirrored"],
+        "difficulty": "intermediate",
+        "prerequisites": ["around"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Mirrored%20around/WhatsApp%20Image%202026-08-14%20at%2019.08.08.jpeg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Mirrored%20around/Regular/Inverse%20Around.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "around",
+        "modifiers": ["mirrored", "reverse"],
+        "difficulty": "intermediate",
+        "prerequisites": ["around"],
+        "thumbnail": "",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Mirrored%20around/Reverse/IMG_20260730_203919_380.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "raimo-bak",
+        "modifiers": [],
+        "difficulty": "intermediate",
+        "prerequisites": ["around"],
+        "thumbnail": "",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Raimo%20bak/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            },
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Raimo%20bak/2.mp4",
+                "type": "step",
+                "order": 1,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
         "idTrickName": "powerpass",
         "modifiers": [
             "mirrored"
         ],
         "difficulty": "intermediate",
-        "prerequisites": ["finger-pass", "powerpass"],
+        "prerequisites": ["finger-pass", "neo-sonic", "around"],
         "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Powerpass/Captura%20de%20pantalla%202026-07-24%20213515.jpg",
         "trickDetails": "",
         "videos": [
             {
                 "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Powerpass/Mirrored/0.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "powerpass",
+        "modifiers": [
+            "reverse"
+        ],
+        "difficulty": "intermediate",
+        "prerequisites": ["finger-pass", "neo-sonic", "around"],
+        "thumbnail": "",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Powerpass%20Reverse/Pp%20rev.mp4",
+                "type": "main",
+                "order": 0,
+                "hand": "right"
+            }
+        ],
+        "tags": [
+            ""
+        ],
+        "thumbnailHand": "right"
+    },
+    {
+        "idTrickName": "powerpass",
+        "modifiers": ["inverse", "mirrored", "reverse"],
+        "difficulty": "expert",
+        "prerequisites": ["finger-pass", "neo-sonic", "powerpass", "around"],
+        "thumbnail": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inv%20mirr%20pp%20rev/Captura%20de%20pantalla%202026-08-14%20185950.jpg",
+        "trickDetails": "",
+        "videos": [
+            {
+                "url": "https://pub-768f808dc5fe4b5284d814f5967be01c.r2.dev/Fundamental%20Tricks/Inv%20mirr%20pp%20rev/0.mp4",
                 "type": "main",
                 "order": 0,
                 "hand": "right"

@@ -3,13 +3,19 @@ import { useState, useEffect } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
 import { IoSearch, IoClose } from "react-icons/io5"
 
+const MAX_QUERY_LENGTH = 50
+
 function SearchBar() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
     const isOnTricksPage = pathname === "/tricks"
-    const [query, setQuery] = useState(isOnTricksPage ? searchParams.get("q") ?? "" : "")
+    const [query, setQuery] = useState(
+        isOnTricksPage
+            ? (searchParams.get("q") ?? "").slice(0, MAX_QUERY_LENGTH)
+            : ""
+    )
 
     useEffect(() => {
         const handle = setTimeout(() => {
@@ -29,16 +35,19 @@ function SearchBar() {
         return () => clearTimeout(handle)
     }, [query])
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setQuery(e.target.value.slice(0, MAX_QUERY_LENGTH))
+    }
+
     const clearQuery = () => setQuery("")
 
     return (
-        // "group" marca este div como referencia para que los hijos puedan
-        // reaccionar a estados (focus-within) de lo que ocurra DENTRO de él
         <div className="relative w-full max-w-md group">
             <input
                 type="text"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={handleChange}
+                maxLength={MAX_QUERY_LENGTH}
                 placeholder="Search trick..."
                 className="w-full px-4 py-2 pr-10 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-black text-black dark:text-white outline-none transition-all duration-300 ease-in-out focus:border-transparent focus:ring-2 focus:ring-black/70 dark:focus:ring-white/70 focus:shadow-lg [-webkit-tap-highlight-color:transparent]"
             />
@@ -53,9 +62,6 @@ function SearchBar() {
                 </button>
             )}
 
-            {/* group-focus-within: se activa cuando el <input> hermano
-                (dentro del mismo "group") tiene el foco, sin que la lupa
-                en sí sea focusable ni interactiva */}
             <IoSearch
                 size={18}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-black dark:group-focus-within:text-white transition-colors duration-300 pointer-events-none"

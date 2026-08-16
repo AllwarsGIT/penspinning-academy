@@ -1,8 +1,17 @@
 export const modifierColor: Record<string, string> = {
-    reverse: "#22c55e",
-    inverse: "#6366f1",
-    fingerless: "#f97316",
-    curled: "#a855f7",
-    mirrored: "#ef4444",
-    moonwalk: "#06b6d4"
+    reverse: "#22c55e",    
+    inverse: "#6366f1",    
+    fingerless: "#f97316", 
+    curled: "#a855f7",     
+    mirrored: "#ef4444",  
+    moonwalk: "#06b6d4", 
+    side: "#14b8a6",      
+    continuous: "#f59e0b", 
+    tipped: "#ec4899",     
+    counter: "#84cc16",     
+    release: "#3b82f6",     
+    aerial: "#d946ef",
+    harmonic: "#0ea5e9",
+    rise: "#eab308",
+    fall: "#78716c",
 }

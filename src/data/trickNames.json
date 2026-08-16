@@ -104,13 +104,7 @@
         "notation":"warped sonic",
         "families": ["sonic"]
     },
-    {
-        "id": "side-sonic",
-        "slug": "side-sonic",
-        "name": "Side Sonic",
-        "notation":"Side Sonic",
-        "families": ["sonic"]
-    },
+    
     {
         "id": "shadow",
         "slug": "shadow",
@@ -126,6 +120,13 @@
         "families": ["around"]
     },
     {
+        "id": "fake-double",
+        "slug": "fake-double",
+        "name": "Fake Double",
+        "notation":"Fake Double",
+        "families": ["around", "spin"]
+    },
+    {
         "id": "swivel",
         "slug": "swivel",
         "name": "Swivel",
@@ -137,6 +138,13 @@
         "slug": "demon-sonic",
         "name": "Demon Sonic",
         "notation":"Demon Sonic",
+        "families": ["sonic", "pass"]
+    },
+    {
+        "id": "west-sonic",
+        "slug": "west-sonic",
+        "name": "West Sonic",
+        "notation":"West Sonic",
         "families": ["sonic", "pass"]
     },
     {
@@ -154,6 +162,13 @@
         "families": ["sonic", "pass"]
     },
     {
+        "id": "out-in-sonic",
+        "slug": "out-in-sonic",
+        "name": "Out-In Sonic",
+        "notation":"Out-In Sonic",
+        "families": ["sonic", "pass"]
+    },
+    {
         "id": "baktap",
         "slug": "baktap",
         "name": "Bak Tap",
@@ -161,10 +176,24 @@
         "families": ["tap"]
     },
     {
-        "id": "backaround",
-        "slug": "backaround",
+        "id": "neobak",
+        "slug": "neobak",
+        "name": "Neo Bak",
+        "notation":"neobak",
+        "families": ["around"]
+    },
+    {
+        "id": "bak",
+        "slug": "bak",
         "name": "Back Around",
-        "notation":"backaround",
+        "notation":"bak",
+        "families": ["around"]
+    },
+    {
+        "id": "neosa",
+        "slug": "neosa",
+        "name": "NeoSA",
+        "notation":"NeoSA",
         "families": ["around"]
     },
     {
@@ -200,6 +229,20 @@
         "slug": "corkscrew",
         "name": "Corkscrew",
         "notation":"Corkscrew",
+        "families": ["sonic","around"]
+    },
+    {
+        "id": "raimo",
+        "slug": "raimo",
+        "name": "Raimo",
+        "notation":"Raimo",
+        "families": ["sonic","around"]
+    },
+    {
+        "id": "raimo-bak",
+        "slug": "raimo-bak",
+        "name": "Raimo Bak",
+        "notation":"Raimo Bak",
         "families": ["sonic","around"]
     },
     {

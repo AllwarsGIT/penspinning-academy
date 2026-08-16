@@ -7,7 +7,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ScrollUpButton from "@/components/scrollUpButton";
-import SmoothScroll from "@/components/SmoothScroll"
+import { LearnedTricksProvider } from "./providers/learnedTricksProvider";
 
 
 const geistSans = Geist({
@@ -53,20 +53,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased `}
       >
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem={(true)}
-          >
-            <DominantHandProvider>
-              <SmoothScroll>
-                <Header />
-                      {children}
-                  <ScrollUpButton/>
-                <Footer />
-              </SmoothScroll>
-            </DominantHandProvider>
-          </ThemeProvider>
+
+          <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem={(true)}
+            >
+              <DominantHandProvider>
+                <LearnedTricksProvider>
+                    <Header />
+                          {children}
+                      <ScrollUpButton/>
+                    <Footer />
+                </LearnedTricksProvider>
+              </DominantHandProvider>
+            </ThemeProvider>
       </body>
     </html>
   );  

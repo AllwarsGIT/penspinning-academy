@@ -5,56 +5,62 @@ import { useState, useEffect } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 import { useDominantHand } from "@/app/providers/dominantHandProvider"
-import { MdRefresh } from "react-icons/md"
+import { MdRefresh, MdKeyboardArrowDown, MdCheckCircle } from "react-icons/md"
 import { IoMdArrowRoundBack } from "react-icons/io"
 import { IoLinkOutline, IoCheckmark } from "react-icons/io5"
 
-import ModifierToggle from "./modifierToggle"
+import ModifierButton from "./ModifierButton"
 import DifficultyBadge from "@/components/difficultyBadge"
 import InfoToolTip from "@/components/InfoToolTip"
 import VideoPlayer from "@/components/VideoPlayer"
+import LearnedToggle from "./LearnedToggle"
 import { modifierColor } from "@/app/constants/modifiers"
 import type { Instance, Trick } from "@/types/types"
+import { usePersistentCollapse } from "@/app/hooks/usePersistentCollapse"
+import { useLearnedTricks } from "@/app/providers/learnedTricksProvider"
 
 type TrickViewerProps = {
     instance: Instance[]
     trick: Trick
-    modifiers: { 
-        id: string, 
-        name: string, 
+    modifiers: {
+        id: string,
+        name: string,
         notation: string | null,
-        position: string | null }[]
+        position: string | null
+    }[]
     allTricks: Trick[]
 }
 
+function TrickViewer({ trick, instance, modifiers, allTricks }: TrickViewerProps) {
 
-
-function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
-    
     const [copied, setCopied] = useState(false)
-    
+    const [collapsed, setCollapsed] = usePersistentCollapse("trick:modifiersCollapsed", false)
+
+    const { isLearned } = useLearnedTricks()
+
     useDominantHand()
     const searchParams = useSearchParams()
     const modifiersParam = searchParams.get("modifiers")
     const initialModifiers = modifiersParam ? modifiersParam.split(",") : []
     const router = useRouter()
-    // Modular state generator
-    const [activeModifierIds, setActiveModifierIds] = useState<string[]>(initialModifiers)
 
-    // Video state for pagination
+    const [activeModifierIds, setActiveModifierIds] = useState<string[]>(initialModifiers)
     const [activeVideo, setActiveVideo] = useState("main")
 
     const matchesModifierSelection = (instanceModifiers: string[], selectedIds: string[]) =>
         selectedIds.every(id => instanceModifiers.includes(id)) &&
         instanceModifiers.every(m => selectedIds.includes(m))
 
-    // activeInstance 
     const activeInstance = instance.find(i =>
         matchesModifierSelection(i.modifiers, activeModifierIds)
     )
 
-    // Verifies if the modified route exist, if it doesnt, it goes back to the base instance
-    // Im openly ignoring the warning here
+    const activeInstanceId = activeInstance && activeInstance.modifiers.length > 0
+        ? `${trick.slug}:${[...activeInstance.modifiers].sort().join(",")}`
+        : trick.slug
+
+    const isCurrentLearned = isLearned(activeInstanceId)
+
     useEffect(() => {
         if (!activeInstance && activeModifierIds.length > 0) {
             // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -68,16 +74,16 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
     )
 
     const toggleModifier = (id: string) => {
-        const newIds = activeModifierIds.includes(id) 
-            ? activeModifierIds.filter(m => m !== id) 
+        const newIds = activeModifierIds.includes(id)
+            ? activeModifierIds.filter(m => m !== id)
             : [...activeModifierIds, id]
-        
+
         const combinationExists = instance.some(i =>
             matchesModifierSelection(i.modifiers, newIds)
         ) || newIds.length === 0
 
         if (!combinationExists) return
-        
+
         setActiveModifierIds(newIds)
         setActiveVideo("main")
 
@@ -85,82 +91,85 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
         router.replace(`/tricks/${trick.slug}${params}`, { scroll: false })
     }
 
-    const handleBack = () => {
-    if (window.history.length > 1) {
-        router.back()
-    } else {
-        router.push("/tricks")
+    const resetModifiers = () => {
+        setActiveModifierIds([])
+        setActiveVideo("main")
+        router.replace(`/tricks/${trick.slug}`, { scroll: false })
     }
-}
 
-    // Pagination states for video display
+    const handleBack = () => {
+        if (window.history.length > 1) {
+            router.back()
+        } else {
+            router.push("/tricks")
+        }
+    }
+
     const mainVideo = activeInstance?.videos.find(v => v.type === "main")
     const positionVideo = activeInstance?.videos.filter(v => v.type === "position") ?? []
     const stepVideos = activeInstance?.videos.filter(v => v.type === "step") ?? []
 
-    // Nos quedamos con el objeto entero (no solo la url) para poder leer .hand
     const activeVideoObj =
         activeVideo === "main"
             ? mainVideo
             : activeVideo === "position"
-                ? positionVideo[0]  // Si hay varios position, toma el primero
+                ? positionVideo[0]
                 : stepVideos.find(v => v.order.toString() === activeVideo)
 
     const activeVideoUrl = activeVideoObj?.url ?? ""
 
-    
-    // Suffix prefix management for name composition
     const activeModifiers = activeInstance?.modifiers ?? []
 
     const prefixMods = activeModifiers
         .map(id => modifiers.find(m => m.id === id))
         .filter(m => m?.position === "prefix")
-        .map(m => ({ name: m?.name, id: m!.id, notation:m?.notation }))
+        .map(m => ({ name: m?.name, id: m!.id, notation: m?.notation }))
 
     const suffixMods = activeModifiers
         .map(id => modifiers.find(m => m.id === id))
         .filter(m => m?.position === "suffix")
-        .map(m => ({ name: m?.name, id: m!.id, notation:m?.notation }))
+        .map(m => ({ name: m?.name, id: m!.id, notation: m?.notation }))
 
     const prerequisiteTricks = (activeInstance?.prerequisites ?? [])
         .map(slug => allTricks.find(item => item.slug === slug))
         .filter((item): item is Trick => Boolean(item))
 
-    
     const copyLink = async () => {
         await navigator.clipboard.writeText(window.location.href)
-
         setCopied(true)
-
-        setTimeout(() => {
-            setCopied(false)
-        }, 2000)
+        setTimeout(() => setCopied(false), 2000)
     }
 
     return (
         <div className="flex flex-col justify-center items-center transition-colors duration-500 ease-in-out">
 
-             {/* Name */}
-            
-            <div className="sticky top-16 z-20 w-full px-5 py-4 flex justify-center items-center bg-white dark:bg-black backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-500 ease-in-out">
+            {/* ============ HEADER ============ */}
+            <div className={`sticky top-16 z-20 w-full px-5 py-4 flex justify-center items-center border-b transition-colors duration-500 ease-in-out ${
+                isCurrentLearned
+                    ? "bg-emerald-50 dark:bg-emerald-950 border-emerald-200 dark:border-emerald-900"
+                    : "bg-white dark:bg-black border-gray-200 dark:border-gray-800"
+            }`}>
                 <div className="w-full max-w-400 grid grid-cols-[48px_1fr_48px] items-center">
-                    {/* Botón back alineado a la izquierda */}
+
                     <button
-                        onClick={() => handleBack()}
+                        onClick={handleBack}
                         className="flex items-center justify-center h-10 w-10 rounded-xl transition-all duration-200 cursor-pointer"
                         style={{ backgroundColor: "#e5e7eb" }}
-                        onMouseEnter={e => {
-                            e.currentTarget.style.filter = "brightness(0.9)"
-                        }}
-                        onMouseLeave={e => {
-                            e.currentTarget.style.filter = "brightness(1)"
-                        }}
+                        onMouseEnter={e => { e.currentTarget.style.filter = "brightness(0.9)" }}
+                        onMouseLeave={e => { e.currentTarget.style.filter = "brightness(1)" }}
                     >
                         <IoMdArrowRoundBack size={20} className="text-black" />
                     </button>
 
-                    {/* Título centrado */}
-                    <div className="flex flex-col items-center px-16">
+                    {/* Nombre — clic completo copia el link. Sin efecto de hover visual
+                        (solo cursor-pointer). Toda la franja se tiñe de verde cuando
+                        la instancia activa está marcada como aprendida. */}
+                    <div
+                        onClick={copyLink}
+                        className={`flex flex-col items-center px-16 cursor-pointer rounded-xl py-1 transition-colors duration-300 ${
+                            isCurrentLearned ? "bg-emerald-50/60 dark:bg-emerald-950/30" : ""
+                        }`}
+                    >
                         <h1 className="font-inter items-center text-2xl flex flex-col md:flex-row justify-center gap-1">
                             <div className="justify-center items-center flex flex-row flex-wrap">
                                 <AnimatePresence>
@@ -178,11 +187,13 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                     ))}
                                 </AnimatePresence>
                             </div>
+
                             <div className="flex items-center gap-2">
-                                <span className="transition-all duration-300 ease-in-out">
+                                <span>
                                     {trick.name}
                                 </span>
                             </div>
+
                             <div className="flex flex-row">
                                 <AnimatePresence>
                                     {suffixMods.map((mod) => (
@@ -198,11 +209,10 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                         </motion.span>
                                     ))}
                                 </AnimatePresence>
-                                
                             </div>
                         </h1>
-                        
-                        <div className="pt-2">
+
+                        <div className="pt-2 flex items-center gap-2">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={activeInstance?.difficulty}
@@ -211,29 +221,41 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                     exit={{ opacity: 0, y: 5 }}
                                     transition={{ duration: 0.25 }}
                                 >
-                                    <DifficultyBadge badge={activeInstance?.difficulty}/>
+                                    <DifficultyBadge badge={activeInstance?.difficulty} />
                                 </motion.div>
                             </AnimatePresence>
+
+                            {/* Badge "Completed" explícito — el fondo verde de la franja es
+                                sutil a propósito, esto da la confirmación textual clara. */}
+                            <AnimatePresence>
+                                {isCurrentLearned && (
+                                    <motion.span
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.9 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="flex items-center gap-1 rounded-full border border-emerald-600/40 dark:border-emerald-500/30 bg-emerald-100/70 dark:bg-emerald-900/40 px-2 py-0.5 text-[11px] font-mono uppercase tracking-wide text-emerald-700 dark:text-emerald-400"
+                                    >
+                                        <MdCheckCircle size={12} />
+                                        Completed
+                                    </motion.span>
+                                )}
+                            </AnimatePresence>
+
+                            <LearnedToggle trickId={activeInstanceId} />
                         </div>
-                        
                     </div>
-                    <div className="relative flex justify-end cursor-pointer">
+
+                    <div className="relative flex justify-end">
                         <button
                             onClick={copyLink}
-                            className="flex items-center justify-center h-10 w-10 rounded-xl transition-colors"
+                            className="flex items-center justify-center h-10 w-10 rounded-xl transition-colors cursor-pointer"
                         >
                             {copied ? (
-                                <IoCheckmark
-                                    size={28}
-                                    className="text-green-500"
-                                />
+                                <IoCheckmark size={28} className="text-green-500" />
                             ) : (
-                                <IoLinkOutline
-                                    size={30}
-                                    className="text-gray-300 hover:text-gray-800 dark:hover:text-white"
-                                />
+                                <IoLinkOutline size={30} className="text-gray-300 hover:text-gray-800 dark:hover:text-white" />
                             )}
-                            
                         </button>
                         <AnimatePresence>
                             {copied && (
@@ -242,7 +264,7 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -8 }}
                                     transition={{ duration: 0.2 }}
-                                    className="absolute top-full mt-2 right-0 whitespace-nowrap text-xs font-mono tracking-widest uppercase bg-white  text-gray-600 border border-gray-200  px-4 py-1.5 rounded-full shadow-sm"
+                                    className="absolute top-full mt-2 right-0 whitespace-nowrap text-xs font-mono tracking-widest uppercase bg-white text-gray-600 border border-gray-200 px-4 py-1.5 rounded-full "
                                 >
                                     Link copied
                                 </motion.div>
@@ -252,16 +274,14 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                 </div>
             </div>
 
-            
-
-            {/* Video */}
+            {/* ============ VIDEO ============ */}
             <div className="mt-16 bg-black w-full">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeVideoUrl}
-                        initial={{ opacity: 0}}
-                        animate={{ opacity: 1}}
-                        exit={{ opacity: 0}}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
                         className="w-full max-w-4xl mx-auto aspect-video"
                     >
@@ -276,19 +296,26 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                 </AnimatePresence>
             </div>
 
-           {prerequisiteTricks.length > 0 && (
+            {/* ============ PREREQUISITES ============ */}
+            {prerequisiteTricks.length > 0 && (
                 <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out">
                     <div className="max-w-400 mx-auto w-full">
                         <div className="flex items-center mb-5">
-                            <h1 className="font-inter text-2xl">Prerequisites</h1>
-                            <InfoToolTip text={"These are the base tricks(and all their variations) you should feel comfortable with before learning this one."}/>
+                            <h1 className="font-inter text-2xl">
+                                Prerequisites
+                            </h1>
+
+                            <InfoToolTip
+                                text="These are the base tricks (and all their variations) you should feel comfortable with before learning this one."
+                            />
                         </div>
+
                         <div className="flex flex-wrap justify-center gap-2">
                             {prerequisiteTricks.map(prerequisite => (
                                 <Link
                                     key={prerequisite.slug}
                                     href={`/tricks/${prerequisite.slug}`}
-                                    className="rounded-full border border-gray-300 dark:border-gray-700 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+                                    className="flex items-center rounded-lg border px-3 py-2 text-sm font-medium transition-colors border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-gray-700 dark:text-gray-200 hover:border-gray-400 hover:bg-white dark:hover:border-gray-600 dark:hover:bg-black"
                                 >
                                     {prerequisite.name}
                                 </Link>
@@ -298,182 +325,196 @@ function TrickViewer({trick, instance, modifiers, allTricks}:TrickViewerProps) {
                 </div>
             )}
 
-            {/* Step pagination */}
-            <div className="px-5 py-7 w-full bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out  ">
-                <div className="max-w-400 mx-auto ">
-                    <div className="flex items-center mb-5">
-                        <h1 className="font-inter text-2xl ">Steps</h1>
-                        <InfoToolTip text={"·Main: Showcases the trick.\n·Position: Shows the starting position of the hand and pen mod for the trick.\n·Step(x):Indicates the progression you must follow to learn the trick.\nIt is recommended you are able to execute 10 times in a row each step before going for the next one."} />
-                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
-                    </div>
-                    <div className="flex flex-row font-bold rounded-lg transition-colors duration-500 ease-in-out">
-                        <div className="flex flex-row flex-wrap bg-white dark:bg-black p-2 gap-2 rounded-lg transition-colors duration-500 ease-in-out">
-                            <button 
-                            onClick={() => setActiveVideo("main")}
-                            className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "main" ? "bg-gray-200 " : "text-gray-400"}`}
+            {/* ============ STEPS + MODIFIERS (main) / NOTATION + FAMILY (sidebar) ============ */}
+            <div className="px-5 py-7 w-full bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
+                <div className="max-w-400 mx-auto w-full lg:grid lg:grid-cols-[1fr_340px] lg:gap-6 lg:items-start">
+
+                    <div className="flex flex-col gap-6">
+
+                        {/* Steps */}
+                        <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg bg-gray-50 dark:bg-black border border-gray-200 dark:border-gray-800">
+                            <button
+                                onClick={() => setActiveVideo("main")}
+                                className={`flex items-center gap-2 px-3 py-2 text-xs font-mono uppercase tracking-widest transition-all duration-200 cursor-pointer border-b-2 ${
+                                    activeVideo === "main"
+                                        ? "text-black dark:text-white border-black dark:border-white"
+                                        : "text-gray-400 dark:text-gray-600 border-transparent hover:text-gray-700 dark:hover:text-gray-300"
+                                }`}
                             >
-                            Main
+                                Main
                             </button>
+
                             {positionVideo.length > 0 && (
-                                <button 
+                                <button
                                     onClick={() => setActiveVideo("position")}
-                                    className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === "position" ? "bg-gray-200 " : "text-gray-400"}`}
+                                    className={`flex items-center gap-2 px-3 py-2 text-xs font-mono uppercase tracking-widest transition-all duration-200 cursor-pointer border-b-2 ${
+                                        activeVideo === "position"
+                                            ? "text-black dark:text-white border-black dark:border-white"
+                                            : "text-gray-400 dark:text-gray-600 border-transparent hover:text-gray-700 dark:hover:text-gray-300"
+                                    }`}
                                 >
                                     Position
                                 </button>
                             )}
-                            {stepVideos.map((step, i) => (
-                                <button 
-                                    key={i}
-                                    onClick={() => setActiveVideo(step.order.toString())}
-                                    className={`py-1 px-2 rounded-lg transition-colors duration-300 ease-in-out text-black cursor-pointer ${activeVideo === step.order.toString() ? "bg-gray-300  dark:bg-gray-200 " : "text-gray-400"}`}
-                                >
-                                    Step {i + 1}
-                            </button>
-                        ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            {/* Toggles section */}
-            {availableModifiers.length > 0 && (
-                <div className="px-5 py-7 w-full flex flex-col gap-5 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
-                    <div className="max-w-400 mx-auto w-full">
-                        <div className="flex items-center mb-5">
-                            <h1 className="font-inter text-2xl">Modifiers</h1>
-                            <InfoToolTip text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick. "}/>
-                            {activeModifierIds.length > 0 && (
-                                <button
-                                    onClick={() => {
-                                        setActiveModifierIds([])
-                                        setActiveVideo("main")
-                                        router.replace(`/tricks/${trick.slug}`, { scroll: false })
-                                    }}
-                                    className="ml-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors cursor-pointer"
-                                >
-                                    <MdRefresh size={30} />
-                                </button>
-                            )}
-                        </div>
-                        <div className="py-2">
-                            {availableModifiers.map(mod => {
-                                
-                                const wouldBeIds = activeModifierIds.includes(mod.id)
-                                    ? activeModifierIds.filter(m => m !== mod.id)
-                                    : [...activeModifierIds, mod.id]
-                                
-                                const combinationExists = instance.some(i =>
-                                    matchesModifierSelection(i.modifiers, wouldBeIds)
-                                )
-                                console.log(combinationExists, wouldBeIds)
-
+                            {stepVideos.map((step) => {
+                                const stepId = step.order.toString()
+                                const isActive = activeVideo === stepId
                                 return (
-                                    
-                                    <ModifierToggle
-                                        key={mod.id}
-                                        modifierId={mod.id}
-                                        isActive={activeModifierIds.includes(mod.id)}
-                                        onToggle={toggleModifier}
-                                        options={["Regular", mod.name]}
-                                        disabled={!combinationExists}
-                                    />
+                                    <button
+                                        key={step.order}
+                                        onClick={() => setActiveVideo(stepId)}
+                                        className={`flex items-center gap-2 px-3 py-2 text-xs font-mono uppercase tracking-widest transition-all duration-200 cursor-pointer border-b-2 ${
+                                            isActive
+                                                ? "text-black dark:text-white border-black dark:border-white"
+                                                : "text-gray-400 dark:text-gray-600 border-transparent hover:text-gray-700 dark:hover:text-gray-300"
+                                        }`}
+                                    >
+                                        <span className={`flex h-5 w-5 items-center justify-center rounded-sm text-[11px] font-mono transition-colors duration-200 ${
+                                            isActive
+                                                ? "bg-black text-white dark:bg-white dark:text-black"
+                                                : "bg-transparent text-gray-400 dark:text-gray-600 border border-gray-300 dark:border-gray-700"
+                                        }`}>
+                                            {step.order}
+                                        </span>
+                                        <span>Step</span>
+                                    </button>
                                 )
                             })}
                         </div>
-                    </div>
-                </div>
-            )}
 
-            {/* Notation section */}
-            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-white dark:bg-black transition-colors duration-500 ease-in-out "> 
-                <div className="max-w-400 mx-auto w-full">
-                    <div className="flex items-center mb-5">
-                        <h1 className="font-inter text-2xl ">Notation</h1>
-                        <InfoToolTip text={"Notation is the compact way to write trick names and modifiers using abbreviations.\nIt's written following a prefix/suffix structure, which is defined in each individual modifier."}/>
-                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
+                        {/* Modifiers */}
+                        {availableModifiers.length > 0 && (
+                            <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
+
+                                <div className="w-full flex items-center justify-between px-4 py-3">
+                                    <div className="flex items-center gap-1">
+                                        <button
+                                            onClick={() => setCollapsed(!collapsed)}
+                                            className="flex items-center gap-1 cursor-pointer"
+                                        >
+                                            <h1 className="font-mono uppercase tracking-widest text-sm text-black dark:text-white">Modifiers</h1>
+                                            <MdKeyboardArrowDown
+                                                size={20}
+                                                className={`text-gray-500 transition-transform duration-300 ${collapsed ? "" : "rotate-180"}`}
+                                            />
+                                        </button>
+
+                                        <InfoToolTip
+                                            text={"Modifiers are variations of a base trick that change how it is performed.\nThey can alter things like the direction of the trick, hand orientation or even if the fingers are curled during the trick."}
+                                        />
+
+                                        {activeModifierIds.length > 0 && (
+                                            <span className="ml-2 px-2 py-0.5 rounded-sm bg-black dark:bg-white text-[10px] font-mono text-white dark:text-black">
+                                                {activeModifierIds.length}
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    {activeModifierIds.length > 0 && (
+                                        <button
+                                            onClick={resetModifiers}
+                                            className="flex items-center gap-1 px-2 py-1 rounded-sm text-[11px] font-mono uppercase tracking-wide text-gray-400 hover:text-gray-800 dark:hover:text-gray-100 transition-colors cursor-pointer"
+                                        >
+                                            <MdRefresh size={14} />
+                                            Reset
+                                        </button>
+                                    )}
+                                </div>
+
+                                <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${collapsed ? "grid-rows-[0fr]" : "grid-rows-[1fr]"}`}>
+                                    <div className="overflow-hidden">
+                                        <div className="px-4 pb-4 pt-1 flex flex-row flex-wrap gap-2">
+                                            {availableModifiers.map(mod => {
+                                                const wouldBeIds = activeModifierIds.includes(mod.id)
+                                                    ? activeModifierIds.filter(m => m !== mod.id)
+                                                    : [...activeModifierIds, mod.id]
+
+                                                const combinationExists = instance.some(i =>
+                                                    matchesModifierSelection(i.modifiers, wouldBeIds)
+                                                )
+
+                                                return (
+                                                    <ModifierButton
+                                                        key={mod.id}
+                                                        modifierId={mod.id}
+                                                        name={mod.name}
+                                                        color={modifierColor[mod.id]}
+                                                        isActive={activeModifierIds.includes(mod.id)}
+                                                        onToggle={toggleModifier}
+                                                        disabled={!combinationExists}
+                                                    />
+                                                )
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
-                    <div className="flex flex-row gap-1 text-xl justify-center">
-                        <AnimatePresence>
-                            {prefixMods.map((mod) => (
-                                <motion.span
-                                    key={mod.id}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.4 }}
-                                    className="font-bold"
-                                    style={{ color: modifierColor[mod.id] }}
-                                >
-                                    [{mod.notation}]
-                                </motion.span>
+
+                    {/* --- Sidebar: Notation + Trick family --- */}
+                    <div className="mt-6 lg:mt-0 flex flex-col gap-2 lg:sticky lg:top-24 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black p-6">
+
+                        <div>
+                            <div className="flex items-center mb-4">
+                                <h2 className="font-mono uppercase tracking-widest text-xs text-gray-400 dark:text-gray-500">Notation</h2>
+                                <InfoToolTip text={"Notation is the compact way to write trick names and modifiers using abbreviations.\nIt's written following a prefix/suffix structure, which is defined in each individual modifier."} />
+                            </div>
+                            <div className="flex flex-row flex-wrap gap-1 text-lg font-mono">
+                                <AnimatePresence>
+                                    {prefixMods.map((mod) => (
+                                        <motion.span
+                                            key={mod.id}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="font-bold"
+                                            style={{ color: modifierColor[mod.id] }}
+                                        >
+                                            [{mod.notation}]
+                                        </motion.span>
+                                    ))}
+                                </AnimatePresence>
+                                <span className="text-black dark:text-white">{trick.notation}</span>
+                                <AnimatePresence>
+                                    {suffixMods.map((mod) => (
+                                        <motion.span
+                                            key={mod.id}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="font-bold"
+                                            style={{ color: modifierColor[mod.id] }}
+                                        >
+                                            [{mod.notation}]
+                                        </motion.span>
+                                    ))}
+                                </AnimatePresence>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className="flex items-center mb-4">
+                                <h2 className="font-mono uppercase tracking-widest text-xs text-gray-400 dark:text-gray-500">Trick family</h2>
+                                <InfoToolTip text={"Families are classiffications of tricks that share the same mechanics."} />
+                            </div>
+                            <div className="flex flex-row flex-wrap gap-1">
+                                {trick.families.map((family, index) => (
+                                    <span
+                                        key={index}
+                                        className="text-black dark:text-white px-2 py-1 rounded-sm text-xs font-mono uppercase tracking-wide border border-gray-300 dark:border-gray-700"
+                                    >
+                                        {family}
+                                    </span>
                                 ))}
-                        </AnimatePresence>
-                        <span className="text-gray-400">{trick.notation}</span>
-                        <AnimatePresence>
-                            {suffixMods.map((mod) => (
-                                <motion.span
-                                    key={mod.id}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.4 }}
-                                    className="font-bold"
-                                    style={{ color: modifierColor[mod.id] }}
-                                >
-                                    [{mod.notation}]
-                                </motion.span>
-                            ))}
-                        </AnimatePresence>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="px-5 py-7 w-full flex flex-col gap-5 bg-whitePrimary dark:bg-blackPrimary transition-colors duration-500 ease-in-out">
-                <div className="max-w-400 mx-auto w-full">
-                    <div className="flex items-center mb-5">
-                        <h1 className="font-inter text-2xl ">Trick family</h1>
-                        <InfoToolTip text={"Families are classiffications of tricks that share the same mechanics."}/>
-                        {/* <div className=" hidden md:block bg-gray-400 h-px w-40 ml-4 " /> */}
-                    </div>
-                    <div className="flex flex-row gap-1 text-xl justify-center">
-                        {trick.families.map((family, index) => (
-                            <span 
-                                key={index} 
-                                className=" text-gray-800 dark:text-gray-300 px-2 py-1 rounded-md text-xl font-medium border border-gray-800 dark:border-gray-300"
-                            >
-                                {family}
-                            </span>
-                        ))}
-                    </div>
-
-
-                </div>
-
-            </div>
-
-            
-
-            {/* explanation details */}
-            {/* <div className="p-5 bg-whitePrimary dark:bg-blackPrimary flex flex-col gap-3 transition-colors duration-500 ease-in-out w-full">
-                <div className="max-w-400 mx-auto w-full">
-                    <div className="flex items-center mb-5">
-                        <h1 className="font-inter text-2xl ">Trick details</h1>
-                    </div>
-                    <div className="border border-gray-700 dark:border-gray-300 bg-gray-300/50 dark:bg-gray-800/50 p-3 rounded-lg ">
-                        {instance.map((instance, i) => (
-                            <p 
-                                key={i}
-                                className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg font-inter rounded-lg "
-                                >
-                                    {instance.trickDetails}
-                                </p>
-                        ))}
-                    </div>
-                   
-                </div>
-            </div> */}
-            
         </div>
-        
     )
 }
 
