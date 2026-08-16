@@ -28,8 +28,6 @@ type TrickNameCardProps = {
     variant?: "grid" | "list"
 }
 
-const HOVER_PREVIEW_DELAY = 500
-const LONG_PRESS_DELAY = 350
 const PREVIEW_LOAD_TIMEOUT = 6000 // si el vídeo no carga en 6s, nos rendimos
 
 function TrickNameCard({
@@ -46,16 +44,13 @@ function TrickNameCard({
     const { isLearned } = useLearnedTricks()
 
     const [isImageLoaded, setIsImageLoaded] = useState(false)
-    const [isAnticipating, setIsAnticipating] = useState(false)
     const [isPreviewing, setIsPreviewing] = useState(false)
     const [isBuffering, setIsBuffering] = useState(false)
     const [previewFailed, setPreviewFailed] = useState(false)
     const [previewProgress, setPreviewProgress] = useState(0)
 
     const videoRef = useRef<HTMLVideoElement>(null)
-    const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
     const bufferTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-    const isLongPressRef = useRef(false)
     const lastProgressUpdateRef = useRef(0)
 
     const viewerHand = isLeftHanded ? "left" : "right"
@@ -108,7 +103,6 @@ function TrickNameCard({
     }, [])
 
     const startPreview = useCallback(() => {
-        setIsAnticipating(false)
         setIsPreviewing(true)
         setIsBuffering(true)
         setPreviewFailed(false)
@@ -133,7 +127,6 @@ function TrickNameCard({
 
         clearBufferTimeout()
 
-        setIsAnticipating(false)
         setIsPreviewing(false)
         setIsBuffering(false)
         setPreviewFailed(false)
@@ -141,60 +134,35 @@ function TrickNameCard({
         lastProgressUpdateRef.current = 0
     }, [clearBufferTimeout])
 
-    const clearPendingTimer = useCallback(() => {
-        if (hoverTimeoutRef.current) {
-            clearTimeout(hoverTimeoutRef.current)
-            hoverTimeoutRef.current = null
-        }
-        setIsAnticipating(false)
-    }, [])
-
     useEffect(() => {
         return () => {
-            clearPendingTimer()
             clearBufferTimeout()
         }
-    }, [clearPendingTimer, clearBufferTimeout])
+    }, [clearBufferTimeout])
 
+    // Desktop: el preview arranca al instante al entrar, sin espera intermedia.
     const handleMouseEnter = useCallback(() => {
         if (!mainVideo) return
-
-        clearPendingTimer()
-        setIsAnticipating(true)
-
-        hoverTimeoutRef.current = setTimeout(() => {
-            startPreview()
-        }, HOVER_PREVIEW_DELAY)
-    }, [mainVideo, startPreview, clearPendingTimer])
+        startPreview()
+    }, [mainVideo, startPreview])
 
     const handleMouseLeave = useCallback(() => {
-        clearPendingTimer()
         stopPreview()
-    }, [clearPendingTimer, stopPreview])
+    }, [stopPreview])
 
+    // Mobile: cualquier touch cancela el preview y deja pasar el tap normal
+    // (navegación del Link / click del checkbox) sin bloquear nada.
     const handleTouchStart = useCallback(() => {
-        clearPendingTimer()
         stopPreview()
-        isLongPressRef.current = false
-    }, [clearPendingTimer, stopPreview])
+    }, [stopPreview])
 
     const handleTouchMove = useCallback(() => {
-        clearPendingTimer()
         stopPreview()
-    }, [clearPendingTimer, stopPreview])
+    }, [stopPreview])
 
-    const handleTouchEnd = useCallback(
-        (e: React.TouchEvent) => {
-            clearPendingTimer()
-            stopPreview()
-            isLongPressRef.current = false
-
-            if (e.cancelable) {
-                e.preventDefault()
-            }
-        },
-        [clearPendingTimer, stopPreview]
-    )
+    const handleTouchEnd = useCallback(() => {
+        stopPreview()
+    }, [stopPreview])
 
     const handleVideoCanPlay = useCallback(() => {
         clearBufferTimeout()
@@ -323,14 +291,6 @@ function TrickNameCard({
                 />
             )}
 
-            {/* Fase 1 — antes de que exista el <video> */}
-            {isAnticipating && !isPreviewing && mainVideo && (
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/30">
-                    <div className="h-full w-full bg-white/70 animate-pulse" />
-                </div>
-            )}
-
-            {/* Fase 2 — con el <video> ya montado, mientras no haya fallado */}
             {isPreviewing && mainVideo && !previewFailed && (
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/30">
                     {isBuffering ? (

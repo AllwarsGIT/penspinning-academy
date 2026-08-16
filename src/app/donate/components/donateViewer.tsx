@@ -11,20 +11,40 @@ import {
 
 function DonateViewer() {
     return (
-        <div className="relative w-full min-h-[calc(100vh-64px)] mt-10 bg-[#131313] overflow-hidden">
+        <div className="relative w-full min-h-[calc(100vh-64px)] mt-10 bg-white dark:bg-[#131313] transition-colors duration-500 overflow-hidden">
 
             {/* Background decoration */}
             <div className="pointer-events-none absolute inset-0">
 
                 {/* Main warm glow */}
-                <div className="absolute left-1/2 top-[-220px] -translate-x-1/2 w-[750px] h-[500px] rounded-full bg-[#FF5E5B]/[0.035] blur-[140px]" />
+                <div className="absolute left-1/2 top-[-220px] -translate-x-1/2 w-[750px] h-[500px] rounded-full bg-[#FF5E5B]/[0.025] dark:bg-[#FF5E5B]/[0.035] blur-[140px]" />
 
                 {/* Secondary cool glow */}
-                <div className="absolute left-[5%] top-[45%] w-[350px] h-[350px] rounded-full bg-[#0070BA]/[0.018] blur-[120px]" />
+                <div className="absolute left-[5%] top-[45%] w-[350px] h-[350px] rounded-full bg-[#0070BA]/[0.012] dark:bg-[#0070BA]/[0.018] blur-[120px]" />
 
                 {/* Subtle grid */}
                 <div
-                    className="absolute inset-0 opacity-[0.018]"
+                    className="absolute inset-0 opacity-[0.03] dark:opacity-[0.018]"
+                    style={{
+                        backgroundImage: `
+                            linear-gradient(
+                                rgba(0,0,0,0.6) 1px,
+                                transparent 1px
+                            ),
+                            linear-gradient(
+                                90deg,
+                                rgba(0,0,0,0.6) 1px,
+                                transparent 1px
+                            )
+                        `,
+                        backgroundSize: "45px 45px",
+                    }}
+                />
+                {/* Grid en dark, mismo patrón pero blanco — CSS puro no puede
+                    invertir color con dark: en un style inline, así que
+                    duplicamos la capa con opacidad 0 en claro / visible en oscuro */}
+                <div
+                    className="hidden dark:block absolute inset-0 opacity-[0.018]"
                     style={{
                         backgroundImage: `
                             linear-gradient(
@@ -42,7 +62,7 @@ function DonateViewer() {
                 />
 
                 {/* Vignette */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.2)_100%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.05)_100%)] dark:bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.2)_100%)]" />
 
             </div>
 
@@ -54,15 +74,15 @@ function DonateViewer() {
 
                 <div className="flex flex-col gap-3 items-center text-center max-w-2xl">
 
-                    <span className="text-[11px] font-mono tracking-widest uppercase text-gray-500">
+                    <span className="text-[11px] font-mono tracking-widest uppercase text-gray-500 dark:text-gray-500">
                         Support PSA
                     </span>
 
-                    <h1 className="text-3xl md:text-4xl font-bold font-inter text-white">
+                    <h1 className="text-3xl md:text-4xl font-bold font-inter text-black dark:text-white">
                         Help Pen Spinning Academy grow!
                     </h1>
 
-                    <p className="text-sm md:text-base text-gray-400 leading-relaxed max-w-xl">
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
                         PSA is built to make learning pen spinning a deliberate learning experience with a progression towards autonomy.
                     </p>
 
@@ -73,14 +93,12 @@ function DonateViewer() {
 
                 <div className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                    
-
                     {/* Ko-fi */}
                     <a
                         href="https://ko-fi.com/allwars"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col rounded-2xl border border-gray-800 bg-black p-6 transition-all duration-300 hover:border-[#FF5E5B]/60 hover:-translate-y-0.5"
+                        className="group flex flex-col rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black p-6 transition-all duration-300 hover:border-[#FF5E5B]/60 hover:-translate-y-0.5"
                     >
 
                         <div className="flex items-center justify-between mb-6">
@@ -92,7 +110,7 @@ function DonateViewer() {
                                 />
                             </div>
 
-                            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-600">
+                            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500 dark:text-gray-600">
                                 Recommended
                             </span>
 
@@ -101,11 +119,11 @@ function DonateViewer() {
 
                         <div className="flex flex-col gap-2">
 
-                            <h2 className="font-inter text-lg font-semibold text-white">
+                            <h2 className="font-inter text-lg font-semibold text-black dark:text-white">
                                 Buy me a coffee
                             </h2>
 
-                            <p className="text-sm leading-relaxed text-gray-400">
+                            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                                 Support PSA with a small one-time donation or a monthly subscription
                                 through Ko-fi.
                             </p>
@@ -115,11 +133,11 @@ function DonateViewer() {
 
                         <div className="mt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest">
 
-                            <span className="text-gray-600">
+                            <span className="text-gray-500 dark:text-gray-600">
                                 Ko-fi
                             </span>
 
-                            <span className="text-gray-400 group-hover:text-[#FF5E5B] transition-colors duration-200">
+                            <span className="text-gray-600 dark:text-gray-400 group-hover:text-[#FF5E5B] transition-colors duration-200">
                                 Support →
                             </span>
 
@@ -127,7 +145,6 @@ function DonateViewer() {
 
                     </a>
 
-                    {/* PayPal */}
                     {/* PayPal - Coming soon */}
                     <div
                         className="
@@ -136,8 +153,10 @@ function DonateViewer() {
                             flex-col
                             rounded-2xl
                             border
-                            border-gray-800
-                            bg-black
+                            border-gray-200
+                            dark:border-gray-800
+                            bg-white
+                            dark:bg-black
                             p-6
                             opacity-60
                             cursor-not-allowed
@@ -153,7 +172,7 @@ function DonateViewer() {
                                 />
                             </div>
 
-                            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-600">
+                            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500 dark:text-gray-600">
                                 Coming soon
                             </span>
 
@@ -162,11 +181,11 @@ function DonateViewer() {
 
                         <div className="flex flex-col gap-2">
 
-                            <h2 className="font-inter text-lg font-semibold text-white">
+                            <h2 className="font-inter text-lg font-semibold text-black dark:text-white">
                                 Donate with PayPal
                             </h2>
 
-                            <p className="text-sm leading-relaxed text-gray-400">
+                            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                                 PayPal donations will be available soon.
                                 I&apos;m working on setting it up for PSA.
                             </p>
@@ -176,19 +195,17 @@ function DonateViewer() {
 
                         <div className="mt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest">
 
-                            <span className="text-gray-600">
+                            <span className="text-gray-500 dark:text-gray-600">
                                 PayPal
                             </span>
 
-                            <span className="text-gray-700">
+                            <span className="text-gray-400 dark:text-gray-700">
                                 Coming soon
                             </span>
 
                         </div>
 
                     </div>
-
-                    
 
                 </div>
 
@@ -198,10 +215,10 @@ function DonateViewer() {
                 <div className="w-full max-w-3xl">
 
                     {/* Letter */}
-                    <div className="w-full rounded-2xl border border-gray-800 bg-black overflow-hidden">
+                    <div className="w-full rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black overflow-hidden">
 
                         {/* Letter header */}
-                        <div className="px-6 py-5 border-b border-gray-900 flex items-center justify-between">
+                        <div className="px-6 py-5 border-b border-gray-100 dark:border-gray-900 flex items-center justify-between">
 
                             <div className="flex items-center gap-2">
 
@@ -210,13 +227,13 @@ function DonateViewer() {
                                     className="text-gray-500"
                                 />
 
-                                <span className="font-mono text-xs uppercase tracking-widest text-gray-400">
+                                <span className="font-mono text-xs uppercase tracking-widest text-gray-600 dark:text-gray-400">
                                     A note from the creator
                                 </span>
 
                             </div>
 
-                            <span className="text-[10px] font-mono text-gray-700">
+                            <span className="text-[10px] font-mono text-gray-400 dark:text-gray-700">
                                 PSA / 2026
                             </span>
 
@@ -226,7 +243,7 @@ function DonateViewer() {
                         {/* Letter body */}
                         <div className="px-6 py-8 md:px-10 md:py-10">
 
-                            <div className="max-w-2xl mx-auto flex flex-col gap-5 text-sm leading-7 text-gray-400">
+                            <div className="max-w-2xl mx-auto flex flex-col gap-5 text-sm leading-7 text-gray-600 dark:text-gray-400">
 
                                 <p>
                                     I started this project as a small ambitious personal project to structure Pen Spinning learning in new ways. Now the project is tens of thousands of lines of code big with over 400 hours of work behind the learning, design, and coding of the website.
@@ -248,7 +265,7 @@ function DonateViewer() {
 
                                 <div className="pt-4">
 
-                                    <span className="font-inter font-semibold text-white">
+                                    <span className="font-inter font-semibold text-black dark:text-white">
                                         Thank you all for being part of PSA.
                                     </span>
 
@@ -267,13 +284,13 @@ function DonateViewer() {
                         {/* Section label */}
                         <div className="flex items-center gap-3 mb-4">
 
-                            <span className="h-px flex-1 bg-gray-800" />
+                            <span className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
 
-                            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400 whitespace-nowrap">
+                            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-600 dark:text-gray-400 whitespace-nowrap">
                                 What your support helps with
                             </span>
 
-                            <span className="h-px flex-1 bg-gray-800" />
+                            <span className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
 
                         </div>
 
@@ -292,37 +309,44 @@ function DonateViewer() {
                                     gap-3
                                     rounded-xl
                                     border
-                                    border-gray-800
-                                    bg-black
+                                    border-gray-200
+                                    dark:border-gray-800
+                                    bg-white
+                                    dark:bg-black
                                     p-5
-                                    shadow-[0_12px_30px_rgba(0,0,0,0.35)]
+                                    shadow-[0_12px_30px_rgba(0,0,0,0.06)]
+                                    dark:shadow-[0_12px_30px_rgba(0,0,0,0.35)]
                                     transition-all
                                     duration-300
                                     ease-out
                                     hover:-translate-y-1
-                                    hover:border-gray-700
-                                    hover:shadow-[0_18px_40px_rgba(0,0,0,0.5)]
+                                    hover:border-gray-300
+                                    dark:hover:border-gray-700
+                                    hover:shadow-[0_18px_40px_rgba(0,0,0,0.1)]
+                                    dark:hover:shadow-[0_18px_40px_rgba(0,0,0,0.5)]
                                 "
                             >
 
                                 <MdSchool
                                     size={22}
                                     className="
-                                        text-gray-400
+                                        text-gray-500
+                                        dark:text-gray-400
                                         transition-all
                                         duration-300
-                                        group-hover:text-gray-200
+                                        group-hover:text-gray-800
+                                        dark:group-hover:text-gray-200
                                         group-hover:scale-110
                                     "
                                 />
 
                                 <div className="flex flex-col gap-1">
 
-                                    <span className="text-sm font-semibold text-white">
+                                    <span className="text-sm font-semibold text-black dark:text-white">
                                         More content
                                     </span>
 
-                                    <span className="text-xs leading-relaxed text-gray-400">
+                                    <span className="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
                                         New tricks, variations and tutorials.
                                     </span>
 
@@ -342,37 +366,44 @@ function DonateViewer() {
                                     gap-3
                                     rounded-xl
                                     border
-                                    border-gray-800
-                                    bg-black
+                                    border-gray-200
+                                    dark:border-gray-800
+                                    bg-white
+                                    dark:bg-black
                                     p-5
-                                    shadow-[0_12px_30px_rgba(0,0,0,0.35)]
+                                    shadow-[0_12px_30px_rgba(0,0,0,0.06)]
+                                    dark:shadow-[0_12px_30px_rgba(0,0,0,0.35)]
                                     transition-all
                                     duration-300
                                     ease-out
                                     hover:-translate-y-1
-                                    hover:border-gray-700
-                                    hover:shadow-[0_18px_40px_rgba(0,0,0,0.5)]
+                                    hover:border-gray-300
+                                    dark:hover:border-gray-700
+                                    hover:shadow-[0_18px_40px_rgba(0,0,0,0.1)]
+                                    dark:hover:shadow-[0_18px_40px_rgba(0,0,0,0.5)]
                                 "
                             >
 
                                 <MdCode
                                     size={22}
                                     className="
-                                        text-gray-400
+                                        text-gray-500
+                                        dark:text-gray-400
                                         transition-all
                                         duration-300
-                                        group-hover:text-gray-200
+                                        group-hover:text-gray-800
+                                        dark:group-hover:text-gray-200
                                         group-hover:scale-110
                                     "
                                 />
 
                                 <div className="flex flex-col gap-1">
 
-                                    <span className="text-sm font-semibold text-white">
+                                    <span className="text-sm font-semibold text-black dark:text-white">
                                         Development
                                     </span>
 
-                                    <span className="text-xs leading-relaxed text-gray-400">
+                                    <span className="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
                                         Improvements, domain/hosting and lots of new features!
                                     </span>
 
@@ -392,37 +423,44 @@ function DonateViewer() {
                                     gap-3
                                     rounded-xl
                                     border
-                                    border-gray-800
-                                    bg-black
+                                    border-gray-200
+                                    dark:border-gray-800
+                                    bg-white
+                                    dark:bg-black
                                     p-5
-                                    shadow-[0_12px_30px_rgba(0,0,0,0.35)]
+                                    shadow-[0_12px_30px_rgba(0,0,0,0.06)]
+                                    dark:shadow-[0_12px_30px_rgba(0,0,0,0.35)]
                                     transition-all
                                     duration-300
                                     ease-out
                                     hover:-translate-y-1
-                                    hover:border-gray-700
-                                    hover:shadow-[0_18px_40px_rgba(0,0,0,0.5)]
+                                    hover:border-gray-300
+                                    dark:hover:border-gray-700
+                                    hover:shadow-[0_18px_40px_rgba(0,0,0,0.1)]
+                                    dark:hover:shadow-[0_18px_40px_rgba(0,0,0,0.5)]
                                 "
                             >
 
                                 <MdCoffee
                                     size={22}
                                     className="
-                                        text-gray-400
+                                        text-gray-500
+                                        dark:text-gray-400
                                         transition-all
                                         duration-300
-                                        group-hover:text-gray-200
+                                        group-hover:text-gray-800
+                                        dark:group-hover:text-gray-200
                                         group-hover:scale-110
                                     "
                                 />
 
                                 <div className="flex flex-col gap-1">
 
-                                    <span className="text-sm font-semibold text-white">
+                                    <span className="text-sm font-semibold text-black dark:text-white">
                                         Motivation
                                     </span>
 
-                                    <span className="text-xs leading-relaxed text-gray-400">
+                                    <span className="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
                                         And sometimes even a coffee as well
                                     </span>
 
@@ -445,7 +483,7 @@ function DonateViewer() {
                         No donation is too small
                     </span>
 
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
                         Even using PSA and sharing it with other spinners helps.
                     </p>
 
