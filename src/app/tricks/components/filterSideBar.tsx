@@ -423,7 +423,7 @@ function FilterSidebar({
     }
 
     return (
-        <aside className="w-full md:w-64 shrink-0 sticky top-31 self-start h-fit z-10 bg-white dark:bg-black">
+        <aside className="w-full md:w-64 shrink-0 sticky top-31 self-start h-fit z-40 bg-white dark:bg-black">
 
             <FilterSection
                 title="Progress"
