@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { ThemeProvider } from "./providers/themeProvider";
 import { DominantHandProvider } from "./providers/dominantHandProvider"
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 
 import Header from "@/components/header";
@@ -68,6 +70,8 @@ export default function RootLayout({
                 </LearnedTricksProvider>
               </DominantHandProvider>
             </ThemeProvider>
+            <Analytics />
+            <SpeedInsights />
       </body>
     </html>
   );  
