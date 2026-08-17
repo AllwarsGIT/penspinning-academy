@@ -65,13 +65,14 @@ export default function RootLayout({
                 <LearnedTricksProvider>
                     <Header />
                           {children}
+                          <Analytics />
+                          <SpeedInsights />
                       <ScrollUpButton/>
                     <Footer />
                 </LearnedTricksProvider>
               </DominantHandProvider>
             </ThemeProvider>
-            <Analytics />
-            <SpeedInsights />
+            
       </body>
     </html>
   );  
