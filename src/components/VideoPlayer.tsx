@@ -279,7 +279,10 @@ export default function VideoPlayer({ url, recordedHand = "left", fps = 30 }: Vi
                 onClick={togglePlay}
                 onEnded={() => setIsPlaying(false)}
                 playsInline
+                // Esto hay que arreglarlo cuando añada lessons porque es una puta chapuza por falta de planificacion
+                muted
             />
+
 
             {/* Estado de error — mismo lenguaje que "Video not available" de TrickViewer */}
             {hasError && (
